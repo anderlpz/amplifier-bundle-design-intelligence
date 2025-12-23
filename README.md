@@ -43,8 +43,8 @@ amplifier run --bundle ./bundle.md "Design a notification toast"
 ### Option 2: Add to Registry (Recommended for Repeated Use)
 
 ```bash
-# Add bundle to your registry
-amplifier bundle add design-intelligence git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main
+# Add bundle to your registry (name auto-derived from bundle metadata)
+amplifier bundle add git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main
 
 # Set as active bundle
 amplifier bundle use design-intelligence

@@ -1,0 +1,18 @@
+bundle:
+  name: design-intelligence-behavior
+  version: 1.0.0
+  description: Comprehensive design intelligence with specialized agents and knowledge base
+
+agents:
+  include:
+    - design-intelligence:design-system-architect
+    - design-intelligence:component-designer
+    - design-intelligence:animation-choreographer
+    - design-intelligence:layout-architect
+    - design-intelligence:art-director
+    - design-intelligence:responsive-strategist
+    - design-intelligence:voice-strategist
+
+context:
+  include:
+    - design-intelligence:context/design-instructions.md

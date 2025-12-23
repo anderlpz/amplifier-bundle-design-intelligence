@@ -29,14 +29,37 @@ User's spark → Design philosophy + craft → Their expression, elevated
 
 ## Quick Start
 
-### Usage
+### Option 1: Use Directly (One-Off)
 
 ```bash
-# Load the bundle directly
-amplifier run --bundle git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main "Design a notification toast that feels warm and inviting"
+# Load the bundle directly via git URL
+amplifier run --bundle git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main \
+  "Design a notification toast that feels warm and inviting"
 
 # Or from local path (if cloned)
 amplifier run --bundle ./bundle.md "Design a notification toast"
+```
+
+### Option 2: Add to Registry (Recommended for Repeated Use)
+
+```bash
+# Add bundle to your registry
+amplifier bundle add design-intelligence git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main
+
+# Set as active bundle
+amplifier bundle use design-intelligence
+
+# Now run without specifying --bundle each time
+amplifier run "Design a notification toast"
+
+# Check which bundle is active
+amplifier bundle current
+
+# Check for updates
+amplifier bundle update --check
+
+# Update to latest
+amplifier bundle update
 ```
 
 ### Include in Another Bundle

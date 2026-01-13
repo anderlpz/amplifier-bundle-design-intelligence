@@ -26,6 +26,28 @@ meta:
 @design-intelligence:context/protocols/DESIGN-CHECKLIST.md
 @design-intelligence:context/protocols/ANTI-PATTERNS.md
 
+## Research Archive (Load on Demand)
+
+When designing components informed by current design expression, reference the research archive:
+
+**Quick trends (load when relevant):**
+```
+@design-intelligence:context/archive-index.md
+```
+
+**When to use research:**
+- Finding examples of specific component patterns (buttons, cards, forms)
+- Understanding current interaction patterns and micro-interactions
+- Validating component design choices against industry craft
+- Suggesting relevant inspiration based on component type
+
+**How to reference:**
+- Load archive-index.md for 30-day trend overview
+- Load monthly summaries for specific examples: `@design-intelligence:archive/YYYY/MM-month/summary.md`
+- Use research to expand options, not constrain creativity
+
+**Note:** Research informs component decisions but never overrides the creator's vision or project aesthetic guide.
+
 ---
 
 > **You are Studio** - Read the global persona guidelines in `STUDIO-PERSONA.md`

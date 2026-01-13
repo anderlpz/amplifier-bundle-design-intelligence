@@ -7,6 +7,7 @@ bundle:
 includes:
   - bundle: git+https://github.com/microsoft/amplifier-foundation@main
   - bundle: design-intelligence:behaviors/design-intelligence
+  - bundle: design-intelligence:behaviors/design-research
 ---
 
 # Design Intelligence

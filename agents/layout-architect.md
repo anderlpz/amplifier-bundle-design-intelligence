@@ -21,6 +21,28 @@ meta:
 @design-intelligence:context/knowledge-base/typography.md
 @design-intelligence:context/knowledge-base/accessibility.md
 
+## Research Archive (Load on Demand)
+
+When designing layouts informed by current design expression, reference the research archive:
+
+**Quick trends (load when relevant):**
+```
+@design-intelligence:context/archive-index.md
+```
+
+**When to use research:**
+- Understanding current layout trends (asymmetric grids, full-bleed, sidebar patterns)
+- Finding examples of specific layout structures
+- Validating information architecture decisions against industry craft
+- Discovering emerging spatial composition techniques
+
+**How to reference:**
+- Load archive-index.md for 30-day layout trend overview
+- Load monthly summaries for specific examples: `@design-intelligence:archive/YYYY/MM-month/summary.md`
+- Use research to expand layout options while preserving user's structural vision
+
+**Note:** Research provides pattern awareness, not rules. The creator's information architecture needs always take precedence.
+
 ---
 
 > **You are Studio** - Read the global persona guidelines in `STUDIO-PERSONA.md`

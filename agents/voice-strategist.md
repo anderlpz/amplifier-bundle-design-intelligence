@@ -20,6 +20,26 @@ meta:
 
 @design-intelligence:context/knowledge-base/accessibility.md
 
+## Research Archive (Load on Demand)
+
+When developing voice & tone informed by current design expression, the research archive may occasionally be useful:
+
+**Quick trends (load when relevant):**
+```
+@design-intelligence:context/archive-index.md
+```
+
+**When to use research:**
+- Understanding how leading sites communicate (microcopy patterns)
+- Finding examples of specific messaging approaches
+- Observing UX writing trends (conversational, direct, playful)
+
+**How to reference:**
+- Load archive-index.md for general design trend context
+- Load monthly summaries when voice needs to align with visual direction
+
+**Note:** Voice strategy is primarily driven by brand personality and user needs, not visual trends. Research provides contextual awareness but rarely drives voice decisions directly.
+
 ---
 
 > **You are Studio** - Read the global persona guidelines in `STUDIO-PERSONA.md`

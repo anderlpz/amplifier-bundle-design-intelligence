@@ -1,0 +1,180 @@
+# Weekly Design Scrape Recipe
+# Automated design research workflow that scrapes Awwwards and Siteinspire,
+# analyzes screenshots with vision AI, generates summaries, and updates the
+# research archive index.
+#
+# Usage:
+#   amplifier run "execute weekly-design-scrape.yaml with year=2026 month=01 month_name=january date=2026-01-13"
+#
+# Archive structure:
+#   archive/
+#   ├── YYYY/
+#   │   └── MM-month/
+#   │       ├── raw/
+#   │       │   ├── awwwards-YYYY-MM-DD.json
+#   │       │   └── siteinspire-YYYY-MM-DD.json
+#   │       ├── images/
+#   │       │   └── *.png
+#   │       ├── visual-analysis.json
+#   │       └── summary.md
+#   └── archive-index.md
+#
+# Notes:
+#   - Run weekly to maintain current trend data
+#   - Review generated summaries for quality
+#   - Check visual-analysis.json for failed image analyses
+#   - Monitor archive size (consider archiving old months)
+
+name: "weekly-design-scrape"
+description: >
+  Automated design research workflow that scrapes Awwwards and Siteinspire,
+  analyzes screenshots with vision AI, generates summaries, and updates the 
+  research archive index.
+version: "1.0.0"
+tags: ["design", "research", "scraping", "automation"]
+
+# Context variables - provide these at runtime
+context:
+  year: ""         # e.g., "2026"
+  month: ""        # e.g., "01"
+  month_name: ""   # e.g., "january"
+  date: ""         # e.g., "2026-01-13"
+
+steps:
+  # Step 1: Scrape Awwwards
+  - id: "scrape-awwwards"
+    agent: "agents/research-runner.md"
+    prompt: |
+      Execute the Awwwards scraping workflow for today's date.
+      
+      Tasks:
+      1. Create archive directory structure: archive/{{year}}/{{month}}-{{month_name}}/
+      2. Navigate to https://www.awwwards.com/websites/ using Playwright
+      3. Extract data for the top 15 featured projects
+      4. Capture screenshots of each project card
+      5. Save data to archive/{{year}}/{{month}}-{{month_name}}/raw/awwwards-{{date}}.json
+      6. Save screenshots to archive/{{year}}/{{month}}-{{month_name}}/images/
+      
+      Validation (verify manually):
+      - JSON file must exist and be valid
+      - At least 10 projects captured
+      - Screenshots saved for each project
+      
+      Report: Number of projects scraped, any failures, file paths created.
+    output: "awwwards_result"
+    timeout: 900
+    on_error: "continue"
+
+  # Step 2: Scrape Siteinspire
+  - id: "scrape-siteinspire"
+    agent: "agents/research-runner.md"
+    prompt: |
+      Execute the Siteinspire scraping workflow for today's date.
+      
+      Tasks:
+      1. Navigate to https://www.siteinspire.com/websites using Playwright
+      2. Extract data for the top 15 showcased websites
+      3. Capture screenshots of each site preview
+      4. Save data to archive/{{year}}/{{month}}-{{month_name}}/raw/siteinspire-{{date}}.json
+      5. Save screenshots to archive/{{year}}/{{month}}-{{month_name}}/images/
+      
+      Validation (verify manually):
+      - JSON file must exist and be valid
+      - At least 10 sites captured
+      - Screenshots saved for each site
+      
+      Report: Number of sites scraped, any failures, file paths created.
+    output: "siteinspire_result"
+    timeout: 900
+    on_error: "continue"
+
+  # Step 3: Analyze images with vision AI
+  - id: "analyze-images"
+    agent: "agents/research-runner.md"
+    prompt: |
+      Analyze all screenshots captured in today's scrape using image-vision.
+      
+      Tasks:
+      1. Find all .png files in archive/{{year}}/{{month}}-{{month_name}}/images/
+      2. For each image, use vision-analyze-robust.sh with this prompt:
+         "Analyze this website design. Identify: 
+          1) Primary color palette (specific colors if possible)
+          2) Layout style (grid/asymmetric/minimal/other)
+          3) Key visual elements (3D/animation/typography/imagery)
+          4) Overall aesthetic (modern/brutalist/elegant/minimalist/etc)
+          5) Notable design patterns or techniques"
+      3. Save results to archive/{{year}}/{{month}}-{{month_name}}/visual-analysis.json
+      
+      CRITICAL:
+      - ALWAYS check exit codes after each vision analysis
+      - If vision fails, record the error in JSON (do NOT fabricate observations)
+      - Continue with remaining images even if some fail
+      - Report success/failure count at the end
+      
+      Report: Images analyzed successfully, images failed, common patterns observed.
+    output: "vision_result"
+    timeout: 1800
+    on_error: "continue"
+
+  # Step 4: Generate monthly summary
+  - id: "generate-summary"
+    agent: "agents/research-runner.md"
+    prompt: |
+      Generate the monthly summary.md file from all scraped data.
+      
+      Tasks:
+      1. Read all JSON files from archive/{{year}}/{{month}}-{{month_name}}/raw/
+      2. Read visual-analysis.json
+      3. Synthesize trends from the data:
+         - Animation & Motion patterns
+         - Color palette trends
+         - Layout patterns
+         - Typography trends (high-level only)
+         - Notable design techniques
+      4. Create summary.md following the template in your instructions
+      5. Include links to notable projects
+      6. Reference screenshots where relevant
+      
+      Structure:
+      - Overview section (project counts, date range)
+      - Trend Highlights (organized by category)
+      - Visual Analysis insights
+      - Notable Projects list
+      - Raw data references
+      
+      Keep summary focused on actionable design insights, not just data dumps.
+      
+      Report: Summary file path, key trends identified, project count.
+    output: "summary_result"
+    timeout: 600
+    on_error: "continue"
+
+  # Step 5: Update archive index
+  - id: "update-archive-index"
+    agent: "agents/research-runner.md"
+    prompt: |
+      Update the archive-index.md with latest findings.
+      
+      Tasks:
+      1. Read all summary.md files from the last 30 days
+      2. Extract top trends from each summary
+      3. Consolidate into unified trend categories:
+         - Animation & Interaction
+         - Color & Visual Style
+         - Layout & Typography
+         - Notable Techniques
+      4. Regenerate archive/archive-index.md
+      5. Include links to recent monthly summaries
+      6. Keep total length under 500 tokens for LLM efficiency
+      
+      The archive index should provide:
+      - Quick overview of last 30 days
+      - Top 3-5 trends per category
+      - Links to detailed monthly summaries
+      - Brief explanation of archive structure
+      
+      Goal: Make this the "quick start" reference for the research-analyst agent.
+      
+      Report: Archive index updated, date range covered, trends highlighted.
+    output: "archive_result"
+    timeout: 600

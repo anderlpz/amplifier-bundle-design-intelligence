@@ -20,6 +20,28 @@ meta:
 
 @design-intelligence:context/knowledge-base/accessibility.md
 
+## Research Archive (Load on Demand)
+
+When developing responsive strategies informed by current design expression, reference the research archive:
+
+**Quick trends (load when relevant):**
+```
+@design-intelligence:context/archive-index.md
+```
+
+**When to use research:**
+- Understanding how award-winning sites handle responsive adaptation
+- Finding examples of mobile navigation patterns (drawers, bottom nav, gestures)
+- Validating breakpoint decisions against industry practice
+- Discovering emerging touch interaction patterns
+
+**How to reference:**
+- Load archive-index.md for 30-day responsive trend overview
+- Load monthly summaries for specific examples: `@design-intelligence:archive/YYYY/MM-month/summary.md`
+- Use research to inform adaptation strategy while respecting device constraints
+
+**Note:** Research shows what's working in the wild. Technical constraints (touch targets, performance) remain non-negotiable.
+
 ---
 
 > **You are Studio** - Read the global persona guidelines in `STUDIO-PERSONA.md`

@@ -50,11 +50,25 @@ The design research capability provides:
 
 ### Running Periodic Scrapes
 
+#### Prerequisites
+
+**The recipes tool requires the `amplifier-bundle-recipes` bundle.** Either:
+- Use a bundle that includes it (foundation does)
+- Or combine bundles: your bundle + recipes
+
 #### Option 1: Using the Recipe (Recommended)
 
+**Conversational (in a session with recipes bundle):**
+```
+execute design-intelligence:recipes/weekly-design-scrape.yaml with year=2026 month=01 month_name=january date=2026-01-13
+```
+
+**CLI (direct tool invocation):**
 ```bash
-# Execute the full research workflow
-amplifier recipe execute @design-intelligence:recipes/weekly-design-scrape.yaml
+amplifier tool invoke recipes \
+  operation=execute \
+  recipe_path=design-intelligence:recipes/weekly-design-scrape.yaml \
+  context='{"year": "2026", "month": "01", "month_name": "january", "date": "2026-01-13"}'
 ```
 
 The recipe automatically:
@@ -68,27 +82,21 @@ The recipe automatically:
 
 #### Option 2: Manual Execution
 
-Invoke research-runner directly for custom workflows:
+Use the task tool to invoke research-runner for custom workflows:
 
-```bash
-# Start a session with research-runner
-amplifier chat -a @design-intelligence:agents/research-runner.md
-
-# Then instruct it:
-> Scrape Awwwards for today's featured projects
-> Analyze the screenshots from today's scrape
-> Generate the monthly summary
+```
+# In a session, delegate to research-runner:
+Use the research-runner agent to scrape Awwwards for today's featured projects
+Use the research-runner agent to analyze the screenshots from today's scrape
+Use the research-runner agent to generate the monthly summary
 ```
 
 ### Querying Trends and Insights
 
-Use research-analyst for conversational queries:
+Use research-analyst for conversational queries. In a design-intelligence session:
 
-```bash
-# Start analyst session
-amplifier chat -a @design-intelligence:agents/research-analyst.md
-
-# Example queries:
+```
+# Example queries (ask directly in session):
 > What are the current trends in web animation?
 > Show me examples of dark mode with vibrant accents
 > How have grid layouts evolved in the last 3 months?
@@ -103,23 +111,24 @@ The analyst has archive-index.md always loaded for quick answers, and can load m
 
 ```bash
 # 1. Run automated scrape (takes 15-20 min)
-amplifier recipe execute @design-intelligence:recipes/weekly-design-scrape.yaml
+amplifier tool invoke recipes \
+  operation=execute \
+  recipe_path=design-intelligence:recipes/weekly-design-scrape.yaml \
+  context='{"year": "2026", "month": "01", "month_name": "january", "date": "2026-01-13"}'
 
-# 2. Review results (check logs for any failures)
-amplifier recipe list  # Find session ID
-amplifier recipe logs <session-id>
+# 2. Review results (check session status)
+amplifier tool invoke recipes operation=list
 
-# 3. Query insights with analyst
-amplifier chat -a @design-intelligence:agents/research-analyst.md
+# 3. Query insights with analyst (in a session)
+# Start design-intelligence session and ask:
 > What trends emerged from this week's scrape?
 ```
 
 #### Workflow 2: Design Inspiration Research
 
-```bash
-# Start with analyst
-amplifier chat -a @design-intelligence:agents/research-analyst.md
+In a design-intelligence session, have a conversation with the research-analyst:
 
+```
 # Example conversation:
 > I'm designing a SaaS dashboard. Show me current trends in data visualization
 > [Analyst provides examples from archive]
@@ -131,9 +140,9 @@ amplifier chat -a @design-intelligence:agents/research-analyst.md
 
 #### Workflow 3: Competitive Analysis
 
-```bash
-amplifier chat -a @design-intelligence:agents/research-analyst.md
+In a design-intelligence session:
 
+```
 > Show me all e-commerce sites from the last 2 months
 > [Analyst searches archive]
 > How do they handle product galleries?

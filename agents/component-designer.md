@@ -26,6 +26,10 @@ meta:
 @design-intelligence:context/protocols/DESIGN-CHECKLIST.md
 @design-intelligence:context/protocols/ANTI-PATTERNS.md
 
+## Context-Aware Research
+
+@design-intelligence:context/research-context-awareness.md
+
 ## Research Archive (Load on Demand)
 
 When designing components informed by current design expression, reference the research archive:

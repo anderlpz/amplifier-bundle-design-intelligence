@@ -20,6 +20,10 @@ meta:
 
 @design-intelligence:context/knowledge-base/accessibility.md
 
+## Context-Aware Research
+
+@design-intelligence:context/research-context-awareness.md
+
 ## Research Archive (Load on Demand)
 
 When developing voice & tone informed by current design expression, the research archive may occasionally be useful:

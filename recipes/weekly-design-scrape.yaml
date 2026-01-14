@@ -1,10 +1,20 @@
 # Weekly Design Scrape Recipe
 # Automated design research workflow that scrapes Awwwards and Siteinspire,
-# analyzes screenshots with vision AI, generates summaries, and updates the
-# research archive index.
+# visits each featured site to capture full-page screenshots, analyzes them
+# with vision AI, generates summaries, and updates the research archive index.
+#
+# IMPORTANT: This recipe requires the design-intelligence bundle to be loaded.
 #
 # Usage:
-#   amplifier run "execute weekly-design-scrape.yaml with year=2026 month=01 month_name=january date=2026-01-13"
+#   # Option 1: Start a session with the bundle, then run the recipe
+#   cd /path/to/design-intelligence
+#   amplifier --bundle ./bundle.md
+#   # Then in the session:
+#   execute recipes/weekly-design-scrape.yaml with year=2026 month=01 month_name=january date=2026-01-13
+#
+#   # Option 2: One-liner with bundle flag
+#   amplifier --bundle /path/to/design-intelligence/bundle.md \
+#     run "execute recipes/weekly-design-scrape.yaml with year=2026 month=01 month_name=january date=2026-01-13"
 #
 # Archive structure:
 #   archive/
@@ -14,7 +24,7 @@
 #   │       │   ├── awwwards-YYYY-MM-DD.json
 #   │       │   └── siteinspire-YYYY-MM-DD.json
 #   │       ├── images/
-#   │       │   └── *.png
+#   │       │   └── *.png (full-page screenshots of actual sites)
 #   │       ├── visual-analysis.json
 #   │       └── summary.md
 #   └── archive-index.md
@@ -24,13 +34,14 @@
 #   - Review generated summaries for quality
 #   - Check visual-analysis.json for failed image analyses
 #   - Monitor archive size (consider archiving old months)
+#   - Full-page screenshots may take 2-3 minutes per site
 
 name: "weekly-design-scrape"
 description: >
   Automated design research workflow that scrapes Awwwards and Siteinspire,
-  analyzes screenshots with vision AI, generates summaries, and updates the 
-  research archive index.
-version: "1.0.0"
+  visits each featured site for full-page screenshots, analyzes them with 
+  vision AI, generates summaries, and updates the research archive index.
+version: "1.1.0"
 tags: ["design", "research", "scraping", "automation"]
 
 # Context variables - provide these at runtime
@@ -43,66 +54,91 @@ context:
 steps:
   # Step 1: Scrape Awwwards
   - id: "scrape-awwwards"
-    agent: "agents/research-runner.md"
+    agent: "design-intelligence:research-runner"
     prompt: |
       Execute the Awwwards scraping workflow for today's date.
       
       Tasks:
       1. Create archive directory structure: archive/{{year}}/{{month}}-{{month_name}}/
       2. Navigate to https://www.awwwards.com/websites/ using Playwright
-      3. Extract data for the top 15 featured projects
-      4. Capture screenshots of each project card
-      5. Save data to archive/{{year}}/{{month}}-{{month_name}}/raw/awwwards-{{date}}.json
+      3. Extract data for the top 10 featured projects INCLUDING their actual site URLs
+      4. For EACH project:
+         a. Extract the project's actual website URL (not the Awwwards page)
+         b. Navigate to the actual website
+         c. Wait for the page to fully load (networkidle)
+         d. Capture a FULL-PAGE screenshot (fullPage: true) at 1920x1080
+         e. Save screenshot as: awwwards-{sanitized-title}-fullpage.png
+      5. Save project data to archive/{{year}}/{{month}}-{{month_name}}/raw/awwwards-{{date}}.json
       6. Save screenshots to archive/{{year}}/{{month}}-{{month_name}}/images/
       
-      Validation (verify manually):
-      - JSON file must exist and be valid
-      - At least 10 projects captured
-      - Screenshots saved for each project
+      CRITICAL: We need FULL-PAGE screenshots of the ACTUAL WEBSITES, not thumbnails
+      from the Awwwards gallery. The goal is to analyze real design implementations.
       
-      Report: Number of projects scraped, any failures, file paths created.
+      Handle failures gracefully - if a site is slow or blocks access, log the error
+      and continue with the next site.
+      
+      Validation:
+      - JSON file must exist and be valid
+      - At least 8 full-page screenshots captured
+      - Screenshots should be >100KB (indicates real full-page capture)
+      
+      Report: Number of projects scraped, sites visited, screenshots captured, any failures.
     output: "awwwards_result"
     timeout: 900
     on_error: "continue"
 
   # Step 2: Scrape Siteinspire
   - id: "scrape-siteinspire"
-    agent: "agents/research-runner.md"
+    agent: "design-intelligence:research-runner"
     prompt: |
       Execute the Siteinspire scraping workflow for today's date.
       
       Tasks:
-      1. Navigate to https://www.siteinspire.com/websites using Playwright
-      2. Extract data for the top 15 showcased websites
-      3. Capture screenshots of each site preview
+      1. Navigate to https://www.siteinspire.com/ using Playwright
+      2. Extract data for the top 10 showcased websites INCLUDING their actual site URLs
+      3. For EACH website:
+         a. Extract the website's actual URL (not the Siteinspire page)
+         b. Navigate to the actual website
+         c. Wait for the page to fully load (networkidle)
+         d. Capture a FULL-PAGE screenshot (fullPage: true) at 1920x1080
+         e. Save screenshot as: siteinspire-{sanitized-title}-fullpage.png
       4. Save data to archive/{{year}}/{{month}}-{{month_name}}/raw/siteinspire-{{date}}.json
       5. Save screenshots to archive/{{year}}/{{month}}-{{month_name}}/images/
       
-      Validation (verify manually):
-      - JSON file must exist and be valid
-      - At least 10 sites captured
-      - Screenshots saved for each site
+      CRITICAL: We need FULL-PAGE screenshots of the ACTUAL WEBSITES, not thumbnails
+      from the Siteinspire gallery. The goal is to analyze real design implementations.
       
-      Report: Number of sites scraped, any failures, file paths created.
+      Handle failures gracefully - if a site is slow or blocks access, log the error
+      and continue with the next site.
+      
+      Validation:
+      - JSON file must exist and be valid
+      - At least 8 full-page screenshots captured
+      - Screenshots should be >100KB (indicates real full-page capture)
+      
+      Report: Number of sites scraped, sites visited, screenshots captured, any failures.
     output: "siteinspire_result"
     timeout: 900
     on_error: "continue"
 
   # Step 3: Analyze images with vision AI
   - id: "analyze-images"
-    agent: "agents/research-runner.md"
+    agent: "design-intelligence:research-runner"
     prompt: |
-      Analyze all screenshots captured in today's scrape using image-vision.
+      Analyze all FULL-PAGE screenshots captured in today's scrape using image-vision.
       
       Tasks:
-      1. Find all .png files in archive/{{year}}/{{month}}-{{month_name}}/images/
-      2. For each image, use vision-analyze-robust.sh with this prompt:
-         "Analyze this website design. Identify: 
-          1) Primary color palette (specific colors if possible)
-          2) Layout style (grid/asymmetric/minimal/other)
-          3) Key visual elements (3D/animation/typography/imagery)
-          4) Overall aesthetic (modern/brutalist/elegant/minimalist/etc)
-          5) Notable design patterns or techniques"
+      1. Find all *-fullpage.png files in archive/{{year}}/{{month}}-{{month_name}}/images/
+      2. For each full-page screenshot, use vision-analyze-robust.sh with this prompt:
+         "Analyze this website's full-page design in detail. Identify:
+          1) Color palette - primary colors, accent colors, background colors
+          2) Layout structure - header, hero section, content sections, footer
+          3) Typography - heading styles, body text, font pairings
+          4) Visual hierarchy - how the eye flows through the page
+          5) Key design elements - imagery, illustrations, icons, whitespace
+          6) Interactive elements - buttons, CTAs, navigation patterns
+          7) Overall aesthetic - modern/minimal/bold/elegant/playful/etc
+          8) Notable techniques - animations, parallax, 3D, gradients, etc"
       3. Save results to archive/{{year}}/{{month}}-{{month_name}}/visual-analysis.json
       
       CRITICAL:
@@ -111,38 +147,39 @@ steps:
       - Continue with remaining images even if some fail
       - Report success/failure count at the end
       
-      Report: Images analyzed successfully, images failed, common patterns observed.
+      Report: Images analyzed successfully, images failed, key patterns observed.
     output: "vision_result"
     timeout: 1800
     on_error: "continue"
 
   # Step 4: Generate monthly summary
   - id: "generate-summary"
-    agent: "agents/research-runner.md"
+    agent: "design-intelligence:research-runner"
     prompt: |
       Generate the monthly summary.md file from all scraped data.
       
       Tasks:
       1. Read all JSON files from archive/{{year}}/{{month}}-{{month_name}}/raw/
       2. Read visual-analysis.json
-      3. Synthesize trends from the data:
+      3. Synthesize trends from the FULL-PAGE analyses:
          - Animation & Motion patterns
          - Color palette trends
-         - Layout patterns
-         - Typography trends (high-level only)
+         - Layout patterns (hero sections, grids, asymmetric)
+         - Typography trends
+         - Navigation patterns
          - Notable design techniques
       4. Create summary.md following the template in your instructions
       5. Include links to notable projects
-      6. Reference screenshots where relevant
+      6. Reference full-page screenshots where relevant
       
       Structure:
       - Overview section (project counts, date range)
       - Trend Highlights (organized by category)
-      - Visual Analysis insights
-      - Notable Projects list
+      - Visual Analysis insights (from full-page analysis)
+      - Notable Projects list with detailed breakdowns
       - Raw data references
       
-      Keep summary focused on actionable design insights, not just data dumps.
+      Keep summary focused on actionable design insights from real site analysis.
       
       Report: Summary file path, key trends identified, project count.
     output: "summary_result"
@@ -151,9 +188,9 @@ steps:
 
   # Step 5: Update archive index
   - id: "update-archive-index"
-    agent: "agents/research-runner.md"
+    agent: "design-intelligence:research-runner"
     prompt: |
-      Update the archive-index.md with latest findings.
+      Update the context/archive-index.md with latest findings.
       
       Tasks:
       1. Read all summary.md files from the last 30 days
@@ -163,7 +200,7 @@ steps:
          - Color & Visual Style
          - Layout & Typography
          - Notable Techniques
-      4. Regenerate archive/archive-index.md
+      4. Regenerate context/archive-index.md
       5. Include links to recent monthly summaries
       6. Keep total length under 500 tokens for LLM efficiency
       

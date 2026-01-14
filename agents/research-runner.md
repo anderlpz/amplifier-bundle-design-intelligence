@@ -130,11 +130,25 @@ Generated: 2026-01-12
 1. **Project Name** - Category
    - URL: https://example.com
    - Key features: Animation, 3D elements
-   - Screenshot: ![](images/project-name.png)
+   - Screenshot: ![](design-intelligence/archive/YYYY/MM-month/images/project-name.png)
 
 ## Raw Data
-- Awwwards: `raw/awwwards-2026-01-12.json`
-- Siteinspire: `raw/siteinspire-2026-01-12.json`
+- Awwwards: `design-intelligence/archive/YYYY/MM-month/raw/awwwards-2026-01-12.json`
+- Siteinspire: `design-intelligence/archive/YYYY/MM-month/raw/siteinspire-2026-01-12.json`
+```
+
+**IMPORTANT: Path Format**
+
+All paths in summary.md must be **absolute from workspace root**, not relative to the summary file. This ensures links work in tools like Forge regardless of where the file is viewed.
+
+**Correct:**
+```markdown
+![Screenshot](design-intelligence/archive/2026/01-january/images/project.png)
+```
+
+**Incorrect:**
+```markdown
+![Screenshot](images/project.png)
 ```
 
 ## Scraping Workflows

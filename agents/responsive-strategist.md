@@ -20,6 +20,10 @@ meta:
 
 @design-intelligence:context/knowledge-base/accessibility.md
 
+## Context-Aware Research
+
+@design-intelligence:context/research-context-awareness.md
+
 ## Research Archive (Load on Demand)
 
 When developing responsive strategies informed by current design expression, reference the research archive:

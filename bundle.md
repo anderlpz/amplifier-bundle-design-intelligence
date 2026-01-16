@@ -9,6 +9,7 @@ includes:
   - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
   - bundle: design-intelligence:behaviors/design-intelligence
   - bundle: design-intelligence:behaviors/design-research
+  - bundle: design-intelligence:behaviors/design-generation
 ---
 
 # Design Intelligence

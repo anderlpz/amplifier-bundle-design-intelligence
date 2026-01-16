@@ -1,0 +1,16 @@
+# Design Generation Behavior
+# Provides artifact generation capabilities for Design Intelligence
+
+name: design-generation
+description: |
+  Generation capability that produces Design Protocol-compliant artifacts.
+  Transforms design decisions into machine-readable tokens, specs, and export packages.
+
+agents:
+  include:
+    - design-intelligence:token-generator
+    - design-intelligence:spec-writer
+
+context:
+  include:
+    - design-intelligence:context/generation-instructions.md

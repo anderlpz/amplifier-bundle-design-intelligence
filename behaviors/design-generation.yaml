@@ -10,6 +10,7 @@ agents:
   include:
     - design-intelligence:token-generator
     - design-intelligence:spec-writer
+    - design-intelligence:export-packager
 
 context:
   include:

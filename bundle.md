@@ -1,16 +1,41 @@
 ---
 bundle:
   name: design-intelligence
-  version: 1.0.0
-  description: Comprehensive design intelligence capability with specialized agents and knowledge base
+  version: 2.0.0
+  description: Design intelligence that discovers, thinks, and generates
 
 includes:
   - bundle: git+https://github.com/microsoft/amplifier-foundation@main
+  - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
   - bundle: design-intelligence:behaviors/design-intelligence
   - bundle: design-intelligence:behaviors/design-research
 ---
 
 # Design Intelligence
+
+> Design intelligence that discovers, thinks, and generates.
+
+**What it does:** A complete design-to-implementation pipeline that captures intent, applies design thinking, and produces artifacts coding agents can consume.
+
+## Quick Start
+
+| Goal | Command |
+|------|---------|
+| **Discover requirements** | `"Help me discover the design for [project]"` |
+| **Research inspiration** | `"Find design inspiration for [context]"` |
+| **Analyze a site** | `"Look at [URL] and analyze [aspect]"` |
+| **Full workflow** | Run `design-discovery` recipe |
+
+## The Workflow
+
+```
+1. DISCOVER → What are we building and why?
+2. RESEARCH → What's out there? What's current?
+3. DESIGN   → What should it be?
+4. GENERATE → Produce artifacts for implementation
+```
+
+---
 
 @design-intelligence:context/design-instructions.md
 

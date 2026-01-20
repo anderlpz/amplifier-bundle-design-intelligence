@@ -3,6 +3,16 @@ bundle:
   name: design-intelligence
   version: 2.0.0
   description: Design intelligence that discovers, thinks, and generates
+  sub_bundles:
+    - name: advisory
+      path: behaviors/design-intelligence.yaml
+      description: 7 specialized design agents (art-director, component-designer, etc.)
+    - name: research
+      path: behaviors/design-research.yaml
+      description: Design trend research and analysis capabilities
+    - name: generation
+      path: behaviors/design-generation.yaml
+      description: Token generator, spec writer, export packager
 
 includes:
   - bundle: git+https://github.com/microsoft/amplifier-foundation@main
@@ -42,26 +52,18 @@ includes:
 
 ---
 
-## Recipes (Requires recipes bundle)
+## Recipes
 
-Automated design research workflows:
+| Recipe | What It Does |
+|--------|--------------|
+| `design-to-implementation` | **Full pipeline:** idea → discovery → design → tokens → export |
+| `design-discovery` | Discovery → research → design direction |
+| `design-system-export` | Generate tokens + component specs + export package |
+| `weekly-design-scrape` | Automated trend research from Awwwards/Siteinspire |
 
-| Recipe | Description |
-|--------|-------------|
-| `recipes/weekly-design-scrape.yaml` | Scrapes Awwwards/Siteinspire, analyzes with vision AI, updates archive |
-
-**To run recipes:** Use a bundle that includes `amplifier-bundle-recipes`, then:
-
+**Run a recipe:**
 ```
-execute design-intelligence:recipes/weekly-design-scrape.yaml with year=2026 month=01 month_name=january date=2026-01-13
-```
-
-Or via CLI:
-```bash
-amplifier tool invoke recipes \
-  operation=execute \
-  recipe_path=design-intelligence:recipes/weekly-design-scrape.yaml \
-  context='{"year": "2026", "month": "01", "month_name": "january", "date": "2026-01-13"}'
+Run the design-to-implementation recipe for [describe your project]
 ```
 
 ---

@@ -31,7 +31,7 @@ steps:
 
   # Phase 2: Design Direction
   - id: direction
-    agent: design-intelligence:art-director
+    agent: design-studio:art-director
     prompt: |
       Based on this discovery brief, establish a design direction:
       
@@ -48,7 +48,7 @@ steps:
 
   # Phase 3: Generate Tokens
   - id: tokens
-    agent: design-intelligence:token-generator
+    agent: design-studio:token-generator
     prompt: |
       Generate Design Protocol tokens based on:
       
@@ -70,7 +70,7 @@ steps:
 
   # Phase 4: Component Specs (if components requested)
   - id: components
-    agent: design-intelligence:spec-writer
+    agent: design-studio:spec-writer
     prompt: |
       Write component specifications for: {{components | default: "Button, Input, Card, Alert"}}
       
@@ -87,7 +87,7 @@ steps:
 
   # Phase 5: Export Package
   - id: export
-    agent: design-intelligence:export-packager
+    agent: design-studio:export-packager
     prompt: |
       Create a complete export package for coding agents.
       

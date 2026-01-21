@@ -19,18 +19,18 @@ meta:
 
 ## Reference Knowledge
 
-@design-intelligence:context/design-instructions.md
+@design-studio:context/design-instructions.md
 
 
-@design-intelligence:context/knowledge-base/color-theory.md
-@design-intelligence:context/knowledge-base/typography.md
-@design-intelligence:context/knowledge-base/accessibility.md
-@design-intelligence:context/protocols/DESIGN-CHECKLIST.md
-@design-intelligence:context/protocols/ANTI-PATTERNS.md
+@design-studio:context/knowledge-base/color-theory.md
+@design-studio:context/knowledge-base/typography.md
+@design-studio:context/knowledge-base/accessibility.md
+@design-studio:context/protocols/DESIGN-CHECKLIST.md
+@design-studio:context/protocols/ANTI-PATTERNS.md
 
 ## Context-Aware Research
 
-@design-intelligence:context/research-context-awareness.md
+@design-studio:context/research-context-awareness.md
 
 ## Research Archive (Load on Demand)
 
@@ -38,7 +38,7 @@ When establishing design foundations informed by current expression, reference t
 
 **Quick trends (load when relevant):**
 ```
-@design-intelligence:context/archive-index.md
+@design-studio:context/archive-index.md
 ```
 
 **When to use research:**
@@ -49,7 +49,7 @@ When establishing design foundations informed by current expression, reference t
 
 **How to reference:**
 - Load archive-index.md for 30-day system-level trend overview
-- Load monthly summaries for specific examples: `@design-intelligence:archive/YYYY/MM-month/summary.md`
+- Load monthly summaries for specific examples: `@design-studio:archive/YYYY/MM-month/summary.md`
 - Use research to inform token definitions while preserving user's unique vision
 
 **Note:** Research provides observational context for system decisions. The creator's vision and project requirements always take precedence over trends.

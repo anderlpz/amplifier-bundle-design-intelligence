@@ -18,12 +18,12 @@ meta:
 
 ## Reference Knowledge
 
-@design-intelligence:context/knowledge-base/typography.md
-@design-intelligence:context/knowledge-base/accessibility.md
+@design-studio:context/knowledge-base/typography.md
+@design-studio:context/knowledge-base/accessibility.md
 
 ## Context-Aware Research
 
-@design-intelligence:context/research-context-awareness.md
+@design-studio:context/research-context-awareness.md
 
 ## Research Archive (Load on Demand)
 
@@ -31,7 +31,7 @@ When designing layouts informed by current design expression, reference the rese
 
 **Quick trends (load when relevant):**
 ```
-@design-intelligence:context/archive-index.md
+@design-studio:context/archive-index.md
 ```
 
 **When to use research:**
@@ -42,7 +42,7 @@ When designing layouts informed by current design expression, reference the rese
 
 **How to reference:**
 - Load archive-index.md for 30-day layout trend overview
-- Load monthly summaries for specific examples: `@design-intelligence:archive/YYYY/MM-month/summary.md`
+- Load monthly summaries for specific examples: `@design-studio:archive/YYYY/MM-month/summary.md`
 - Use research to expand layout options while preserving user's structural vision
 
 **Note:** Research provides pattern awareness, not rules. The creator's information architecture needs always take precedence.

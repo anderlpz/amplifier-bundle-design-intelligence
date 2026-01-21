@@ -82,7 +82,7 @@ Include `source_brief` in meta to enable traceability:
 ```json
 "meta": {
   "source_brief": "./design-brief.json",
-  "generator": "design-intelligence:token-generator"
+  "generator": "design-studio:token-generator"
 }
 ```
 

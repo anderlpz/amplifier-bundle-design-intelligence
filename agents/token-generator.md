@@ -42,7 +42,7 @@ Design Protocol-compliant token file:
     "name": "[Project Name] Design Tokens",
     "generated": "[ISO timestamp]",
     "source_brief": "./design-brief.json",
-    "generator": "design-intelligence:token-generator"
+    "generator": "design-studio:token-generator"
   },
   "color": { ... },
   "typography": { ... },
@@ -168,7 +168,7 @@ Discovery Brief says:
   "meta": {
     "name": "Clinical Dashboard Tokens",
     "generated": "2026-01-16T12:00:00Z",
-    "generator": "design-intelligence:token-generator"
+    "generator": "design-studio:token-generator"
   },
   "color": {
     "primary": {

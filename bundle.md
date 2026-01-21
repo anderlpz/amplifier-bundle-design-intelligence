@@ -1,6 +1,6 @@
 ---
 bundle:
-  name: design-intelligence
+  name: design-studio
   version: 2.0.0
   description: Design intelligence that discovers, thinks, and generates
   sub_bundles:
@@ -15,11 +15,12 @@ bundle:
       description: Token generator, spec writer, export packager
 
 includes:
-  # Note: This bundle is designed to be included BY foundation (which provides discovery)
-  # Do not add foundation or discovery here - it creates circular dependencies
-  - bundle: design-intelligence:behaviors/design-intelligence
-  - bundle: design-intelligence:behaviors/design-research
-  - bundle: design-intelligence:behaviors/design-generation
+  # Standalone app bundle - includes foundation for full capabilities
+  - bundle: git+https://github.com/microsoft/amplifier-foundation@main
+  - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
+  - bundle: design-studio:behaviors/design-intelligence
+  - bundle: design-studio:behaviors/design-research
+  - bundle: design-studio:behaviors/design-generation
 ---
 
 # Design Intelligence
@@ -48,7 +49,7 @@ includes:
 
 ---
 
-@design-intelligence:context/design-instructions.md
+@design-studio:context/design-instructions.md
 
 ---
 
@@ -70,9 +71,9 @@ Run the design-to-implementation recipe for [describe your project]
 
 ## Design Philosophy
 
-@design-intelligence:context/philosophy/DESIGN-PHILOSOPHY.md
-@design-intelligence:context/philosophy/DESIGN-PRINCIPLES.md
-@design-intelligence:context/philosophy/DESIGN-FRAMEWORK.md
+@design-studio:context/philosophy/DESIGN-PHILOSOPHY.md
+@design-studio:context/philosophy/DESIGN-PRINCIPLES.md
+@design-studio:context/philosophy/DESIGN-FRAMEWORK.md
 
 ---
 

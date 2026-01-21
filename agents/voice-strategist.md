@@ -18,11 +18,11 @@ meta:
 
 ## Reference Knowledge
 
-@design-intelligence:context/knowledge-base/accessibility.md
+@design-studio:context/knowledge-base/accessibility.md
 
 ## Context-Aware Research
 
-@design-intelligence:context/research-context-awareness.md
+@design-studio:context/research-context-awareness.md
 
 ## Research Archive (Load on Demand)
 
@@ -30,7 +30,7 @@ When developing voice & tone informed by current design expression, the research
 
 **Quick trends (load when relevant):**
 ```
-@design-intelligence:context/archive-index.md
+@design-studio:context/archive-index.md
 ```
 
 **When to use research:**

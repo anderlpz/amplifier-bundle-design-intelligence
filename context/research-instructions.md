@@ -60,14 +60,14 @@ The design research capability provides:
 
 **Conversational (in a session with recipes bundle):**
 ```
-execute design-intelligence:recipes/weekly-design-scrape.yaml with year=2026 month=01 month_name=january date=2026-01-13
+execute design-studio:recipes/weekly-design-scrape.yaml with year=2026 month=01 month_name=january date=2026-01-13
 ```
 
 **CLI (direct tool invocation):**
 ```bash
 amplifier tool invoke recipes \
   operation=execute \
-  recipe_path=design-intelligence:recipes/weekly-design-scrape.yaml \
+  recipe_path=design-studio:recipes/weekly-design-scrape.yaml \
   context='{"year": "2026", "month": "01", "month_name": "january", "date": "2026-01-13"}'
 ```
 
@@ -113,7 +113,7 @@ The analyst has archive-index.md always loaded for quick answers, and can load m
 # 1. Run automated scrape (takes 15-20 min)
 amplifier tool invoke recipes \
   operation=execute \
-  recipe_path=design-intelligence:recipes/weekly-design-scrape.yaml \
+  recipe_path=design-studio:recipes/weekly-design-scrape.yaml \
   context='{"year": "2026", "month": "01", "month_name": "january", "date": "2026-01-13"}'
 
 # 2. Review results (check session status)
@@ -345,10 +345,10 @@ Use research-analyst to generate talking points, then reference screenshots from
 
 - **Playwright Skill:** `~/.amplifier/skills/robotdad/playwright/SKILL.md`
 - **Image-Vision Skill:** `~/.amplifier/skills/robotdad/image-vision/SKILL.md`
-- **Research Runner Agent:** `@design-intelligence:agents/research-runner.md`
-- **Research Analyst Agent:** `@design-intelligence:agents/research-analyst.md`
-- **Weekly Scrape Recipe:** `@design-intelligence:recipes/weekly-design-scrape.yaml`
-- **Archive Index:** `@design-intelligence:context/archive-index.md`
+- **Research Runner Agent:** `@design-studio:agents/research-runner.md`
+- **Research Analyst Agent:** `@design-studio:agents/research-analyst.md`
+- **Weekly Scrape Recipe:** `@design-studio:recipes/weekly-design-scrape.yaml`
+- **Archive Index:** `@design-studio:context/archive-index.md`
 
 ---
 

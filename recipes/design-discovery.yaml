@@ -32,7 +32,7 @@ steps:
 
   # Phase 2: Research (uses design-intelligence research capability)
   - id: research
-    agent: design-intelligence:research-runner
+    agent: design-studio:research-runner
     prompt: |
       Based on this discovery brief, find relevant design inspiration:
       
@@ -54,7 +54,7 @@ steps:
 
   # Phase 3: Synthesis (uses art-director to synthesize)
   - id: synthesize
-    agent: design-intelligence:art-director
+    agent: design-studio:art-director
     prompt: |
       Synthesize the discovery and research into a clear design direction.
       

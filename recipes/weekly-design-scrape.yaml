@@ -54,7 +54,7 @@ context:
 steps:
   # Step 1: Scrape Awwwards
   - id: "scrape-awwwards"
-    agent: "design-intelligence:research-runner"
+    agent: "design-studio:research-runner"
     prompt: |
       Execute the Awwwards scraping workflow for today's date.
       
@@ -89,7 +89,7 @@ steps:
 
   # Step 2: Scrape Siteinspire
   - id: "scrape-siteinspire"
-    agent: "design-intelligence:research-runner"
+    agent: "design-studio:research-runner"
     prompt: |
       Execute the Siteinspire scraping workflow for today's date.
       
@@ -123,7 +123,7 @@ steps:
 
   # Step 3: Analyze images with vision AI
   - id: "analyze-images"
-    agent: "design-intelligence:research-runner"
+    agent: "design-studio:research-runner"
     prompt: |
       Analyze all FULL-PAGE screenshots captured in today's scrape using image-vision.
       
@@ -154,7 +154,7 @@ steps:
 
   # Step 4: Generate monthly summary
   - id: "generate-summary"
-    agent: "design-intelligence:research-runner"
+    agent: "design-studio:research-runner"
     prompt: |
       Generate the monthly summary.md file from all scraped data.
       
@@ -188,7 +188,7 @@ steps:
 
   # Step 5: Update archive index
   - id: "update-archive-index"
-    agent: "design-intelligence:research-runner"
+    agent: "design-studio:research-runner"
     prompt: |
       Update the context/archive-index.md with latest findings.
       

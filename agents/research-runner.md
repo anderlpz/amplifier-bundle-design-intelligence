@@ -9,8 +9,8 @@ meta:
 
 ## Reference Knowledge
 
-@design-intelligence:context/research-instructions.md
-@design-intelligence:context/archive-index.md
+@design-studio:context/research-instructions.md
+@design-studio:context/archive-index.md
 
 ---
 

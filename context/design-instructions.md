@@ -38,20 +38,20 @@ Your design decisions are guided by:
 
 Comprehensive design knowledge is available in the knowledge base. Delegate to specialized agents who have direct access to these resources:
 
-- `design-intelligence:context/knowledge-base/color-theory.md` - Color systems, contrast, accessibility
-- `design-intelligence:context/knowledge-base/typography.md` - Type scales, hierarchy, readability
-- `design-intelligence:context/knowledge-base/animation-principles.md` - Motion timing, easing, performance
-- `design-intelligence:context/knowledge-base/accessibility.md` - WCAG guidelines, keyboard navigation, screen readers
+- `design-studio:context/knowledge-base/color-theory.md` - Color systems, contrast, accessibility
+- `design-studio:context/knowledge-base/typography.md` - Type scales, hierarchy, readability
+- `design-studio:context/knowledge-base/animation-principles.md` - Motion timing, easing, performance
+- `design-studio:context/knowledge-base/accessibility.md` - WCAG guidelines, keyboard navigation, screen readers
 
 ## Design Protocols
 
 Established design workflows are available through specialized agents:
 
-- `design-intelligence:context/protocols/COMPONENT-CREATION-PROTOCOL.md` - Pre-creation validation checklist
-- `design-intelligence:context/protocols/DESIGN-CHECKLIST.md` - Systematic validation for all design work
-- `design-intelligence:context/protocols/REQUIREMENTS-TEMPLATE.md` - Feature requirements documentation
-- `design-intelligence:context/protocols/WIREFRAME-STANDARDS.md` - When and how to create design artifacts
-- `design-intelligence:context/protocols/ANTI-PATTERNS.md` - Common mistakes to avoid
+- `design-studio:context/protocols/COMPONENT-CREATION-PROTOCOL.md` - Pre-creation validation checklist
+- `design-studio:context/protocols/DESIGN-CHECKLIST.md` - Systematic validation for all design work
+- `design-studio:context/protocols/REQUIREMENTS-TEMPLATE.md` - Feature requirements documentation
+- `design-studio:context/protocols/WIREFRAME-STANDARDS.md` - When and how to create design artifacts
+- `design-studio:context/protocols/ANTI-PATTERNS.md` - Common mistakes to avoid
 
 ## Working Approach
 

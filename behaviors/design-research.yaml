@@ -5,10 +5,10 @@ bundle:
 
 agents:
   include:
-    - design-intelligence:research-runner
-    - design-intelligence:research-analyst
+    - design-studio:research-runner
+    - design-studio:research-analyst
 
 context:
   include:
-    - design-intelligence:context/research-instructions.md
-    - design-intelligence:context/archive-index.md
+    - design-studio:context/research-instructions.md
+    - design-studio:context/archive-index.md

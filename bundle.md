@@ -15,8 +15,8 @@ bundle:
       description: Token generator, spec writer, export packager
 
 includes:
-  # Discovery bundle provides foundation, so we don't include it directly
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
+  # Note: This bundle is designed to be included BY foundation (which provides discovery)
+  # Do not add foundation or discovery here - it creates circular dependencies
   - bundle: design-intelligence:behaviors/design-intelligence
   - bundle: design-intelligence:behaviors/design-research
   - bundle: design-intelligence:behaviors/design-generation

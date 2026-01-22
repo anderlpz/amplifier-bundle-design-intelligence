@@ -1,6 +1,6 @@
 ---
 bundle:
-  name: design-studio
+  name: design-intelligence-enhanced
   version: 2.1.0
   description: Design intelligence that discovers, thinks, and generates with visual verification
   sub_bundles:

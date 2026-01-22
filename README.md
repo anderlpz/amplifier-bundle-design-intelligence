@@ -61,7 +61,7 @@ amplifier
 ```bash
 # Set as your active bundle
 amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main
-amplifier bundle use design-intelligence
+amplifier bundle use design-intelligence-enhanced
 amplifier
 ```
 
@@ -72,6 +72,8 @@ amplifier
 includes:
   - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main
 ```
+
+> **Note:** This bundle is named `design-intelligence-enhanced` to distinguish it from the official Microsoft `design-intelligence` bundle. It includes all design-intelligence capabilities plus visual verification tools.
 
 ### Setup for Verification (Recommended)
 

@@ -22,10 +22,13 @@ Design Intelligence provides a complete design pipeline:
 1. DISCOVER  →  What are we building and why?
 2. RESEARCH  →  What's out there? What's current?
 3. DESIGN    →  What should it be?
-4. GENERATE  →  Produce artifacts for implementation
+4. VERIFY    →  Does it match the spec? (NEW in v2.1.0)
+5. GENERATE  →  Produce artifacts for implementation
 ```
 
 Each step builds on the previous. You + AI work through structured conversations. The output: design artifacts that any coding agent can implement consistently.
+
+**NEW in v2.1.0:** Visual verification prevents circular fix loops by letting design agents see what they built before presenting to you.
 
 ---
 
@@ -45,7 +48,7 @@ Each step builds on the previous. You + AI work through structured conversations
 
 ```bash
 # Add to your bundle registry
-amplifier bundle add git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main
+amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main
 
 # Set as active
 amplifier bundle use design-intelligence
@@ -54,11 +57,27 @@ amplifier bundle use design-intelligence
 amplifier
 ```
 
+### Setup for Verification (Recommended)
+
+Visual verification prevents circular fix loops by letting design agents see what they built before presenting to you.
+
+```bash
+# One-time setup (if not already installed)
+pip install playwright
+playwright install chromium
+```
+
+**When you need it:** Verifying live implementations, component validation, layout debugging
+
+**Skip if:** Only doing discovery/research or creating specs for others to implement
+
+**How it works:** Agents capture screenshots, analyze layout, and validate against specifications before presenting results. See [VERIFICATION_GUIDE.md](VERIFICATION_GUIDE.md) for details.
+
 ### Include in Your Bundle
 
 ```yaml
 includes:
-  - bundle: git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main
+  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main
 ```
 
 ---
@@ -78,7 +97,7 @@ Structured interviewing that captures:
 ### Research
 
 Continuous design trend monitoring:
-- Weekly scrapes of Awwwards, Siteinspire
+- Weekly scrapes of Awwwards, Siteinspire, The FWA
 - Vision AI analysis of award-winning sites
 - Searchable archive by category, style, technique
 - On-demand URL analysis
@@ -93,6 +112,18 @@ Continuous design trend monitoring:
 - **Current trends** - What's working now, not 3 years ago
 
 **Output:** Design Direction
+
+### Verification (NEW in v2.1.0)
+
+Visual verification tools that prevent circular fix loops:
+- **visual-verify** - Screenshot capture and comparison
+- **layout-context** - Computed layout extraction and analysis
+- **design-validate** - Systematic validation against specifications
+- **design-validator agent** - Orchestrates verification workflow
+
+**Output:** Validated designs with screenshot evidence
+
+**How it works:** Before presenting design work, agents verify visually, analyze layout, and validate against specs. You see working solutions on first presentation instead of becoming a QA tester.
 
 ### Generation (Coming Soon)
 
@@ -116,6 +147,7 @@ Produce artifacts coding agents understand:
 | **animation-choreographer** | Motion, timing, transitions | Movement and feedback |
 | **responsive-strategist** | Breakpoints, adaptation | Multi-device strategy |
 | **voice-strategist** | Tone, messaging, microcopy | Content and personality |
+| **design-validator** | Visual verification, validation | Verify implementations before delivery (requires Playwright) |
 
 ---
 

@@ -40,7 +40,7 @@ includes:
 | **Research inspiration** | `"Find design inspiration for [context]"` |
 | **Update trend research** | `"Update my research"` (takes ~2 hours) |
 | **Analyze a site** | `"Look at [URL] and analyze [aspect]"` |
-| **Verify design work** | `"Use design-validator to verify [component]"` |
+| **Verify design work** | `"Use design-validator to verify [component]"` (requires Playwright + dev server) |
 | **Full workflow** | Run `design-discovery` recipe |
 
 ## Design Research

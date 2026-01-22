@@ -35,8 +35,24 @@ includes:
 |------|---------|
 | **Discover requirements** | `"Help me discover the design for [project]"` |
 | **Research inspiration** | `"Find design inspiration for [context]"` |
+| **Update trend research** | `"Update my research"` (takes ~2 hours) |
 | **Analyze a site** | `"Look at [URL] and analyze [aspect]"` |
 | **Full workflow** | Run `design-discovery` recipe |
+
+## Design Research
+
+Vision-analyzed trend research from **Awwwards**, **Siteinspire**, and **The FWA**.
+
+**What you get:** ~35 real projects with full-page screenshots + AI vision analysis
+
+**When to update:**
+- Starting a new project (fresh inspiration)
+- Weekly design reviews (stay current)
+- Before presentations (latest trends)
+
+**How to update:** Just say `"Update my research"` (~105 min to scrape & analyze)
+
+Research updates on **your schedule**, not ours. No guilt about stale data.
 
 ## The Workflow
 
@@ -60,7 +76,7 @@ includes:
 | `design-to-implementation` | **Full pipeline:** idea → discovery → design → tokens → export |
 | `design-discovery` | Discovery → research → design direction |
 | `design-system-export` | Generate tokens + component specs + export package |
-| `weekly-design-scrape` | Automated trend research from Awwwards/Siteinspire |
+| `weekly-design-scrape` | Update trend research (Awwwards, Siteinspire, The FWA) |
 
 **Run a recipe:**
 ```

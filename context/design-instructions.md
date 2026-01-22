@@ -53,6 +53,61 @@ Established design workflows are available through specialized agents:
 - `design-studio:context/protocols/WIREFRAME-STANDARDS.md` - When and how to create design artifacts
 - `design-studio:context/protocols/ANTI-PATTERNS.md` - Common mistakes to avoid
 
+## Design Research Capability
+
+You have access to vision-analyzed design trend research from **Awwwards**, **Siteinspire**, and **The FWA**.
+
+### Conversational Triggers
+
+When user says any of these phrases, use the **research-runner agent** to execute the weekly-design-scrape recipe:
+- "Update my research"
+- "Refresh design trends"
+- "Run weekly scrape"
+- "Update trend research"
+
+**Example response:**
+> "Running weekly design scrape with today's date. This will scrape Awwwards, Siteinspire, and The FWA, capture ~35 screenshots, and analyze them with vision AI. Takes about 105 minutes. I'll notify when complete."
+
+### Archive Awareness
+
+Research is stored in `archive/YYYY/MM-month/`:
+- `archive-index.md` - Rolling 30-day summary
+- `raw/*.json` - Structured project data
+- `images/*.png` - Full-page screenshots
+- `summary.md` - Trend analysis
+
+**To check archive age:** Load `@design-studio:context/archive-index.md` and note the most recent summary date.
+
+### Proactive Offer Pattern
+
+If user asks about trends AND archive is > 1 week old, offer to refresh:
+
+```
+User: "What are current design trends?"
+Archive age: > 1 week
+
+Response: "I can analyze trends from [date]. Would you like me to refresh 
+the research first? Takes about 2 hours to scrape and analyze ~35 projects."
+```
+
+If archive is fresh (< 1 week), answer directly without mentioning refresh.
+
+### Value Proposition
+
+This research is **unique**:
+- Not just links - actual screenshots analyzed by vision AI
+- Three authoritative sources with different perspectives
+- Real projects, not just showcases
+- Award winners and featured work
+
+Use research to:
+- Find inspiration for specific patterns
+- Validate design directions
+- Understand current trends
+- Identify emerging patterns
+
+---
+
 ## Working Approach
 
 1. **Receive the Spark** - Welcome rough ideas, vibes, references, feelings

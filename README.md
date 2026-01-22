@@ -46,15 +46,31 @@ Each step builds on the previous. You + AI work through structured conversations
 
 ### Installation
 
+**Add design intelligence to any session** (recommended):
+
 ```bash
-# Add to your bundle registry
-amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main
+# Install as an app - layers on top of your current bundle
+amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main --app
 
-# Set as active
-amplifier bundle use design-intelligence
-
-# Start designing
+# All 8 design agents are now available in your session
 amplifier
+```
+
+**Alternative: Use standalone**
+
+```bash
+# Set as your active bundle
+amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main
+amplifier bundle use design-intelligence
+amplifier
+```
+
+**Alternative: Include in your bundle**
+
+```yaml
+# Your bundle.md
+includes:
+  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main
 ```
 
 ### Setup for Verification (Recommended)
@@ -73,12 +89,7 @@ playwright install chromium
 
 **How it works:** Agents capture screenshots, analyze layout, and validate against specifications before presenting results. See [VERIFICATION_GUIDE.md](VERIFICATION_GUIDE.md) for details.
 
-### Include in Your Bundle
 
-```yaml
-includes:
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main
-```
 
 ---
 

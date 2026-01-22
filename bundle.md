@@ -1,8 +1,8 @@
 ---
 bundle:
   name: design-studio
-  version: 2.0.0
-  description: Design intelligence that discovers, thinks, and generates
+  version: 2.1.0
+  description: Design intelligence that discovers, thinks, and generates with visual verification
   sub_bundles:
     - name: advisory
       path: behaviors/design-intelligence.yaml
@@ -13,11 +13,14 @@ bundle:
     - name: generation
       path: behaviors/design-generation.yaml
       description: Token generator, spec writer, export packager
+    - name: verification
+      description: Visual verification tools (visual-verify, layout-context, design-validate, design-validator agent)
 
 includes:
   # Standalone app bundle - includes foundation for full capabilities
   - bundle: git+https://github.com/microsoft/amplifier-foundation@main
   - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
+  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-verification@main
   - bundle: design-studio:behaviors/design-intelligence
   - bundle: design-studio:behaviors/design-research
   - bundle: design-studio:behaviors/design-generation
@@ -37,6 +40,7 @@ includes:
 | **Research inspiration** | `"Find design inspiration for [context]"` |
 | **Update trend research** | `"Update my research"` (takes ~2 hours) |
 | **Analyze a site** | `"Look at [URL] and analyze [aspect]"` |
+| **Verify design work** | `"Use design-validator to verify [component]"` |
 | **Full workflow** | Run `design-discovery` recipe |
 
 ## Design Research
@@ -60,8 +64,21 @@ Research updates on **your schedule**, not ours. No guilt about stale data.
 1. DISCOVER → What are we building and why?
 2. RESEARCH → What's out there? What's current?
 3. DESIGN   → What should it be?
-4. GENERATE → Produce artifacts for implementation
+4. VERIFY   → Does it match the spec? (NEW in 2.1.0)
+5. GENERATE → Produce artifacts for implementation
 ```
+
+### NEW: Visual Verification (v2.1.0)
+
+**Prevents circular fix loops** by letting design agents see what they built before presenting to you.
+
+- **visual-verify** - Capture screenshots and compare against baseline
+- **layout-context** - Extract computed layout information for alignment analysis
+- **design-validate** - Systematically validate against specifications
+- **design-validator agent** - Orchestrates verification workflow
+
+**Before:** 7 commits over 2 days, you become QA tester  
+**After:** One-shot fixes with screenshot evidence, you approve on first presentation
 
 ---
 

@@ -1,5 +1,5 @@
-# Weekly Design Scrape Recipe - WITH THE FWA INTEGRATION
-# Automated design research workflow that scrapes Awwwards, Siteinspire, and The FWA,
+# Weekly Design Scrape Recipe
+# Automated design research workflow that scrapes Awwwards and Siteinspire,
 # visits each featured site to capture full-page screenshots, analyzes them
 # with vision AI, generates summaries, and updates the research archive index.
 #
@@ -22,8 +22,7 @@
 #   │   └── MM-month/
 #   │       ├── raw/
 #   │       │   ├── awwwards-YYYY-MM-DD.json
-#   │       │   ├── siteinspire-YYYY-MM-DD.json
-#   │       │   └── thefwa-YYYY-MM-DD.json
+#   │       │   └── siteinspire-YYYY-MM-DD.json
 #   │       ├── images/
 #   │       │   └── *.png (full-page screenshots of actual sites)
 #   │       ├── visual-analysis.json
@@ -39,10 +38,10 @@
 
 name: "weekly-design-scrape"
 description: >
-  Automated design research workflow that scrapes Awwwards, Siteinspire, and The FWA,
+  Automated design research workflow that scrapes Awwwards and Siteinspire,
   visits each featured site for full-page screenshots, analyzes them with 
   vision AI, generates summaries, and updates the research archive index.
-version: "1.2.0"
+version: "1.1.0"
 tags: ["design", "research", "scraping", "automation"]
 
 # Context variables - provide these at runtime
@@ -122,44 +121,7 @@ steps:
     timeout: 900
     on_error: "continue"
 
-  # Step 3: Scrape The FWA
-  - id: "scrape-thefwa"
-    agent: "design-studio:research-runner"
-    prompt: |
-      Execute The FWA scraping workflow for today's date.
-      
-      Tasks:
-      1. Navigate to https://thefwa.com/awards using Playwright
-      2. Extract data for the last 10 award winners (Site of the Day, Mobile of the Day)
-      3. For EACH awarded site:
-         a. Extract the site's actual website URL (not The FWA page)
-         b. Navigate to the actual website
-         c. Wait for the page to fully load (networkidle)
-         d. Capture a FULL-PAGE screenshot (fullPage: true) at 1920x1080
-         e. Save screenshot as: thefwa-{sanitized-title}-fullpage.png
-      4. Save data to archive/{{year}}/{{month}}-{{month_name}}/raw/thefwa-{{date}}.json
-      5. Save screenshots to archive/{{year}}/{{month}}-{{month_name}}/images/
-      
-      CRITICAL: We need FULL-PAGE screenshots of the ACTUAL WEBSITES, not thumbnails
-      from The FWA gallery. The goal is to analyze real design implementations.
-      
-      The FWA features both web and mobile award winners. Try to capture a mix of both
-      if available. Note the award type (Site of the Day vs Mobile of the Day) in the JSON.
-      
-      Handle failures gracefully - if a site is slow or blocks access, log the error
-      and continue with the next site.
-      
-      Validation:
-      - JSON file must exist and be valid
-      - At least 8 full-page screenshots captured
-      - Screenshots should be >100KB (indicates real full-page capture)
-      
-      Report: Number of sites scraped, award types captured, screenshots taken, any failures.
-    output: "thefwa_result"
-    timeout: 900
-    on_error: "continue"
-
-  # Step 4: Analyze images with vision AI
+  # Step 3: Analyze images with vision AI
   - id: "analyze-images"
     agent: "design-studio:research-runner"
     prompt: |
@@ -190,7 +152,7 @@ steps:
     timeout: 1800
     on_error: "continue"
 
-  # Step 5: Generate monthly summary
+  # Step 4: Generate monthly summary
   - id: "generate-summary"
     agent: "design-studio:research-runner"
     prompt: |
@@ -207,25 +169,24 @@ steps:
          - Navigation patterns
          - Notable design techniques
       4. Create summary.md following the template in your instructions
-      5. Include links to notable projects from all three sources
+      5. Include links to notable projects
       6. Reference full-page screenshots where relevant
       
       Structure:
-      - Overview section (project counts by source, date range)
+      - Overview section (project counts, date range)
       - Trend Highlights (organized by category)
       - Visual Analysis insights (from full-page analysis)
       - Notable Projects list with detailed breakdowns
-      - Raw data references (all three sources)
+      - Raw data references
       
       Keep summary focused on actionable design insights from real site analysis.
-      Include observations from all sources: Awwwards, Siteinspire, and The FWA.
       
-      Report: Summary file path, key trends identified, total project count across sources.
+      Report: Summary file path, key trends identified, project count.
     output: "summary_result"
     timeout: 600
     on_error: "continue"
 
-  # Step 6: Update archive index
+  # Step 5: Update archive index
   - id: "update-archive-index"
     agent: "design-studio:research-runner"
     prompt: |
@@ -248,7 +209,6 @@ steps:
       - Top 3-5 trends per category
       - Links to detailed monthly summaries
       - Brief explanation of archive structure
-      - Note that data now includes Awwwards, Siteinspire, and The FWA
       
       Goal: Make this the "quick start" reference for the research-analyst agent.
       

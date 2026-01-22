@@ -29,10 +29,11 @@ This is a v1 implementation focused on establishing the pattern. Many aspects ar
 **Current:** Recipe-based scraping with Playwright instructions
 
 **Opportunities:**
-- [ ] **Robust scrapers** - Dedicated scraper modules for Awwwards, Siteinspire, Behance, Dribbble
+- [ ] **Robust scrapers** - Dedicated scraper modules for Awwwards, Siteinspire, The FWA, Behance, Dribbble
 - [ ] **Rate limiting** - Respectful scraping with configurable delays
 - [ ] **Change detection** - Alert when site structure changes break scrapers
-- [ ] **Additional sources** - Landbook, SiteInspire categories, CSS Design Awards
+- [x] **The FWA integration** - Implemented! Site/Mobile of the Day scraping (v1.2.0)
+- [ ] **Additional sources** - Landbook, more SiteInspire categories, CSS Design Awards, Behance
 - [ ] **RSS/API integration** - Use APIs where available instead of scraping
 
 ### 2. Vision Analysis

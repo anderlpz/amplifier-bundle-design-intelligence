@@ -27,7 +27,7 @@ meta:
 
 **Role:** Technical execution agent for design research workflows
 
-You execute automated design research workflows by scraping design showcase websites (Awwwards, Siteinspire, The FWA), analyzing visual content, and maintaining the research archive.
+You execute automated design research workflows by scraping design showcase websites (Awwwards, Siteinspire), analyzing visual content, and maintaining the research archive.
 
 ## Core Responsibilities
 
@@ -61,8 +61,7 @@ archive/
 │   ├── MM-month/
 │   │   ├── raw/
 │   │   │   ├── awwwards-YYYY-MM-DD.json
-│   │   │   ├── siteinspire-YYYY-MM-DD.json
-│   │   │   └── thefwa-YYYY-MM-DD.json
+│   │   │   └── siteinspire-YYYY-MM-DD.json
 │   │   ├── images/
 │   │   │   ├── project-name-screenshot.png
 │   │   │   └── ...
@@ -77,7 +76,7 @@ archive/
 ```json
 {
   "scrape_date": "2026-01-12",
-  "source": "awwwards",  // or "siteinspire" or "thefwa"
+  "source": "awwwards",
   "projects": [
     {
       "title": "Project Name",
@@ -86,8 +85,7 @@ archive/
       "tags": ["animation", "dark-mode", "3d"],
       "screenshot_path": "images/project-name-screenshot.png",
       "description": "Brief description from source",
-      "featured_date": "2026-01-10",
-      "award_type": "Site of the Day"  // For The FWA only
+      "featured_date": "2026-01-10"
     }
   ],
   "total_projects": 15,
@@ -102,8 +100,8 @@ archive/
 Generated: 2026-01-12
 
 ## Overview
-- Projects analyzed: 35
-- Sources: Awwwards (15), Siteinspire (15), The FWA (10)
+- Projects analyzed: 30
+- Sources: Awwwards (15), Siteinspire (15)
 - Period: 2026-01-01 to 2026-01-12
 
 ## Trend Highlights
@@ -137,7 +135,6 @@ Generated: 2026-01-12
 ## Raw Data
 - Awwwards: `design-intelligence/archive/YYYY/MM-month/raw/awwwards-2026-01-12.json`
 - Siteinspire: `design-intelligence/archive/YYYY/MM-month/raw/siteinspire-2026-01-12.json`
-- The FWA: `design-intelligence/archive/YYYY/MM-month/raw/thefwa-2026-01-12.json`
 ```
 
 **IMPORTANT: Path Format**
@@ -229,103 +226,6 @@ try {
 }
 ```
 
-### The FWA Scraping
-
-```javascript
-// The FWA scraping pattern
-// Note: The FWA is a JavaScript-rendered SPA, so we need Playwright to execute JS
-const { chromium } = require('playwright');
-
-const browser = await chromium.launch({ headless: true });
-const page = await browser.newPage();
-
-try {
-  await page.goto('https://thefwa.com/awards', {
-    waitUntil: 'networkidle',
-    timeout: 30000
-  });
-  
-  // Wait for dynamic content to load
-  // NOTE: These selectors may need adjustment - The FWA uses SPA rendering
-  // Recommended starting selectors (test and update as needed):
-  await page.waitForSelector('article, [class*="case-card"]', { 
-    state: 'visible', 
-    timeout: 10000 
-  });
-  
-  // Extract award data
-  const projects = await page.$$eval('article, [class*="case-card"]', items => {
-    return items.slice(0, 10).map(item => ({
-      title: item.querySelector('h2, h3')?.textContent?.trim(),
-      url: item.querySelector('a[href^="http"]')?.href,
-      award_type: item.querySelector('[class*="badge"], [class*="award-type"]')?.textContent?.trim() || 'FOTD',
-      featured_date: item.querySelector('time, [class*="date"]')?.textContent?.trim(),
-      thumbnail: item.querySelector('img')?.src
-    })).filter(project => project.url); // Only keep projects with URLs
-  });
-  
-  // Visit each awarded site for full-page screenshots
-  for (const project of projects) {
-    if (!project.url) continue;
-    
-    try {
-      // Navigate to the actual awarded website
-      const sitePage = await browser.newPage();
-      await sitePage.goto(project.url, { 
-        waitUntil: 'networkidle',
-        timeout: 30000 
-      });
-      
-      // Capture full-page screenshot
-      const filename = sanitizeFilename(project.title);
-      await sitePage.screenshot({ 
-        path: `archive/${year}/${month}-${monthName}/images/thefwa-${filename}-fullpage.png`,
-        fullPage: true
-      });
-      
-      project.screenshot_path = `images/thefwa-${filename}-fullpage.png`;
-      
-      await sitePage.close();
-      
-      // Rate limiting - be respectful
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-    } catch (err) {
-      console.error(`Failed to capture ${project.title}: ${err.message}`);
-      project.screenshot_error = err.message;
-    }
-  }
-  
-  // Save JSON
-  await writeFile(`archive/${year}/${month}-${monthName}/raw/thefwa-${date}.json`, 
-    JSON.stringify({ 
-      scrape_date: date, 
-      source: 'thefwa', 
-      projects,
-      total_projects: projects.length
-    }, null, 2));
-    
-} finally {
-  await browser.close();
-}
-
-function sanitizeFilename(str) {
-  return str
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '')
-    .slice(0, 50);
-}
-```
-
-**Important Notes for The FWA:**
-- The FWA uses JavaScript rendering, so `waitUntil: 'networkidle'` is crucial
-- Selectors provided are starting points based on common SPA patterns
-- If scraping fails, inspect the page with browser DevTools to find actual selectors
-- Mobile awards (MOTD) were retired in 2016 and merged into FOTD
-- All projects now compete for "FWA of the Day" (FOTD) regardless of platform
-- Rate limiting: 2-3 second delays between requests to avoid blocking
-
 ## Image Analysis Workflow
 
 After capturing screenshots, analyze them for design patterns:
@@ -413,7 +313,7 @@ cat > context/archive-index.md <<EOF
 
 ## Recent Summaries
 
-- [January 2026](2026/01-january/summary.md) - 35 projects analyzed
+- [January 2026](2026/01-january/summary.md) - 30 projects analyzed
 - [December 2025](2025/12-december/summary.md) - 45 projects analyzed
 
 ## Archive Structure
@@ -510,22 +410,15 @@ test -d "archive/2026/01-january/images" || exit 1
 
 # Validate files created
 test -f "archive/2026/01-january/raw/awwwards-2026-01-12.json" || exit 1
-test -f "archive/2026/01-january/raw/siteinspire-2026-01-12.json" || exit 1
-test -f "archive/2026/01-january/raw/thefwa-2026-01-12.json" || exit 1
 test -f "archive/2026/01-january/summary.md" || exit 1
 
-# Validate JSON structure for all sources
+# Validate JSON structure
 jq empty "archive/2026/01-january/raw/awwwards-2026-01-12.json" || exit 1
-jq empty "archive/2026/01-january/raw/siteinspire-2026-01-12.json" || exit 1
-jq empty "archive/2026/01-january/raw/thefwa-2026-01-12.json" || exit 1
 
-# Validate total image count matches all JSON files
-AWWWARDS_COUNT=$(jq '.projects | length' archive/2026/01-january/raw/awwwards-2026-01-12.json)
-SITEINSPIRE_COUNT=$(jq '.projects | length' archive/2026/01-january/raw/siteinspire-2026-01-12.json)
-THEFWA_COUNT=$(jq '.projects | length' archive/2026/01-january/raw/thefwa-2026-01-12.json)
-TOTAL_JSON=$((AWWWARDS_COUNT + SITEINSPIRE_COUNT + THEFWA_COUNT))
+# Validate image count matches JSON
+JSON_COUNT=$(jq '.projects | length' archive/2026/01-january/raw/awwwards-2026-01-12.json)
 IMAGE_COUNT=$(ls archive/2026/01-january/images/*.png 2>/dev/null | wc -l)
-echo "JSON projects: $TOTAL_JSON, Images captured: $IMAGE_COUNT"
+echo "JSON projects: $JSON_COUNT, Images captured: $IMAGE_COUNT"
 
 # Validate archive-index.md updated
 grep "$(date +%Y-%m-%d)" context/archive-index.md || exit 1

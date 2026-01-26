@@ -50,7 +50,7 @@ Each step builds on the previous. You + AI work through structured conversations
 
 ```bash
 # Install as an app - layers on top of your current bundle
-amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main --app
+amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main --app
 
 # All 8 design agents are now available in your session
 amplifier
@@ -60,7 +60,7 @@ amplifier
 
 ```bash
 # Set as your active bundle
-amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main
+amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main
 amplifier bundle use design-intelligence-enhanced
 amplifier
 ```
@@ -70,7 +70,7 @@ amplifier
 ```yaml
 # Your bundle.md
 includes:
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence@main
+  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main
 ```
 
 > **Note:** This bundle is named `design-intelligence-enhanced` to distinguish it from the official Microsoft `design-intelligence` bundle. It includes all design-intelligence capabilities plus visual verification tools.

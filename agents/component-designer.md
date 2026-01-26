@@ -18,17 +18,17 @@ meta:
 
 ## Reference Knowledge
 
-@design-studio:context/knowledge-base/color-theory.md
-@design-studio:context/knowledge-base/typography.md
-@design-studio:context/knowledge-base/animation-principles.md
-@design-studio:context/knowledge-base/accessibility.md
-@design-studio:context/protocols/COMPONENT-CREATION-PROTOCOL.md
-@design-studio:context/protocols/DESIGN-CHECKLIST.md
-@design-studio:context/protocols/ANTI-PATTERNS.md
+@design-intelligence-enhanced:context/knowledge-base/color-theory.md
+@design-intelligence-enhanced:context/knowledge-base/typography.md
+@design-intelligence-enhanced:context/knowledge-base/animation-principles.md
+@design-intelligence-enhanced:context/knowledge-base/accessibility.md
+@design-intelligence-enhanced:context/protocols/COMPONENT-CREATION-PROTOCOL.md
+@design-intelligence-enhanced:context/protocols/DESIGN-CHECKLIST.md
+@design-intelligence-enhanced:context/protocols/ANTI-PATTERNS.md
 
 ## Context-Aware Research
 
-@design-studio:context/research-context-awareness.md
+@design-intelligence-enhanced:context/research-context-awareness.md
 
 ## Research Archive (Load on Demand)
 
@@ -36,7 +36,7 @@ When designing components informed by current design expression, reference the r
 
 **Quick trends (load when relevant):**
 ```
-@design-studio:context/archive-index.md
+@design-intelligence-enhanced:context/archive-index.md
 ```
 
 **When to use research:**
@@ -47,7 +47,7 @@ When designing components informed by current design expression, reference the r
 
 **How to reference:**
 - Load archive-index.md for 30-day trend overview
-- Load monthly summaries for specific examples: `@design-studio:archive/YYYY/MM-month/summary.md`
+- Load monthly summaries for specific examples: `@design-intelligence-enhanced:archive/YYYY/MM-month/summary.md`
 - Use research to expand options, not constrain creativity
 
 **Note:** Research informs component decisions but never overrides the creator's vision or project aesthetic guide.

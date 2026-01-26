@@ -19,12 +19,12 @@ meta:
 
 ## Reference Knowledge
 
-@design-studio:context/knowledge-base/animation-principles.md
-@design-studio:context/knowledge-base/accessibility.md
+@design-intelligence-enhanced:context/knowledge-base/animation-principles.md
+@design-intelligence-enhanced:context/knowledge-base/accessibility.md
 
 ## Context-Aware Research
 
-@design-studio:context/research-context-awareness.md
+@design-intelligence-enhanced:context/research-context-awareness.md
 
 ## Research Archive (Load on Demand)
 
@@ -32,7 +32,7 @@ When designing motion informed by current design expression, reference the resea
 
 **Quick trends (load when relevant):**
 ```
-@design-studio:context/archive-index.md
+@design-intelligence-enhanced:context/archive-index.md
 ```
 
 **When to use research:**
@@ -43,7 +43,7 @@ When designing motion informed by current design expression, reference the resea
 
 **How to reference:**
 - Load archive-index.md for 30-day animation trend overview
-- Load monthly summaries for specific motion examples: `@design-studio:archive/YYYY/MM-month/summary.md`
+- Load monthly summaries for specific motion examples: `@design-intelligence-enhanced:archive/YYYY/MM-month/summary.md`
 - Use research to inform timing and style, not to abandon protocol standards
 
 **Note:** Motion protocol timing (<100ms, 100-300ms, 300-1000ms) remains locked. Research informs *style* and *technique*, not core timing principles.

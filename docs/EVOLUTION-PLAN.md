@@ -68,8 +68,8 @@ Design Intelligence needs to evolve from **advice** to **artifacts**. This plan 
 includes:
   - bundle: git+https://github.com/microsoft/amplifier-foundation@main
   - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
-  - bundle: design-studio:behaviors/design-core.yaml
-  - bundle: design-studio:behaviors/design-research.yaml
+  - bundle: design-intelligence-enhanced:behaviors/design-core.yaml
+  - bundle: design-intelligence-enhanced:behaviors/design-research.yaml
 ```
 
 **Why:** Discovery provides the "what are we building" layer. DI should not rebuild this.
@@ -91,13 +91,13 @@ steps:
       Focus on visual/experiential aspects.
 
   - id: research
-    agent: design-studio:research-runner
+    agent: design-intelligence-enhanced:research-runner
     prompt: |
       Based on this discovery brief, find relevant design inspiration:
       {{steps.discover.result}}
 
   - id: synthesize
-    agent: design-studio:art-director
+    agent: design-intelligence-enhanced:art-director
     prompt: |
       Synthesize discovery and research into design direction:
       
@@ -286,15 +286,15 @@ description: Generate complete design system export package
 
 steps:
   - id: tokens
-    agent: design-studio:token-generator
+    agent: design-intelligence-enhanced:token-generator
     prompt: "Generate tokens from: {{design_context}}"
 
   - id: components
-    agent: design-studio:spec-writer
+    agent: design-intelligence-enhanced:spec-writer
     prompt: "Write component specs for: {{component_list}}"
 
   - id: package
-    agent: design-studio:export-packager
+    agent: design-intelligence-enhanced:export-packager
     prompt: |
       Create export package:
       - tokens: {{steps.tokens.result}}
@@ -386,7 +386,7 @@ description: Refine design direction through feedback
 
 steps:
   - id: generate-variations
-    agent: design-studio:variation-generator
+    agent: design-intelligence-enhanced:variation-generator
     prompt: "Generate 4 design directions for: {{context}}"
 
   - id: gather-feedback
@@ -398,7 +398,7 @@ steps:
       Rate each: 👍 (more like this) / 👎 (not this direction) / 👁️ (interesting)
 
   - id: refine
-    agent: design-studio:art-director
+    agent: design-intelligence-enhanced:art-director
     prompt: |
       Based on feedback, refine the direction:
       Liked: {{feedback.liked}}

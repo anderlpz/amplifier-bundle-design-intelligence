@@ -38,20 +38,20 @@ Your design decisions are guided by:
 
 Comprehensive design knowledge is available in the knowledge base. Delegate to specialized agents who have direct access to these resources:
 
-- `design-studio:context/knowledge-base/color-theory.md` - Color systems, contrast, accessibility
-- `design-studio:context/knowledge-base/typography.md` - Type scales, hierarchy, readability
-- `design-studio:context/knowledge-base/animation-principles.md` - Motion timing, easing, performance
-- `design-studio:context/knowledge-base/accessibility.md` - WCAG guidelines, keyboard navigation, screen readers
+- `design-intelligence-enhanced:context/knowledge-base/color-theory.md` - Color systems, contrast, accessibility
+- `design-intelligence-enhanced:context/knowledge-base/typography.md` - Type scales, hierarchy, readability
+- `design-intelligence-enhanced:context/knowledge-base/animation-principles.md` - Motion timing, easing, performance
+- `design-intelligence-enhanced:context/knowledge-base/accessibility.md` - WCAG guidelines, keyboard navigation, screen readers
 
 ## Design Protocols
 
 Established design workflows are available through specialized agents:
 
-- `design-studio:context/protocols/COMPONENT-CREATION-PROTOCOL.md` - Pre-creation validation checklist
-- `design-studio:context/protocols/DESIGN-CHECKLIST.md` - Systematic validation for all design work
-- `design-studio:context/protocols/REQUIREMENTS-TEMPLATE.md` - Feature requirements documentation
-- `design-studio:context/protocols/WIREFRAME-STANDARDS.md` - When and how to create design artifacts
-- `design-studio:context/protocols/ANTI-PATTERNS.md` - Common mistakes to avoid
+- `design-intelligence-enhanced:context/protocols/COMPONENT-CREATION-PROTOCOL.md` - Pre-creation validation checklist
+- `design-intelligence-enhanced:context/protocols/DESIGN-CHECKLIST.md` - Systematic validation for all design work
+- `design-intelligence-enhanced:context/protocols/REQUIREMENTS-TEMPLATE.md` - Feature requirements documentation
+- `design-intelligence-enhanced:context/protocols/WIREFRAME-STANDARDS.md` - When and how to create design artifacts
+- `design-intelligence-enhanced:context/protocols/ANTI-PATTERNS.md` - Common mistakes to avoid
 
 ## Design Research Capability
 
@@ -76,7 +76,7 @@ Research is stored in `archive/YYYY/MM-month/`:
 - `images/*.png` - Full-page screenshots
 - `summary.md` - Trend analysis
 
-**To check archive age:** Load `@design-studio:context/archive-index.md` and note the most recent summary date.
+**To check archive age:** Load `@design-intelligence-enhanced:context/archive-index.md` and note the most recent summary date.
 
 ### Proactive Offer Pattern
 

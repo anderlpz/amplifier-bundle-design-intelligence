@@ -31,7 +31,7 @@ steps:
 
   # Step 2: Research Context (if archive available)
   - id: research
-    agent: design-studio:art-director
+    agent: design-intelligence-enhanced:art-director
     prompt: |
       Review this discovery brief and establish design direction:
       
@@ -60,7 +60,7 @@ steps:
 
   # Step 3: Generate Tokens
   - id: tokens
-    agent: design-studio:token-generator
+    agent: design-intelligence-enhanced:token-generator
     prompt: |
       Generate a complete Design Protocol token file.
       
@@ -86,7 +86,7 @@ steps:
 
   # Step 4: Component Specifications
   - id: components
-    agent: design-studio:spec-writer
+    agent: design-intelligence-enhanced:spec-writer
     prompt: |
       Write Design Protocol component specifications.
       
@@ -109,7 +109,7 @@ steps:
 
   # Step 5: Export Package
   - id: export
-    agent: design-studio:export-packager
+    agent: design-intelligence-enhanced:export-packager
     prompt: |
       Create the final export package for coding agents.
       

@@ -5,13 +5,13 @@ bundle:
 
 agents:
   include:
-    - design-studio:design-system-architect
-    - design-studio:component-designer
-    - design-studio:animation-choreographer
-    - design-studio:layout-architect
-    - design-studio:art-director
-    - design-studio:responsive-strategist
-    - design-studio:voice-strategist
+    - design-intelligence-enhanced:design-system-architect
+    - design-intelligence-enhanced:component-designer
+    - design-intelligence-enhanced:animation-choreographer
+    - design-intelligence-enhanced:layout-architect
+    - design-intelligence-enhanced:art-director
+    - design-intelligence-enhanced:responsive-strategist
+    - design-intelligence-enhanced:voice-strategist
 
 # Note: design-instructions.md context moved to design-system-architect.md agent
 # This reduces root session token usage - context loads only when design agents spawn

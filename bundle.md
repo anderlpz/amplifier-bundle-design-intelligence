@@ -21,9 +21,9 @@ includes:
   - bundle: git+https://github.com/microsoft/amplifier-foundation@main
   - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
   - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-verification@main
-  - bundle: design-studio:behaviors/design-intelligence
-  - bundle: design-studio:behaviors/design-research
-  - bundle: design-studio:behaviors/design-generation
+  - bundle: design-intelligence-enhanced:behaviors/design-intelligence
+  - bundle: design-intelligence-enhanced:behaviors/design-research
+  - bundle: design-intelligence-enhanced:behaviors/design-generation
 ---
 
 # Design Intelligence
@@ -82,7 +82,7 @@ Research updates on **your schedule**, not ours. No guilt about stale data.
 
 ---
 
-@design-studio:context/design-instructions.md
+@design-intelligence-enhanced:context/design-instructions.md
 
 ---
 
@@ -104,9 +104,9 @@ Run the design-to-implementation recipe for [describe your project]
 
 ## Design Philosophy
 
-@design-studio:context/philosophy/DESIGN-PHILOSOPHY.md
-@design-studio:context/philosophy/DESIGN-PRINCIPLES.md
-@design-studio:context/philosophy/DESIGN-FRAMEWORK.md
+@design-intelligence-enhanced:context/philosophy/DESIGN-PHILOSOPHY.md
+@design-intelligence-enhanced:context/philosophy/DESIGN-PRINCIPLES.md
+@design-intelligence-enhanced:context/philosophy/DESIGN-FRAMEWORK.md
 
 ---
 

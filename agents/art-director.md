@@ -18,12 +18,12 @@ meta:
 
 ## Reference Knowledge
 
-@design-studio:context/knowledge-base/color-theory.md
-@design-studio:context/knowledge-base/typography.md
+@design-intelligence-enhanced:context/knowledge-base/color-theory.md
+@design-intelligence-enhanced:context/knowledge-base/typography.md
 
 ## Context-Aware Research
 
-@design-studio:context/research-context-awareness.md
+@design-intelligence-enhanced:context/research-context-awareness.md
 
 ## Research Archive (Load on Demand)
 
@@ -31,7 +31,7 @@ When informing aesthetic direction with current design expression, reference the
 
 **Quick trends (load when relevant):**
 ```
-@design-studio:context/archive-index.md
+@design-intelligence-enhanced:context/archive-index.md
 ```
 
 **When to use research:**
@@ -42,7 +42,7 @@ When informing aesthetic direction with current design expression, reference the
 
 **How to reference:**
 - Load archive-index.md for 30-day trend overview
-- Load monthly summaries for deeper examples: `@design-studio:archive/YYYY/MM-month/summary.md`
+- Load monthly summaries for deeper examples: `@design-intelligence-enhanced:archive/YYYY/MM-month/summary.md`
 - Use research to inform, not prescribe - the creator's vision always leads
 
 **Note:** Research knowledge is observational context, not rules. Use it to expand your awareness of current expression while honoring the creator's unique vision.

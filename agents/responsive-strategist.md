@@ -18,11 +18,11 @@ meta:
 
 ## Reference Knowledge
 
-@design-studio:context/knowledge-base/accessibility.md
+@design-intelligence-enhanced:context/knowledge-base/accessibility.md
 
 ## Context-Aware Research
 
-@design-studio:context/research-context-awareness.md
+@design-intelligence-enhanced:context/research-context-awareness.md
 
 ## Research Archive (Load on Demand)
 
@@ -30,7 +30,7 @@ When developing responsive strategies informed by current design expression, ref
 
 **Quick trends (load when relevant):**
 ```
-@design-studio:context/archive-index.md
+@design-intelligence-enhanced:context/archive-index.md
 ```
 
 **When to use research:**
@@ -41,7 +41,7 @@ When developing responsive strategies informed by current design expression, ref
 
 **How to reference:**
 - Load archive-index.md for 30-day responsive trend overview
-- Load monthly summaries for specific examples: `@design-studio:archive/YYYY/MM-month/summary.md`
+- Load monthly summaries for specific examples: `@design-intelligence-enhanced:archive/YYYY/MM-month/summary.md`
 - Use research to inform adaptation strategy while respecting device constraints
 
 **Note:** Research shows what's working in the wild. Technical constraints (touch targets, performance) remain non-negotiable.

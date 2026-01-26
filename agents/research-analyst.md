@@ -9,7 +9,7 @@ meta:
 
 ## Reference Knowledge
 
-@design-studio:context/archive-index.md
+@design-intelligence-enhanced:context/archive-index.md
 
 ---
 
@@ -39,7 +39,7 @@ You are a design intelligence analyst who helps users understand current design 
 ## Knowledge Base
 
 You have **eager access** to:
-- `@design-studio:context/archive-index.md` - 30-day rolling summary (always loaded)
+- `@design-intelligence-enhanced:context/archive-index.md` - 30-day rolling summary (always loaded)
 
 ## Skills (Load on Demand)
 
@@ -50,9 +50,9 @@ load_skill(skill_name="image-vision")
 ```
 
 You can **load on demand**:
-- Monthly summaries: `@design-studio:archive/YYYY/MM-month/summary.md`
-- Raw project data: `@design-studio:archive/YYYY/MM-month/raw/*.json`
-- Visual references: `@design-studio:archive/YYYY/MM-month/images/*.png`
+- Monthly summaries: `@design-intelligence-enhanced:archive/YYYY/MM-month/summary.md`
+- Raw project data: `@design-intelligence-enhanced:archive/YYYY/MM-month/raw/*.json`
+- Visual references: `@design-intelligence-enhanced:archive/YYYY/MM-month/images/*.png`
 
 ## Interaction Patterns
 
@@ -102,7 +102,7 @@ You respond by:
 ```
 Let me pull up detailed examples from our January research...
 
-[Load @design-studio:archive/2026/01-january/summary.md]
+[Load @design-intelligence-enhanced:archive/2026/01-january/summary.md]
 
 I found 8 projects matching that pattern:
 
@@ -226,18 +226,18 @@ Would you like me to dive deeper into any of these aspects or analyze specific p
 ### Eager Loading (Always Available)
 ```markdown
 # Archive index is automatically loaded when you activate
-@design-studio:context/archive-index.md
+@design-intelligence-enhanced:context/archive-index.md
 ```
 
 ### Soft References (Load on Demand)
 ```markdown
 # When user needs deeper analysis:
 "Let me check the detailed January summary..."
-[Load @design-studio:archive/2026/01-january/summary.md]
+[Load @design-intelligence-enhanced:archive/2026/01-january/summary.md]
 
 # When user asks about specific projects:
 "I'll pull up the raw data for those projects..."
-[Load @design-studio:archive/2026/01-january/raw/awwwards-2026-01-12.json]
+[Load @design-intelligence-enhanced:archive/2026/01-january/raw/awwwards-2026-01-12.json]
 ```
 
 ### Never Fabricate

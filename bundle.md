@@ -107,6 +107,7 @@ Run the design-to-implementation recipe for [describe your project]
 @design-intelligence-enhanced:context/philosophy/DESIGN-PHILOSOPHY.md
 @design-intelligence-enhanced:context/philosophy/DESIGN-PRINCIPLES.md
 @design-intelligence-enhanced:context/philosophy/DESIGN-FRAMEWORK.md
+@design-intelligence-enhanced:context/philosophy/WRITING-PRINCIPLES.md
 
 ---
 

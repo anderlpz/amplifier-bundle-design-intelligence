@@ -60,7 +60,7 @@ amplifier
 
 ```bash
 # Set as your active bundle
-amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main
+amplifier bundle add --app git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main
 amplifier bundle use design-intelligence-enhanced
 amplifier
 ```

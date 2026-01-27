@@ -20,7 +20,8 @@ includes:
   # Standalone app bundle - includes foundation for full capabilities
   - bundle: git+https://github.com/microsoft/amplifier-foundation@main
   - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-verification@main
+  # TEMPORARILY DISABLED - debugging profile_hint error
+  # - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-verification@main
   - bundle: design-intelligence-enhanced:behaviors/design-intelligence
   - bundle: design-intelligence-enhanced:behaviors/design-research
   - bundle: design-intelligence-enhanced:behaviors/design-generation

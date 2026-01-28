@@ -1,20 +1,22 @@
 # Cognitive Task Catalog
 
-> **Purpose**: Quick reference for mapping design problems to analogous domains through cognitive task analysis.
+> **Purpose**: Quick reference for mapping problems to analogous domains through cognitive task analysis—works for visual design, engineering, product, and strategy.
 
 ---
 
 ## How to Use This Catalog
 
-1. **Identify the cognitive task** the user needs to perform
-2. **Look up analogous domains** where this task is well-solved
+1. **Identify the cognitive task or system problem** that needs solving
+2. **Look up analogous domains** where this challenge is well-solved
 3. **Research across those domains** for proven patterns
-4. **Abstract the interaction/cognitive patterns** (not just visuals)
+4. **Abstract the interaction/cognitive/principle patterns** (Level 3-4, not implementation)
 5. **Synthesize with reasoning** about why each source is relevant
+
+**This catalog works for ANY domain**: visual design, engineering, product, strategy, operations.
 
 ---
 
-## Core Cognitive Tasks
+## Visual Design & User Experience Tasks
 
 ### Rapid Gestalt Assessment
 **Definition**: Determining overall system health/status at a glance without reading details.
@@ -262,34 +264,365 @@
 
 ---
 
+## Engineering & System Design Problems
+
+### Fairness Under Load
+**Problem**: Allocate resources fairly when demand exceeds capacity.
+
+**Analogous Domains**:
+- Highway traffic metering (entry control maintains flow)
+- Electrical grid load balancing (distribute demand)
+- Airport runway scheduling (fair allocation of slots)
+- Restaurant seating systems (queue management)
+- CPU scheduling in operating systems (time slicing)
+- Water distribution systems (pressure regulation)
+
+**Key Patterns**:
+- Entry-point metering (control at boundary)
+- Token-based allocation (pre-authorized units)
+- Priority tiers (important vs routine)
+- Queue fairness (FIFO with anti-starvation)
+
+**Engineering Transfer**: API rate limiting, database connection pools, job queues
+
+---
+
+### Failure Isolation
+**Problem**: Prevent failures from cascading through the system.
+
+**Analogous Domains**:
+- Ship watertight compartments (contain flooding)
+- Electrical circuit breakers (isolate faults)
+- Fire doors in buildings (contain spread)
+- Immune system (inflammation localizes infection)
+- Forest fire breaks (prevent spread)
+- Network segmentation (VLAN isolation)
+
+**Key Patterns**:
+- Bulkheads (physical/logical isolation)
+- Fast failure detection (fail quickly, not slowly)
+- Graceful degradation (partial service > none)
+- Independent failure domains
+
+**Engineering Transfer**: Circuit breakers, microservice boundaries, database sharding
+
+---
+
+### State Transformation Safety
+**Problem**: Change system state without downtime or data loss.
+
+**Analogous Domains**:
+- Aircraft maintenance (replace components on flying plane)
+- Surgical procedures (operate on living patient)
+- Live TV equipment changes (switch during broadcast)
+- Ship repairs at sea (fix without dry dock)
+- Highway construction (rebuild while traffic flows)
+- Building renovations (occupied structures)
+
+**Key Patterns**:
+- Blue-green deployment (parallel old/new)
+- Staged procedures (reversible steps)
+- Safety checkpoints (go/no-go gates)
+- Maintained redundancy (backup always available)
+
+**Engineering Transfer**: Database migrations, zero-downtime deploys, feature flags
+
+---
+
+### Distributed Coordination
+**Problem**: Coordinate without central authority or single point of failure.
+
+**Analogous Domains**:
+- Ant colonies (local signals, emergent behavior)
+- Market economies (price signals coordinate allocation)
+- Immune systems (distributed threat detection)
+- Bee swarms (consensus through voting)
+- Flock behavior (local rules, global patterns)
+- Fungal networks (resource distribution)
+
+**Key Patterns**:
+- Gossip protocols (peer-to-peer communication)
+- Emergent consensus (local decisions, global agreement)
+- Stigmergy (coordinate through environment)
+- No single point of failure
+
+**Engineering Transfer**: Distributed databases, service mesh, blockchain consensus
+
+---
+
+### Abuse & Threat Prevention
+**Problem**: Detect and stop malicious behavior in real-time.
+
+**Analogous Domains**:
+- Immune systems (pathogen recognition)
+- Fraud detection (anomaly patterns)
+- Security operations (threat intelligence)
+- Spam filters (content analysis)
+- Quality control (defect detection)
+- Border security (threat screening)
+
+**Key Patterns**:
+- Pattern recognition (known bad signatures)
+- Anomaly detection (deviation from normal)
+- Adaptive response (learn from attacks)
+- Defense in depth (multiple layers)
+
+**Engineering Transfer**: Rate limiting, fraud detection, DDoS protection, input validation
+
+---
+
+### Graceful Degradation
+**Problem**: Maintain service under stress or partial failure.
+
+**Analogous Domains**:
+- Electrical grids (brownout prevents blackout)
+- Aircraft redundancy (multiple backup systems)
+- Human body under stress (prioritize vital organs)
+- Military operations (mission-critical focus)
+- Emergency services (triage prioritization)
+- Traffic management (essential routes first)
+
+**Key Patterns**:
+- Load shedding (drop low-priority work)
+- Priority preservation (critical functions first)
+- Partial availability (some service > none)
+- Resource reservation (guarantee for critical)
+
+**Engineering Transfer**: Backpressure, circuit breakers, priority queues, quota systems
+
+---
+
+### Observability & Debugging
+**Problem**: Understand system behavior and diagnose issues in production.
+
+**Analogous Domains**:
+- Medical diagnostics (symptoms → root cause)
+- Aircraft black boxes (post-incident analysis)
+- Scientific experiments (hypothesis testing)
+- Detective investigation (evidence gathering)
+- Automotive diagnostics (sensor data interpretation)
+- Quality control (defect root cause analysis)
+
+**Key Patterns**:
+- Comprehensive instrumentation (measure everything)
+- Correlation IDs (trace across boundaries)
+- Time-series analysis (trends over time)
+- Hypothesis-driven debugging (test theories)
+
+**Engineering Transfer**: Logging, metrics, tracing, profiling, error tracking
+
+---
+
+## Product & User Engagement Problems
+
+### Progressive Learning & Onboarding
+**Problem**: Teach complex functionality without overwhelming users.
+
+**Analogous Domains**:
+- Video game tutorials (learn by doing)
+- Musical instrument pedagogy (progressive difficulty)
+- Cooking classes (guided then independent)
+- Driver's education (simulator before real stakes)
+- Martial arts (belt progression)
+- Language learning (scaffolded complexity)
+
+**Key Patterns**:
+- Safe exploration (sandbox environments)
+- Immediate feedback (fast learning loops)
+- Scaffolded independence (guidance → autonomy)
+- Progressive complexity (easy → hard)
+
+**Product Transfer**: Feature onboarding, tutorial flows, in-app guidance
+
+---
+
+### Habit Formation & Retention
+**Problem**: Keep users engaged and returning over time.
+
+**Analogous Domains**:
+- Physical therapy (gradual progression)
+- Fitness programs (visible progress)
+- Meditation practices (daily habit building)
+- Language learning (spaced repetition)
+- Musical practice (consistent improvement)
+- Therapy programs (behavioral change)
+
+**Key Patterns**:
+- Streak tracking (consistency rewards)
+- Visible progress (milestone markers)
+- Spaced reinforcement (reminders over time)
+- Social accountability (peer pressure)
+
+**Product Transfer**: Daily active usage, notification strategy, progress systems
+
+---
+
+### Feature Discovery
+**Problem**: Help users discover capabilities they don't know exist.
+
+**Analogous Domains**:
+- Museum exhibits (self-guided discovery)
+- Video game exploration (environmental clues)
+- Recipe discovery (browsing not searching)
+- Music recommendations (algorithmic + editorial)
+- Travel planning (inspiration browsing)
+- Book recommendations (related items)
+
+**Key Patterns**:
+- Contextual suggestions (right time/place)
+- Low-commitment preview (try before commit)
+- Serendipitous exposure (unexpected finds)
+- Progressive revelation (unlock over time)
+
+**Product Transfer**: Feature tips, contextual help, recommendation engines
+
+---
+
+### Confidence Building
+**Problem**: Help users feel successful and capable with your product.
+
+**Analogous Domains**:
+- Martial arts belt systems (earned progression)
+- Gaming achievement systems (visible success)
+- Fitness programs (celebrate milestones)
+- Educational scaffolding (gradual difficulty)
+- Cooking recipe progression (easy → advanced)
+- Music lessons (mastery stages)
+
+**Key Patterns**:
+- Early wins (quick success)
+- Clear progression (path forward)
+- Earned status (achievements persist)
+- Failure as learning (safe to fail)
+
+**Product Transfer**: Onboarding success, progress indicators, achievement systems
+
+---
+
+### Social Proof & Trust
+**Problem**: Build confidence through evidence others succeeded.
+
+**Analogous Domains**:
+- Restaurant popularity (line out door)
+- Book bestsellers (charts and reviews)
+- Academic citations (peer validation)
+- Crowdfunding (backer counts)
+- Social media (follower counts)
+- App store ratings (star reviews)
+
+**Key Patterns**:
+- Aggregate evidence (many users)
+- Peer similarity (people like me)
+- Expert endorsement (authority figures)
+- Usage indicators (active community)
+
+**Product Transfer**: Reviews, testimonials, user counts, case studies
+
+---
+
+## Strategy & Operations Problems
+
+### Process Optimization
+**Problem**: Improve efficiency without sacrificing quality.
+
+**Analogous Domains**:
+- Manufacturing (lean production)
+- Restaurant kitchens (mise en place)
+- Surgical procedures (standardized protocols)
+- Formula 1 pit stops (optimized workflows)
+- Emergency response (practiced procedures)
+- Assembly lines (continuous improvement)
+
+**Key Patterns**:
+- Waste elimination (unnecessary steps)
+- Parallel processing (concurrent tasks)
+- Standardization (repeatable process)
+- Continuous measurement (metrics-driven)
+
+**Strategy Transfer**: Workflow design, team processes, operational efficiency
+
+---
+
+### Resource Allocation
+**Problem**: Distribute limited resources across competing needs.
+
+**Analogous Domains**:
+- Hospital triage (urgency prioritization)
+- Military logistics (supply chain)
+- Portfolio investment (risk distribution)
+- Time management (priority matrix)
+- Budget allocation (ROI optimization)
+- Project staffing (skill matching)
+
+**Key Patterns**:
+- Priority frameworks (urgent vs important)
+- Constraint identification (bottlenecks)
+- ROI analysis (value per resource)
+- Dynamic reallocation (adapt to change)
+
+**Strategy Transfer**: Budget planning, team allocation, investment decisions
+
+---
+
+### Change Management
+**Problem**: Transform organization or process without disruption.
+
+**Analogous Domains**:
+- Biological evolution (gradual adaptation)
+- Urban planning (phased development)
+- Ship-of-Theseus (continuous replacement)
+- Software refactoring (incremental improvement)
+- Ecosystem succession (natural progression)
+- Building renovations (occupied upgrades)
+
+**Key Patterns**:
+- Gradual transition (not big bang)
+- Parallel old/new (overlap period)
+- Reversible steps (rollback capability)
+- Communication cadence (stakeholder updates)
+
+**Strategy Transfer**: Organizational change, process transformation, cultural shifts
+
+---
+
 ## Using This Catalog
 
-### For Discovery Phase
-When interviewing users, map their needs to cognitive tasks:
-- "When you use this, what decisions do you make?" → Decision Support
-- "How do you know if something's wrong?" → Anomaly Detection
-- "How do you track progress?" → Timeline/Progress Understanding
+### For ANY Domain (Design, Engineering, Product, Strategy)
 
-### For Research Phase
-For each cognitive task identified:
-1. Look up analogous domains in this catalog
-2. Research the BEST examples from those domains (not just first results)
-3. Focus on domains that seem unexpected but solve the task well
-4. Extract patterns at Level 3-4 (interaction/cognitive, not visual)
+**Step 1: Identify Your Core Challenge**
+- Visual/Product: What cognitive task does the user perform?
+- Engineering: What system problem must be solved?
+- Strategy: What coordination or optimization is needed?
 
-### For Design Phase
-When synthesizing research:
-- Reference the cognitive task explicitly ("This pattern solves rapid assessment")
-- Explain WHY the cross-domain pattern is relevant
-- Abstract the principle, not copy the implementation
-- Adapt to your context (don't cargo cult)
+**Step 2: Look Up Analogous Domains**
+- Don't limit to your category
+- Find where this challenge is solved BEST (often unexpected domains)
+- Prefer mature domains with decades of refinement
+
+**Step 3: Research Cross-Domain**
+- 20% domain-specific (know conventions)
+- 50% purpose-driven (proven patterns from analogous domains)
+- 30% divergent (deliberately unexpected sources)
+
+**Step 4: Extract Level 3-4 Patterns**
+- Skip implementation details (Level 1-2)
+- Focus on interaction/architecture patterns (Level 3)
+- Seek universal principles (Level 4)
+
+**Step 5: Synthesize with Reasoning**
+- WHY is each pattern relevant to your context?
+- WHAT is the transferable principle?
+- HOW does it need to be adapted?
 
 ---
 
 ## Expanding This Catalog
 
-As you encounter new cognitive tasks or discover excellent analogous domains:
+As you encounter new problems or discover excellent analogous domains:
 1. Add them to this catalog
 2. Document why the domain is relevant
 3. Identify the key patterns that transfer
-4. Note what makes this domain particularly strong at this task
+4. Note what makes this domain particularly strong at solving this problem
+5. Show examples across multiple domains (visual, engineering, product, strategy)
+
+**This catalog is universal** - it works for any domain where you're making purposeful decisions about how things should work.

@@ -36,20 +36,71 @@ Transform vague requests ("design a dashboard") into creative, cross-domain rese
 
 ## Research Workflow
 
-### Step 1: Receive Cognitive Task Map
+### Step 0: Detect Domain & Adapt Approach
 
-**Input**: Discovery brief with cognitive task analysis (from discovery-interviewer)
+**First, identify what domain the user is working in:**
 
-**What you need**:
+| Domain Indicators | Approach Focus |
+|-------------------|----------------|
+| **Visual/Product** - UI, dashboard, interface, user experience, flows | Cognitive tasks users perform |
+| **Engineering** - API, system, architecture, database, infrastructure | System problems to solve |
+| **Strategy** - Process, organization, workflow, operations | Coordination & optimization challenges |
+
+**Adapt your questions and research accordingly:**
+
+**For Visual/Product Work:**
+```
+"Let me understand the cognitive tasks:
+- What is the user's brain doing with this interface?
+- What decisions are they making?
+- What's their emotional state when using it?"
+```
+
+**For Engineering Work:**
+```
+"Let me understand the system problems:
+- What must the system guarantee? (safety properties)
+- What can fail and how? (failure modes)
+- What are the inherent trade-offs?
+- What constraints are fixed?"
+```
+
+**For Strategy/Operations Work:**
+```
+"Let me understand the organizational challenge:
+- What coordination is needed?
+- What resources need allocation?
+- What constraints exist?
+- What outcomes are we optimizing for?"
+```
+
+---
+
+### Step 1: Receive or Discover Problem Decomposition
+
+**Input**: Discovery brief with problem analysis (from discovery-interviewer)
+
+**What you need (varies by domain)**:
+
+**For Visual/Product:**
 - Primary cognitive tasks (e.g., "rapid gestalt assessment", "anomaly detection")
 - Decision points (what users are deciding)
 - Information states (normal, alert, critical, etc.)
 - Emotional context (stress level, expertise, frequency, risk)
 
-**If you don't have this**: Ask user to clarify the cognitive tasks, or run quick analysis yourself:
-- "What is the user's brain actually doing?"
-- "What decisions are they making?"
-- "What's their emotional state when using this?"
+**For Engineering:**
+- System problems (fairness, isolation, transformation safety)
+- Failure modes (what can go wrong)
+- Trade-offs (performance vs consistency, etc.)
+- Constraints (latency, availability, scale)
+
+**For Strategy:**
+- Coordination challenges (who needs to align)
+- Resource allocation decisions
+- Process optimization opportunities
+- Organizational constraints
+
+**If you don't have this**: Run quick decomposition yourself based on domain detected.
 
 ---
 

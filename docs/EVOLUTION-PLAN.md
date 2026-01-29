@@ -1,19 +1,28 @@
-# Design Intelligence Evolution Plan
+# Design Intelligence Enhanced - Evolution Plan
 
-**Status:** Draft  
-**Created:** 2026-01-16  
-**Goal:** Transform Design Intelligence from advisory-only to a complete design-to-implementation pipeline
+**Status:** Living Document  
+**Last Updated:** 2026-01-28  
+**Current Version:** 2.2.0  
+**Goal:** Transform from advisory-only to a complete design-to-implementation pipeline
 
 ---
 
 ## Executive Summary
 
-Design Intelligence needs to evolve from **advice** to **artifacts**. This plan integrates:
+Design Intelligence Enhanced provides a universal creative research methodology for purposeful problem-solving across design, engineering, product, and strategy domains. This plan outlines the evolution from advisory agents to artifact generation.
 
-1. **Discovery Bundle** - General-purpose requirements gathering (already built)
-2. **Design Intelligence** - Design-specific thinking, research, and generation
-3. **Design Protocol** - Standard artifact format for coding agents (like A2UI for design)
-4. **Clear Packaging** - Communication improvements from Design OS
+**What We Are:**
+- Enhanced fork of Microsoft's design-intelligence bundle
+- Universal methodology (not just visual design)
+- Research-driven problem-solving
+- Cross-domain pattern extraction
+
+**Integration:**
+1. **Discovery** - Structured problem decomposition (via discovery bundle or built-in research-analyst)
+2. **Research** - Cross-domain analogous pattern research (creative research methodology)
+3. **Design** - Specialized agents applying frameworks (Nine Dimensions, Five Pillars)
+4. **Verify** - Visual verification (v2.1.0) prevents circular fix loops
+5. **Generate** - Artifact generation for implementation (v2.3.0 planned)
 
 ---
 
@@ -21,35 +30,42 @@ Design Intelligence needs to evolve from **advice** to **artifacts**. This plan 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│  1. DISCOVER (discovery bundle)                                      │
-│     "What are we building and why?"                                 │
-│     General-purpose • 4-layer methodology • Readiness gates         │
-│     Output: Discovery Brief                                         │
+│  1. DECOMPOSE (research-analyst)                                    │
+│     "What's the core problem?"                                      │
+│     Cognitive tasks • System challenges • Coordination needs        │
+│     Output: Problem decomposition                                   │
 └─────────────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────────────┐
-│  2. RESEARCH (design-intelligence)                                   │
-│     "What's out there? What's current?"                             │
-│     Trend scraping • URL analysis • Inspiration gathering           │
-│     Output: Research Context                                        │
+│  2. RESEARCH (research-analyst)                                     │
+│     "What analogous solutions exist?"                               │
+│     Cross-domain mapping • L3-4 principle extraction                │
+│     Output: Research Context with patterns                          │
 └─────────────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────────────┐
-│  3. DESIGN (design-intelligence)                                     │
-│     "What should it be?"                                            │
-│     Nine Dimensions • Philosophy • Context-aware thinking           │
-│     Output: Design Decisions                                        │
+│  3. SYNTHESIZE (specialized agents)                                 │
+│     "Apply patterns to specific context"                            │
+│     Domain-specific frameworks • Rigorous methodology               │
+│     Output: Design Decisions / System Architecture                  │
 └─────────────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────────────┐
-│  4. GENERATE (design-intelligence + protocol)                        │
-│     "Produce artifacts for implementation"                          │
+│  4. VERIFY (design-validator) [v2.1.0]                              │
+│     "Does it work as specified?"                                    │
+│     Visual verification • Layout analysis • Spec validation         │
+│     Output: Validated implementations                               │
+└─────────────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────────────┐
+│  5. GENERATE (coming v2.3.0)                                        │
+│     "Produce implementation artifacts"                              │
 │     Tokens • Specs • Components • Export packages                   │
 │     Output: Design Protocol Artifacts                               │
 └─────────────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────────────┐
-│  5. IMPLEMENT (coding agents)                                        │
+│  6. IMPLEMENT (coding agents)                                       │
 │     Claude Code • Cursor • Copilot • Any agent                      │
 │     Consumes protocol artifacts                                     │
 └─────────────────────────────────────────────────────────────────────┘
@@ -57,80 +73,58 @@ Design Intelligence needs to evolve from **advice** to **artifacts**. This plan 
 
 ---
 
-## Phase 1: Foundation (Week 1-2)
+## Version History
 
-### 1.1 Include Discovery Bundle
+### v2.2.0 - Universal Applicability (Current)
 
-**Action:** Add discovery bundle as upstream dependency
+**Completed:** 2026-01-28
 
-```yaml
-# design-intelligence/bundle.md
-includes:
-  - bundle: git+https://github.com/microsoft/amplifier-foundation@main
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
-  - bundle: design-intelligence-enhanced:behaviors/design-core.yaml
-  - bundle: design-intelligence-enhanced:behaviors/design-research.yaml
-```
+**Changes:**
+- Domain detection (visual/engineering/strategy)
+- Engineering examples: API rate limiting, database migrations, distributed systems
+- Cognitive task catalog expansion
+- Research-analyst domain-aware questioning
+- Documentation updated for universal scope
 
-**Why:** Discovery provides the "what are we building" layer. DI should not rebuild this.
+**Impact:** Bundle now explicitly supports engineering, product, and strategy work—not just visual design.
 
-### 1.2 Create Design Discovery Recipe
+### v2.1.0 - Visual Verification
 
-**Action:** Create recipe that connects discovery → design thinking
+**Completed:** 2026-01-22
 
-```yaml
-# design-intelligence/recipes/design-discovery.yaml
-name: design-discovery
-description: Full discovery-to-design workflow
+**Changes:**
+- Visual verification tools (visual-verify, layout-context, design-validate)
+- Design-validator agent for orchestrated verification
+- Playwright integration for screenshot capture
+- Prevents circular "fix it again" loops
 
-steps:
-  - id: discover
-    agent: discovery:discovery-interviewer
-    prompt: |
-      Conduct design discovery for: {{project_description}}
-      Focus on visual/experiential aspects.
+**Impact:** Agents verify before presenting, reducing QA burden on users.
 
-  - id: research
-    agent: design-intelligence-enhanced:research-runner
-    prompt: |
-      Based on this discovery brief, find relevant design inspiration:
-      {{steps.discover.result}}
+### v2.0.0 - Foundation
 
-  - id: synthesize
-    agent: design-intelligence-enhanced:art-director
-    prompt: |
-      Synthesize discovery and research into design direction:
-      
-      Discovery: {{steps.discover.result}}
-      Research: {{steps.research.result}}
-```
+**Completed:** 2026-01-16
 
-### 1.3 Package Communication (Design OS Lessons)
+**Changes:**
+- 8 specialized design agents
+- Creative research methodology
+- Nine Dimensions + Five Pillars frameworks
+- Weekly trend scraping (Awwwards, Siteinspire, The FWA)
+- Design-discovery recipe
 
-**Action:** Create clear entry point documentation
-
-| Need | Create |
-|------|--------|
-| One-liner | "Design intelligence that discovers, thinks, and generates" |
-| Simple workflow | 4 numbered steps with clear entry points |
-| Quick reference | "If you want X, do Y" table |
-| Who it's for | Target user descriptions |
-
-**Files to create:**
-- `docs/QUICK-START.md` - 5-minute intro
-- `docs/WORKFLOW.md` - Step-by-step guide
-- `README.md` update - Clear value proposition
+**Impact:** Complete design thinking capability for visual work.
 
 ---
 
-## Phase 2: Generation (Week 2-3)
+## Phase 2.3: Generation (In Progress)
 
-### 2.1 Define Design Protocol Spec
+**Timeline:** Week 1-3 of Q1 2026
 
-**Action:** Create specification for design artifacts
+### 2.3.1 Define Design Protocol Spec
+
+**Goal:** Create specification for design artifacts (inspired by A2UI)
 
 ```
-design-intelligence/specs/
+design-intelligence-enhanced/specs/
 ├── DESIGN-PROTOCOL.md           # Overall specification
 ├── schemas/
 │   ├── design-brief.schema.json # Discovery output
@@ -143,164 +137,54 @@ design-intelligence/specs/
     └── component-spec.json
 ```
 
-**Design Protocol Principles (from A2UI):**
+**Design Protocol Principles:**
 - Declarative, not executable
 - Framework-agnostic
 - LLM-friendly (flat, streaming-capable)
 - Progressively renderable
+- Universal (works for visual AND engineering artifacts)
 
-### 2.2 Token Generation
+### 2.3.2 Token Generation
 
 **Schema: `tokens.schema.json`**
 
-```json
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Design Tokens",
-  "type": "object",
-  "properties": {
-    "meta": {
-      "type": "object",
-      "properties": {
-        "name": { "type": "string" },
-        "version": { "type": "string" },
-        "generated": { "type": "string", "format": "date-time" },
-        "source": { "type": "string", "description": "discovery brief reference" }
-      }
-    },
-    "color": {
-      "type": "object",
-      "properties": {
-        "primary": { "$ref": "#/$defs/colorToken" },
-        "secondary": { "$ref": "#/$defs/colorToken" },
-        "neutral": { "$ref": "#/$defs/colorScale" },
-        "semantic": {
-          "type": "object",
-          "properties": {
-            "success": { "$ref": "#/$defs/colorToken" },
-            "warning": { "$ref": "#/$defs/colorToken" },
-            "error": { "$ref": "#/$defs/colorToken" },
-            "info": { "$ref": "#/$defs/colorToken" }
-          }
-        }
-      }
-    },
-    "typography": {
-      "type": "object",
-      "properties": {
-        "families": {
-          "type": "object",
-          "properties": {
-            "heading": { "$ref": "#/$defs/fontFamily" },
-            "body": { "$ref": "#/$defs/fontFamily" },
-            "mono": { "$ref": "#/$defs/fontFamily" }
-          }
-        },
-        "scale": { "$ref": "#/$defs/typeScale" }
-      }
-    },
-    "spacing": {
-      "type": "object",
-      "properties": {
-        "base": { "type": "string" },
-        "scale": { "type": "array", "items": { "type": "string" } }
-      }
-    },
-    "motion": {
-      "type": "object",
-      "properties": {
-        "duration": { "$ref": "#/$defs/durationScale" },
-        "easing": { "$ref": "#/$defs/easingTokens" }
-      }
-    }
-  }
-}
-```
+Covers:
+- Color systems (primary, secondary, semantic, neutral scales)
+- Typography (families, scale, weights)
+- Spacing (base unit, scale)
+- Motion (duration, easing)
+- Shadows, borders, radii
+- Breakpoints (responsive)
 
-### 2.3 Add Generation Agent
+### 2.3.3 Add Generation Agent
 
 **Action:** Create `token-generator` agent
 
-```markdown
-# design-intelligence/agents/token-generator.md
----
-meta:
-  name: token-generator
-  description: Generates design tokens from discovery context
----
+- Inputs: Discovery brief, design direction, research context
+- Outputs: tokens.json, tokens.css, tokens.tailwind.js, tokens.scss
+- Generation rules for translating decisions to tokens
 
-You generate Design Protocol-compliant token files from discovery briefs
-and design decisions.
-
-## Inputs
-- Discovery brief (from discovery:discovery-interviewer)
-- Design direction (from art-director)
-- Research context (from research-runner) [optional]
-
-## Outputs
-- `tokens.json` - Design Protocol compliant
-- `tokens.css` - CSS custom properties
-- `tokens.tailwind.js` - Tailwind config
-- `tokens.scss` - SCSS variables
-
-## Generation Rules
-[Rules for translating design decisions to tokens]
-```
-
-### 2.4 Add Spec Writer Agent
+### 2.3.4 Add Spec Writer Agent
 
 **Action:** Create `spec-writer` agent
 
-```markdown
-# design-intelligence/agents/spec-writer.md
----
-meta:
-  name: spec-writer
-  description: Writes component specifications from design decisions
----
-
-You write Design Protocol-compliant component specifications.
-
-## Output Format
-Each component spec includes:
-- Purpose and usage
-- Variants and states
-- Props/API
-- Accessibility requirements
-- Behavior specifications
-- Visual specifications (referencing tokens)
-```
+- Outputs: Component specifications
+- Includes: Purpose, variants, props/API, accessibility, behavior, visual specs
 
 ---
 
-## Phase 3: Export & Handoff (Week 3-4)
+## Phase 3.0: Export & Handoff (Planned)
 
-### 3.1 Create Export Package Generator
+**Timeline:** Q2 2026
 
-**Action:** Recipe that produces complete handoff
+### 3.1 Export Package Generator
 
-```yaml
-# design-intelligence/recipes/design-system-export.yaml
-name: design-system-export
-description: Generate complete design system export package
+**Recipe:** `design-system-export.yaml`
 
-steps:
-  - id: tokens
-    agent: design-intelligence-enhanced:token-generator
-    prompt: "Generate tokens from: {{design_context}}"
-
-  - id: components
-    agent: design-intelligence-enhanced:spec-writer
-    prompt: "Write component specs for: {{component_list}}"
-
-  - id: package
-    agent: design-intelligence-enhanced:export-packager
-    prompt: |
-      Create export package:
-      - tokens: {{steps.tokens.result}}
-      - components: {{steps.components.result}}
-      - format: {{export_format}}
-```
+Steps:
+1. Generate tokens from design context
+2. Write component specs
+3. Package for target environment
 
 ### 3.2 Export Formats
 
@@ -311,147 +195,128 @@ steps:
 | **Style Dictionary** | SD config + transforms | Design tooling |
 | **Figma Tokens** | JSON for Figma plugins | Designer handoff |
 | **Coding Agent** | Prompts + instructions | Claude Code, Cursor |
+| **API Spec** | OpenAPI/AsyncAPI | Engineering projects |
+| **Architecture Diagrams** | Mermaid/PlantUML | System design |
 
-### 3.3 Coding Agent Handoff
+### 3.3 Universal Artifact Types
 
-**Action:** Generate prompts for coding agents (like Design OS)
+**Visual Design:**
+- Design tokens
+- Component specifications
+- Layout systems
+- Interaction patterns
 
-```markdown
-# Export: product-design/prompts/implementation-prompt.md
+**Engineering:**
+- API specifications
+- Data models
+- System architecture diagrams
+- Integration contracts
 
-## Design System Implementation
-
-Use these artifacts to implement the design system:
-
-### Tokens
-[Link to tokens.json]
-
-### Components to Build
-1. Button - [link to spec]
-2. Card - [link to spec]
-3. Form inputs - [link to spec]
-
-### Implementation Order
-1. Set up token infrastructure
-2. Build primitive components
-3. Build composite components
-4. Apply to pages
-
-### Constraints
-- All colors must use token references
-- Typography must follow the scale
-- Spacing must use the spacing scale
-- Motion must use defined easings
-```
+**Strategy:**
+- Process diagrams
+- Decision frameworks
+- Resource allocation models
+- Optimization strategies
 
 ---
 
-## Phase 4: Feedback Loop (Week 4+)
+## Phase 4.0: Feedback Loop (Future)
+
+**Timeline:** Q3 2026
 
 ### 4.1 Validation Agent
 
-**Action:** Create agent that validates implementation against protocol
+**Enhanced:** `design-validator` agent
 
-```markdown
-# design-intelligence/agents/design-validator.md
----
-meta:
-  name: design-validator
-  description: Validates implementations against Design Protocol specs
----
+Validates:
+- Token usage compliance
+- Typography compliance
+- Spacing compliance
+- Component structure
+- Accessibility
+- Performance (engineering)
+- Resource efficiency (strategy)
 
-You validate that implementations match the design system specification.
-
-## Checks
-- Token usage (are all colors from tokens?)
-- Typography compliance (following scale?)
-- Spacing compliance (using spacing scale?)
-- Component structure (matching specs?)
-- Accessibility (meeting requirements?)
-
-## Output
+Output:
 - Compliance score
 - Specific violations
 - Remediation suggestions
-```
 
-### 4.2 Taste Refinement (from Embody)
+### 4.2 Taste Refinement
 
-**Action:** Add feedback-based generation tuning
+**Recipe:** `taste-refinement.yaml`
 
-```yaml
-# design-intelligence/recipes/taste-refinement.yaml
-name: taste-refinement
-description: Refine design direction through feedback
+Steps:
+1. Generate variations
+2. Gather feedback (approval gate)
+3. Refine direction based on preferences
 
-steps:
-  - id: generate-variations
-    agent: design-intelligence-enhanced:variation-generator
-    prompt: "Generate 4 design directions for: {{context}}"
-
-  - id: gather-feedback
-    approval: true
-    prompt: |
-      Review these 4 directions:
-      {{steps.generate-variations.result}}
-      
-      Rate each: 👍 (more like this) / 👎 (not this direction) / 👁️ (interesting)
-
-  - id: refine
-    agent: design-intelligence-enhanced:art-director
-    prompt: |
-      Based on feedback, refine the direction:
-      Liked: {{feedback.liked}}
-      Disliked: {{feedback.disliked}}
-      Interesting: {{feedback.interesting}}
-```
+Learns user preferences over time for:
+- Aesthetic choices (visual)
+- Architecture patterns (engineering)
+- Process optimization (strategy)
 
 ---
 
-## File Structure (Target State)
+## File Structure (Current State)
 
 ```
-amplifier-bundle-design-intelligence/
-├── bundle.md                           # Main bundle (includes discovery)
-├── README.md                           # Clear value prop, quick start
+amplifier-bundle-design-intelligence-enhanced/
+├── bundle.md                           # Main bundle
+├── README.md                           # Clear value prop, universal scope
 │
 ├── docs/
-│   ├── QUICK-START.md                  # 5-minute intro
-│   ├── WORKFLOW.md                     # Step-by-step guide
-│   ├── DESIGN-PROTOCOL.md              # Protocol specification
+│   ├── WORKFLOW.md                     # Step-by-step guide (needs update)
 │   └── EVOLUTION-PLAN.md               # This document
 │
-├── specs/
+├── specs/                              # Coming in v2.3.0
 │   └── schemas/
 │       ├── tokens.schema.json
 │       ├── components.schema.json
 │       └── system.schema.json
 │
 ├── agents/
-│   ├── [existing 7 advisory agents]
-│   ├── token-generator.md              # NEW: Generates tokens
-│   ├── spec-writer.md                  # NEW: Writes component specs
-│   ├── export-packager.md              # NEW: Creates export packages
-│   ├── design-validator.md             # NEW: Validates implementations
-│   └── variation-generator.md          # NEW: Generates variations for feedback
+│   ├── research-analyst.md             # ✅ Universal domain support (v2.2.0)
+│   ├── art-director.md                 # ✅ Visual strategy
+│   ├── design-system-architect.md      # ✅ System architecture
+│   ├── component-designer.md           # ✅ Component design
+│   ├── layout-architect.md             # ✅ Spatial composition
+│   ├── animation-choreographer.md      # ✅ Motion design
+│   ├── responsive-strategist.md        # ✅ Adaptation strategy
+│   ├── voice-strategist.md             # ✅ Communication strategy
+│   ├── design-validator.md             # ✅ Visual verification (v2.1.0)
+│   ├── token-generator.md              # Coming v2.3.0
+│   ├── spec-writer.md                  # Coming v2.3.0
+│   └── export-packager.md              # Coming v2.3.0
 │
 ├── behaviors/
 │   ├── design-core.yaml                # Core design philosophy
 │   ├── design-research.yaml            # Research capability
-│   └── design-generation.yaml          # NEW: Generation capability
+│   └── design-generation.yaml          # Coming v2.3.0
 │
 ├── recipes/
-│   ├── weekly-design-scrape.yaml       # Existing
-│   ├── design-discovery.yaml           # NEW: Discovery → Design
-│   ├── design-system-export.yaml       # NEW: Full export workflow
-│   └── taste-refinement.yaml           # NEW: Feedback-based refinement
+│   ├── weekly-design-scrape.yaml       # ✅ Trend research
+│   ├── design-discovery.yaml           # ✅ Discovery → Design
+│   ├── design-system-export.yaml       # Coming v2.3.0
+│   └── taste-refinement.yaml           # Coming v4.0
 │
 ├── context/
-│   ├── [existing context files]
-│   ├── generation-protocols.md         # NEW: How to generate artifacts
-│   └── design-protocol-guide.md        # NEW: Protocol usage guide
+│   ├── philosophy/                     # Design frameworks
+│   ├── research-methodology/           # ✅ Creative research (v2.2.0)
+│   │   ├── creative-research-methodology.md
+│   │   └── cognitive-task-catalog.md
+│   ├── examples/                       # ✅ Domain examples (v2.2.0)
+│   │   └── engineering-examples.md
+│   ├── generation-protocols.md         # Coming v2.3.0
+│   └── design-protocol-guide.md        # Coming v2.3.0
 │
-└── archive/                            # Research archive (existing)
+├── templates/                          # Example outputs
+│   └── discovery-brief-template.md
+│
+├── archive/                            # Research archive
+│   └── trends/
+│
+└── VERIFICATION_GUIDE.md               # ✅ Visual verification setup (v2.1.0)
 ```
 
 ---
@@ -459,14 +324,16 @@ amplifier-bundle-design-intelligence/
 ## Success Metrics
 
 ### Quantitative
-- Discovery → Tokens in <10 exchanges
-- Export package generation in <5 minutes
-- Implementation compliance score >90%
+- Problem decomposition in <5 exchanges
+- Research context gathered in <10 minutes
+- Export package generation in <5 minutes (v2.3.0)
+- Implementation compliance score >90% (v4.0)
 
 ### Qualitative
-- "I got a complete design system, not just advice"
-- "The tokens worked directly in my codebase"
-- "Coding agents understood the specs perfectly"
+- "I got deep insights, not just surface patterns"
+- "The cross-domain research revealed solutions I'd never considered"
+- "It works for engineering problems, not just visual design"
+- "I got complete artifacts, not just advice" (v2.3.0)
 
 ---
 
@@ -474,13 +341,15 @@ amplifier-bundle-design-intelligence/
 
 | Dependency | Status | Action |
 |------------|--------|--------|
-| Discovery bundle | ✅ Built | Include as upstream |
-| Research capability | ✅ Built | Enhance with context capture |
-| Advisory agents | ✅ Built | Keep as-is |
-| Generation agents | ❌ Missing | Build (Phase 2) |
-| Design Protocol spec | ❌ Missing | Define (Phase 2) |
-| Export capability | ❌ Missing | Build (Phase 3) |
-| Validation | ❌ Missing | Build (Phase 4) |
+| Discovery integration | ✅ Built | research-analyst handles decomposition |
+| Research methodology | ✅ Built | Creative research methodology (v2.2.0) |
+| Design agents | ✅ Built | 8 specialized agents |
+| Visual verification | ✅ Built | Playwright integration (v2.1.0) |
+| Universal scope | ✅ Built | Domain detection (v2.2.0) |
+| Generation agents | 🔄 In Progress | token-generator, spec-writer (v2.3.0) |
+| Design Protocol spec | 📋 Planned | Define schemas (v2.3.0) |
+| Export capability | 📋 Planned | Multi-format export (v3.0) |
+| Validation loop | 📋 Planned | Enhanced validator (v4.0) |
 
 ---
 
@@ -491,24 +360,48 @@ amplifier-bundle-design-intelligence/
 | Protocol too complex | Start minimal, iterate based on usage |
 | Generation quality | Use existing knowledge bases, add examples |
 | Framework compatibility | Test with Tailwind, CSS, and one other |
-| Scope creep | Ship Phase 1-2, validate, then Phase 3-4 |
+| Scope creep | Ship incrementally, validate, then expand |
+| Universal claims | Extensive testing across domains |
 
 ---
 
 ## Next Steps
 
-1. **Immediate:** Include discovery bundle in DI
-2. **This week:** Create design-discovery recipe
-3. **Next week:** Define Design Protocol spec (minimal)
-4. **Week 3:** Build token-generator agent
-5. **Week 4:** Create export package recipe
+### Immediate (This Month)
+1. ✅ Complete v2.2.0 documentation updates
+2. ✅ Update README with universal messaging
+3. Define minimal Design Protocol spec (v2.3.0)
+
+### Near Term (Next Month)
+1. Build token-generator agent
+2. Build spec-writer agent
+3. Create design-system-export recipe
+4. Test with real projects
+
+### Future (Q2-Q3 2026)
+1. Multi-format export (v3.0)
+2. Enhanced validation (v4.0)
+3. Taste refinement (v4.0)
+4. Community feedback integration
 
 ---
 
 ## References
 
-- [Discovery Bundle](https://github.com/anderlpz/amplifier-bundle-discovery)
-- [Design OS](https://github.com/buildermethods/design-os) - Inspiration for packaging
+- [Discovery Bundle](https://github.com/anderlpz/amplifier-bundle-discovery) - Structured interviewing
 - [A2UI Protocol](https://a2ui.org) - Inspiration for protocol design
-- [Embody](../../../amplifier-embody/) - Taste/generator philosophy
-- [Studious](../../../amplifier-studious/) - Multimodal discovery vision
+- [Creative Research Methodology](../context/research-methodology/creative-research-methodology.md) - Our methodology
+- [Cognitive Task Catalog](../context/research-methodology/cognitive-task-catalog.md) - Problem library
+- [Engineering Examples](../context/examples/engineering-examples.md) - Engineering walkthroughs
+
+---
+
+## Philosophy Note
+
+**This is design-intelligence-enhanced** - a community-maintained fork that expands on Microsoft's design-intelligence bundle with:
+- Visual verification tools (v2.1.0)
+- Universal domain applicability (v2.2.0)
+- Creative research methodology
+- Future artifact generation (v2.3.0+)
+
+We maintain compatibility while pushing boundaries of what design intelligence can be.

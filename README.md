@@ -1,166 +1,200 @@
-# Design Intelligence
+# Design Intelligence Enhanced
 
-> **Design intelligence that discovers, thinks, and generates.**
+> **Creative intelligence for purposeful problem-solving across design, engineering, product, and strategy.**
 
-The missing design layer between your idea and your codebase. Design Intelligence captures intent through structured discovery, applies design thinking with current trends, and produces artifacts that coding agents can implement.
-
----
-
-## The Problem
-
-AI coding tools build fast, but design results often miss the mark. You describe what you want, the agent builds *something*, but it looks generic or doesn't match your vision.
-
-**The core issue:** We're asking coding agents to figure out *what to design* and *build it* simultaneously. Design decisions get made on the fly, buried in code, impossible to adjust.
+When you need to make intentional decisions about how things should work—whether designing an API, building a dashboard, architecting a system, or optimizing a process—this bundle helps you think deeper, research broader, and solve better.
 
 ---
 
-## The Solution
+## The Core Problem
 
-Design Intelligence provides a complete design pipeline:
+You're building something important. You know it should be **purposeful**, not arbitrary. But how do you:
+
+- **Discover** what actually matters (not what you assume)
+- **Research** proven patterns across domains (not just your silo)
+- **Extract** principles that apply to your specific problem
+- **Synthesize** solutions that are both novel and grounded
+
+AI can generate code fast. But **design**—the purpose, planning, and intention behind what you build—requires a different approach.
+
+---
+
+## The Solution: Creative Research Methodology
+
+This bundle embodies a universal methodology for purposeful problem-solving:
 
 ```
-1. DISCOVER  →  What are we building and why?
-2. RESEARCH  →  What's out there? What's current?
-3. DESIGN    →  What should it be?
-4. VERIFY    →  Does it match the spec? (NEW in v2.1.0)
-5. GENERATE  →  Produce artifacts for implementation
+1. DECOMPOSE    → Break problems into cognitive tasks, system challenges, or coordination needs
+2. MAP DOMAINS  → Find analogous problems in unexpected places
+3. RESEARCH     → Study how other domains solved similar challenges (L3-4 principles)
+4. SYNTHESIZE   → Apply extracted patterns to your specific context
 ```
 
-Each step builds on the previous. You + AI work through structured conversations. The output: design artifacts that any coding agent can implement consistently.
+**Works across domains:**
+- **Visual/Product**: Dashboard design, user flows, interface patterns
+- **Engineering**: API design, database migrations, distributed systems
+- **Strategy**: Process optimization, resource allocation, organizational design
 
-**NEW in v2.1.0:** Visual verification prevents circular fix loops by letting design agents see what they built before presenting to you.
+**The key insight:** Every domain has solved problems similar to yours. Cross-domain research reveals principles (L3-4 understanding) you can adapt.
+
+---
+
+## Version 2.2.0: Universal Applicability
+
+**NEW**: Explicitly supports engineering, product, and strategy work—not just visual design.
+
+**What changed:**
+- Domain detection (visual/engineering/strategy) with adapted approaches
+- Engineering examples: API rate limiting, database migrations, distributed coordination
+- Cognitive task catalog expanded: fairness under load, failure isolation, habit formation
+- Research analyst adapts questions based on detected domain
+
+**Core philosophy:**
+> Design is purpose, planning, and intention behind any action, system, or process. This methodology works wherever you need to make thoughtful decisions.
 
 ---
 
 ## Quick Start
 
-### If You Want To...
-
-| Goal | What to Say |
-|------|-------------|
-| **Discover requirements** | "Help me discover the design for [project]" |
-| **Find inspiration** | "Find design inspiration for [context]" |
-| **Analyze a site** | "Look at [URL] and analyze the [aspect]" |
-| **Get design direction** | "What aesthetic direction fits [description]?" |
-| **Full workflow** | "Run the design-discovery recipe for [project]" |
-
 ### Installation
 
-**Add design intelligence to any session** (recommended):
-
 ```bash
-# Install as an app - layers on top of your current bundle
+# Add to Amplifier (works with any bundle)
 amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main --app
 
-# All 8 design agents are now available in your session
-amplifier
-```
-
-**Alternative: Use standalone**
-
-```bash
-# Set as your active bundle
-amplifier bundle add --app git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main
+# Set as active bundle (optional)
 amplifier bundle use design-intelligence-enhanced
+
+# Start session
 amplifier
 ```
 
-**Alternative: Include in your bundle**
+### Your First Creative Research Session
 
-```yaml
-# Your bundle.md
-includes:
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main
+**For visual/product work:**
+```
+"I need to design a dashboard showing system health. 
+Help me research how other domains handle rapid anomaly detection."
 ```
 
-> **Note:** This bundle is named `design-intelligence-enhanced` to distinguish it from the official Microsoft `design-intelligence` bundle. It includes all design-intelligence capabilities plus visual verification tools.
-
-### Setup for Verification (Recommended)
-
-Visual verification prevents circular fix loops by letting design agents see what they built before presenting to you.
-
-```bash
-# One-time setup (if not already installed)
-pip install playwright
-playwright install chromium
+**For engineering work:**
+```
+"I'm designing a rate limiting system for our API.
+Research analogous fairness problems in other domains."
 ```
 
-**When you need it:** Verifying live implementations, component validation, layout debugging
+**For strategy work:**
+```
+"We need to optimize our deployment process.
+Find patterns from how other domains handle coordination under constraints."
+```
 
-**Skip if:** Only doing discovery/research or creating specs for others to implement
-
-**How it works:** Agents capture screenshots, analyze layout, and validate against specifications before presenting results. See [VERIFICATION_GUIDE.md](VERIFICATION_GUIDE.md) for details.
-
-
+The agents will:
+1. Detect your domain (visual/engineering/strategy)
+2. Decompose the problem into core challenges
+3. Research analogous solutions across domains
+4. Extract L3-4 principles (not just surface patterns)
+5. Help you synthesize a purposeful solution
 
 ---
 
 ## What's Included
 
-### Discovery (via Discovery Bundle)
+### Discovery (Structured Interviewing)
 
-Structured interviewing that captures:
-- Purpose and intent
-- Visual/experiential expression
-- Context and appropriateness
-- Adaptive considerations
+Captures what matters through systematic questioning:
+- **Visual/Product**: Cognitive tasks, decision points, emotional context
+- **Engineering**: System guarantees, failure modes, trade-offs
+- **Strategy**: Coordination needs, resource constraints, optimization targets
 
-**Output:** Discovery Brief
+**Output:** Problem decomposition with clear understanding of what you're solving
 
-### Research
+### Research (Cross-Domain Intelligence)
 
-Continuous design trend monitoring:
-- Weekly scrapes of Awwwards, Siteinspire, The FWA
-- Vision AI analysis of award-winning sites
-- Searchable archive by category, style, technique
-- On-demand URL analysis
+On-demand research using creative methodology:
+- **Analogous domain mapping**: Find similar problems in unexpected fields
+- **Pattern extraction**: Identify L3-4 principles (why solutions work)
+- **Trend awareness**: Current best practices (weekly scrapes of Awwwards, Siteinspire, The FWA for visual design)
 
-**Output:** Research Context
+**Output:** Research context with cross-domain patterns and principles
 
-### Design Thinking
+### Design Agents (Specialized Expertise)
 
-7 specialized agents applying:
-- **Nine Dimensions** - Style, Motion, Voice, Space, Color, Typography, Proportion, Texture, Body
-- **Five Pillars** - Purpose, Craft, Constraints, Incompleteness, Humans
-- **Current trends** - What's working now, not 3 years ago
+8 specialized agents applying rigorous frameworks:
 
-**Output:** Design Direction
+| Agent | Domain Focus | Use For |
+|-------|--------------|---------|
+| **research-analyst** | Cross-domain research | Problem decomposition, analogous domain research |
+| **art-director** | Visual strategy | Aesthetic direction, visual coherence |
+| **design-system-architect** | System architecture | Tokens, patterns, foundations |
+| **component-designer** | Component design | Individual UI elements, variants |
+| **layout-architect** | Spatial composition | Page structure, grids, IA |
+| **animation-choreographer** | Motion design | Timing, transitions, feedback |
+| **responsive-strategist** | Adaptation strategy | Breakpoints, multi-device patterns |
+| **voice-strategist** | Communication strategy | Tone, messaging, microcopy |
 
-### Verification (NEW in v2.1.0)
+**Frameworks applied:**
+- **Nine Dimensions** (visual work): Style, Motion, Voice, Space, Color, Typography, Proportion, Texture, Body
+- **Five Pillars** (all domains): Purpose, Craft, Constraints, Incompleteness, Humans
 
-Visual verification tools that prevent circular fix loops:
-- **visual-verify** - Screenshot capture and comparison
-- **layout-context** - Computed layout extraction and analysis
-- **design-validate** - Systematic validation against specifications
-- **design-validator agent** - Orchestrates verification workflow
+### Verification (Visual Validation)
 
-**Output:** Validated designs with screenshot evidence
+Prevent circular fix loops with visual verification:
+- **visual-verify**: Screenshot capture and comparison
+- **layout-context**: Computed layout extraction
+- **design-validate**: Systematic validation against specs
+- **design-validator agent**: Orchestrates verification workflow
 
-**How it works:** Before presenting design work, agents verify visually, analyze layout, and validate against specs. You see working solutions on first presentation instead of becoming a QA tester.
+**Requires:** Playwright (`pip install playwright && playwright install chromium`)
 
-### Generation (Coming Soon)
-
-Produce artifacts coding agents understand:
-- Design tokens (colors, typography, spacing, motion)
-- Component specifications
-- Export packages with implementation prompts
-
-**Output:** Design Protocol artifacts
+**Use when:** Verifying live implementations, validating against specifications
 
 ---
 
-## Agents
+## Example Workflows
 
-| Agent | Expertise | Use For |
-|-------|-----------|---------|
-| **art-director** | Aesthetic strategy, visual coherence | Overall direction, style decisions |
-| **design-system-architect** | Tokens, patterns, architecture | System-wide foundations |
-| **component-designer** | Individual components, variants | Specific UI elements |
-| **layout-architect** | Page structure, grids, IA | Page-level composition |
-| **animation-choreographer** | Motion, timing, transitions | Movement and feedback |
-| **responsive-strategist** | Breakpoints, adaptation | Multi-device strategy |
-| **voice-strategist** | Tone, messaging, microcopy | Content and personality |
-| **design-validator** | Visual verification, validation | Verify implementations before delivery (requires Playwright) |
+### Engineering: API Rate Limiting
+
+```
+> "I'm designing rate limiting for our API. It needs to be fair, prevent abuse, 
+   but not block legitimate heavy users."
+
+→ Research analyst detects engineering domain
+→ Decomposes into: fairness under load, abuse prevention, graceful degradation
+→ Maps to analogous domains: highway traffic management, electrical grid load balancing, 
+  network QoS
+→ Extracts L3-4 principles: token buckets, priority queues, backpressure signals
+→ Synthesizes: Adaptive rate limiting with client reputation scoring
+```
+
+### Visual: Dashboard Design
+
+```
+> "Design a monitoring dashboard for DevOps teams. They need to spot anomalies 
+   fast during incidents."
+
+→ Research analyst detects visual/product domain
+→ Decomposes cognitive tasks: rapid gestalt assessment, anomaly detection, 
+  drill-down investigation
+→ Maps to analogous domains: air traffic control, medical monitoring, financial trading
+→ Extracts L3-4 principles: alert hierarchy, gestalt patterns, progressive disclosure
+→ Art director + layout architect synthesize: Dashboard with alert-driven hierarchy 
+  and contextual drill-down
+```
+
+### Strategy: Process Optimization
+
+```
+> "We need to optimize our code review process. Reviews are slow and creating 
+   bottlenecks."
+
+→ Research analyst detects strategy/operations domain
+→ Decomposes: coordination challenge, resource allocation, quality vs speed trade-off
+→ Maps to analogous domains: manufacturing flow, emergency triage, agile sprints
+→ Extracts L3-4 principles: WIP limits, priority systems, parallel paths
+→ Synthesizes: Tiered review system with automated pre-checks and fast-path for 
+  low-risk changes
+```
 
 ---
 
@@ -169,33 +203,48 @@ Produce artifacts coding agents understand:
 | Recipe | What It Does |
 |--------|--------------|
 | `design-discovery` | Full discovery → research → design direction workflow |
-| `weekly-design-scrape` | Automated trend research (Awwwards, Siteinspire) |
+| `weekly-design-scrape` | Automated visual trend research (Awwwards, Siteinspire, The FWA) |
 
 **Run a recipe:**
 ```
-"Run the design-discovery recipe for a healthcare dashboard"
+"Run the design-discovery recipe for a healthcare monitoring system"
 ```
-
----
-
-## Who It's For
-
-**Builders with design vision** — You know what you want but need help articulating it, refining it, and turning it into something coding agents can build.
-
-**Developers who aren't designers** — You need design guidance that goes beyond "make it look good" and produces consistent, implementable results.
-
-**Teams without dedicated designers** — You need design intelligence embedded in your development workflow, not a separate handoff process.
 
 ---
 
 ## Philosophy
 
-Design Intelligence follows Amplifier's principles:
+This bundle follows Amplifier's principles and adds creative research methodology:
 
-- **Discover before design** — Capture intent, don't assume it
-- **Think before generate** — Apply frameworks, not just taste
-- **Generate for implementation** — Produce artifacts, not just advice
-- **Stay current** — Research what works now, not what worked years ago
+- **Decompose before design** — Understand the problem deeply first
+- **Research cross-domain** — Analogous solutions reveal universal principles
+- **Extract L3-4 principles** — Not what works, but WHY it works
+- **Synthesize with reasoning** — Apply patterns thoughtfully to your context
+- **Design is universal** — Purpose and intention matter in every domain
+
+**Design is not decoration.** It's the thoughtful consideration of purpose, constraints, and humans that makes systems work well.
+
+---
+
+## Who It's For
+
+**Engineers who think deeply** — You want your systems to be purposeful, not just functional. You research before building.
+
+**Builders with vision** — You know what you want but need help articulating it, researching proven patterns, and refining your approach.
+
+**Teams making critical decisions** — You need a structured way to explore options, research best practices, and make informed choices.
+
+**Anyone solving novel problems** — You need to synthesize solutions from proven patterns across domains, not reinvent from scratch.
+
+---
+
+## Documentation
+
+- **[Creative Research Methodology](context/research-methodology/creative-research-methodology.md)** — The full methodology with examples
+- **[Cognitive Task Catalog](context/research-methodology/cognitive-task-catalog.md)** — Library of decomposed problems
+- **[Engineering Examples](context/examples/engineering-examples.md)** — Complete engineering walkthroughs
+- **[Verification Guide](VERIFICATION_GUIDE.md)** — Visual verification setup and usage
+- **[Quick Workflow](docs/WORKFLOW.md)** — Step-by-step guide
 
 ---
 
@@ -203,32 +252,42 @@ Design Intelligence follows Amplifier's principles:
 
 | Phase | Status | What |
 |-------|--------|------|
-| **1. Foundation** | ✅ Complete | Discovery integration, research capability |
-| **2. Generation** | 🔄 In Progress | Design Protocol spec, token generation |
-| **3. Export** | ⏳ Planned | Handoff packages for coding agents |
-| **4. Feedback** | ⏳ Planned | Validation, taste refinement |
-
-See `docs/EVOLUTION-PLAN.md` for details.
+| **2.0 Foundation** | ✅ Complete | Discovery integration, research capability, design agents |
+| **2.1 Verification** | ✅ Complete | Visual verification tools, validation workflow |
+| **2.2 Universalization** | ✅ Complete | Engineering/product/strategy support, domain detection |
+| **2.3 Generation** | 🔄 In Progress | Design Protocol spec, token generation, artifact export |
+| **3.0 Feedback** | ⏳ Planned | Validation loops, taste refinement, continuous improvement |
 
 ---
 
-## Resources
+## Naming Note
 
-- **[Quick Workflow](docs/WORKFLOW.md)** — Step-by-step guide
-- **[Evolution Plan](docs/EVOLUTION-PLAN.md)** — Where we're headed
-- **[Design Philosophy](context/philosophy/)** — The thinking behind the design
+This bundle is named **design-intelligence-enhanced** to distinguish it from Microsoft's official `design-intelligence` bundle.
+
+**Why "enhanced"?**
+- Includes all design-intelligence capabilities
+- Adds visual verification tools (v2.1.0)
+- Expands to universal applicability (v2.2.0)
+- Community-maintained enhancements
+
+**Installation uses the enhanced name:**
+```bash
+amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main --app
+amplifier bundle use design-intelligence-enhanced
+```
 
 ---
 
 ## Contributing
 
-> [!NOTE]
-> This project is not currently accepting external contributions, but we're actively working toward opening this up.
+This project is an enhanced fork maintained independently. For the official Microsoft design-intelligence bundle, see [microsoft/amplifier-bundle-design-intelligence](https://github.com/microsoft/amplifier-bundle-design-intelligence).
 
-Most contributions require a Contributor License Agreement (CLA). For details, visit [Contributor License Agreements](https://cla.opensource.microsoft.com).
+**Philosophy contributions welcome:** If you discover new cross-domain patterns, L3-4 principles, or cognitive task decompositions, we'd love to learn from your research.
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+---
 
-## Trademarks
+## License
 
 This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general).
+
+**Note:** This is an enhanced community fork. See LICENSE for details.

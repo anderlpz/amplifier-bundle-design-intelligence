@@ -34,6 +34,12 @@ meta:
     Art director owns the translation of brand to visual expression.
     </commentary>
     </example>
+
+tools:
+  - module: tool-filesystem
+    source: git+https://github.com/microsoft/amplifier-module-tool-filesystem@main
+  - module: tool-search
+    source: git+https://github.com/microsoft/amplifier-module-tool-search@main
 ---
 
 ## Reference Knowledge

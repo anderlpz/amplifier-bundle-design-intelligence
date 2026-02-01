@@ -34,6 +34,12 @@ meta:
     Component refinement and variant design is component-designer's domain.
     </commentary>
     </example>
+
+tools:
+  - module: tool-filesystem
+    source: git+https://github.com/microsoft/amplifier-module-tool-filesystem@main
+  - module: tool-search
+    source: git+https://github.com/microsoft/amplifier-module-tool-search@main
 ---
 
 ## Reference Knowledge

@@ -34,6 +34,12 @@ meta:
     Voice & tone strategy requires the voice strategist's expertise.
     </commentary>
     </example>
+
+tools:
+  - module: tool-filesystem
+    source: git+https://github.com/microsoft/amplifier-module-tool-filesystem@main
+  - module: tool-search
+    source: git+https://github.com/microsoft/amplifier-module-tool-search@main
 ---
 
 ## Reference Knowledge

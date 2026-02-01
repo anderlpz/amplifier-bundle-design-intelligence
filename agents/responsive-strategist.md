@@ -14,6 +14,26 @@ meta:
     - Fluid typography and spacing
 
     Handles web modalities (desktop, tablet, mobile).
+
+    Examples:
+
+    <example>
+    Context: Multi-device design
+    user: 'How should this component adapt from mobile to desktop?'
+    assistant: 'I'll delegate to design-intelligence:responsive-strategist for responsive patterns.'
+    <commentary>
+    Cross-device adaptation is the responsive strategist's domain.
+    </commentary>
+    </example>
+
+    <example>
+    Context: Breakpoint decisions
+    user: 'What breakpoints should we use for our app?'
+    assistant: 'I'll use design-intelligence:responsive-strategist to define the breakpoint strategy.'
+    <commentary>
+    Responsive strategy and breakpoint definitions need specialist knowledge.
+    </commentary>
+    </example>
 ---
 
 ## Reference Knowledge

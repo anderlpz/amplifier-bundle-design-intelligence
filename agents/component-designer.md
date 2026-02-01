@@ -14,6 +14,26 @@ meta:
     - Variant design and props API
 
     This agent works at the component level, not system architecture.
+
+    Examples:
+
+    <example>
+    Context: Designing a new UI component
+    user: 'Design a date picker component for our app'
+    assistant: 'I'll delegate to design-intelligence:component-designer to design the date picker.'
+    <commentary>
+    Individual component design is component-designer's specialty.
+    </commentary>
+    </example>
+
+    <example>
+    Context: Refining existing components
+    user: 'The button component feels inconsistent, can you improve it?'
+    assistant: 'I'll use design-intelligence:component-designer to refine the button design.'
+    <commentary>
+    Component refinement and variant design is component-designer's domain.
+    </commentary>
+    </example>
 ---
 
 ## Reference Knowledge

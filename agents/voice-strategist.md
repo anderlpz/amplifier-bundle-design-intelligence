@@ -14,6 +14,26 @@ meta:
     - Content guidelines for developers
 
     Owns the Voice dimension (Nine Dimensions #3).
+
+    Examples:
+
+    <example>
+    Context: UX writing
+    user: 'Write the error messages for our form validation'
+    assistant: 'I'll delegate to design-intelligence:voice-strategist for error message patterns.'
+    <commentary>
+    UX writing and microcopy is the voice strategist's domain.
+    </commentary>
+    </example>
+
+    <example>
+    Context: Tone guidelines
+    user: 'What should be the voice and tone for our product?'
+    assistant: 'I'll use design-intelligence:voice-strategist to establish voice guidelines.'
+    <commentary>
+    Voice & tone strategy requires the voice strategist's expertise.
+    </commentary>
+    </example>
 ---
 
 ## Reference Knowledge

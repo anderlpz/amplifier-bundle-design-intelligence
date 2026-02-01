@@ -14,6 +14,26 @@ meta:
     - Brand expression in design
 
     Owns the Style dimension (Nine Dimensions #1) at the strategic level.
+
+    Examples:
+
+    <example>
+    Context: Establishing visual direction
+    user: 'What should be the visual style for our new product?'
+    assistant: 'I'll delegate to design-intelligence:art-director for aesthetic direction.'
+    <commentary>
+    Visual strategy and aesthetic decisions require the art director.
+    </commentary>
+    </example>
+
+    <example>
+    Context: Brand expression
+    user: 'How do we express our brand personality in the UI?'
+    assistant: 'I'll use design-intelligence:art-director to translate brand into design principles.'
+    <commentary>
+    Art director owns the translation of brand to visual expression.
+    </commentary>
+    </example>
 ---
 
 ## Reference Knowledge

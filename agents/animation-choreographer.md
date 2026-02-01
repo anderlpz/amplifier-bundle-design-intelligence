@@ -15,6 +15,26 @@ meta:
     - Accessibility considerations for motion
 
     Remember: Animation is communication, not decoration.
+
+    Examples:
+
+    <example>
+    Context: Designing motion for UI elements
+    user: 'Add animations to make the modal feel more polished'
+    assistant: 'I'll delegate to design-intelligence:animation-choreographer for motion design.'
+    <commentary>
+    Animation and transition design requires the choreographer's timing expertise.
+    </commentary>
+    </example>
+
+    <example>
+    Context: Page transitions
+    user: 'Design the transition between our onboarding screens'
+    assistant: 'I'll use design-intelligence:animation-choreographer for the transition choreography.'
+    <commentary>
+    Page-level transitions need coordinated motion design.
+    </commentary>
+    </example>
 ---
 
 ## Reference Knowledge

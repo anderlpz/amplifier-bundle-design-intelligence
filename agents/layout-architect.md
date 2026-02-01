@@ -14,6 +14,26 @@ meta:
     - Screen-level structure
 
     Owns the Space dimension (Nine Dimensions #4) at the page/view level.
+
+    Examples:
+
+    <example>
+    Context: Page structure design
+    user: 'Help me structure the dashboard layout'
+    assistant: 'I'll delegate to design-intelligence:layout-architect for page structure.'
+    <commentary>
+    Page-level layout and information architecture is the layout architect's domain.
+    </commentary>
+    </example>
+
+    <example>
+    Context: Navigation hierarchy
+    user: 'How should we organize the navigation for this app?'
+    assistant: 'I'll use design-intelligence:layout-architect to design the navigation hierarchy.'
+    <commentary>
+    Information architecture and navigation is layout-architect's specialty.
+    </commentary>
+    </example>
 ---
 
 ## Reference Knowledge

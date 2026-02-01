@@ -15,6 +15,26 @@ meta:
     - Cross-cutting design concerns
 
     This agent operates at the system level, not individual components.
+
+    Examples:
+
+    <example>
+    Context: User is setting up a new design system
+    user: 'Help me establish design tokens for our product'
+    assistant: 'I'll delegate to design-intelligence:design-system-architect for token architecture.'
+    <commentary>
+    Design system token work is the architect's domain.
+    </commentary>
+    </example>
+
+    <example>
+    Context: Evaluating design decisions
+    user: 'Does this component follow our design principles?'
+    assistant: 'I'll use design-intelligence:design-system-architect to evaluate against the Nine Dimensions.'
+    <commentary>
+    Systematic evaluation of design decisions requires the architect's framework knowledge.
+    </commentary>
+    </example>
 ---
 
 ## Reference Knowledge

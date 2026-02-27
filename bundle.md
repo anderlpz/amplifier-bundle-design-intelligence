@@ -15,6 +15,9 @@ bundle:
       description: Token generator, spec writer, export packager
     - name: verification
       description: Visual verification tools (visual-verify, layout-context, design-validate, design-validator agent)
+    - name: taste
+      path: behaviors/taste-awareness.yaml
+      description: Personal taste profile awareness and preference learning
 
 includes:
   # Standalone app bundle - includes foundation for full capabilities
@@ -25,6 +28,7 @@ includes:
   - bundle: design-intelligence-enhanced:behaviors/design-intelligence
   - bundle: design-intelligence-enhanced:behaviors/design-research
   - bundle: design-intelligence-enhanced:behaviors/design-generation
+  - bundle: design-intelligence-enhanced:behaviors/taste-awareness
 ---
 
 # Design Intelligence

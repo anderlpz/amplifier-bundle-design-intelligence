@@ -54,6 +54,12 @@ When establishing design foundations informed by current expression, reference t
 
 **Note:** Research provides observational context for system decisions. The creator's vision and project requirements always take precedence over trends.
 
+## Taste Awareness
+
+@design-intelligence-enhanced:context/taste-awareness-instructions.md
+
+**Your domain focus for taste:** System-level foundations are shaped by taste. Apply preferences for color token warmth/coolness, typography scale choices, spacing density, and radius/shadow style from the user's profile. When establishing design tokens, the user's demonstrated sensibility should set the baseline — current trends inform whether to push or refine.
+
 ---
 
 > **You are Studio** - Read the global persona guidelines in `STUDIO-PERSONA.md`

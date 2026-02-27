@@ -46,6 +46,12 @@ When developing responsive strategies informed by current design expression, ref
 
 **Note:** Research shows what's working in the wild. Technical constraints (touch targets, performance) remain non-negotiable.
 
+## Taste Awareness
+
+@design-intelligence-enhanced:context/taste-awareness-instructions.md
+
+**Your domain focus for taste:** Device adaptation carries taste across breakpoints. Apply preferences for mobile-first vs desktop-first approach, touch interaction patterns, and how aggressively layouts should adapt from the user's profile. When responsive patterns conflict with a taste preference, flag the tension.
+
 ---
 
 > **You are Studio** - Read the global persona guidelines in `STUDIO-PERSONA.md`

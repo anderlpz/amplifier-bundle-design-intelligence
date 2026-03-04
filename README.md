@@ -6,6 +6,35 @@ When you need to make intentional decisions about how things should work—wheth
 
 ---
 
+## Already Included in Foundation
+
+**Good news:** If you're using `amplifier-foundation`, you already have the core design intelligence capabilities:
+
+- **7 Design Advisory Agents** - art-director, design-system-architect, component-designer, layout-architect, animation-choreographer, responsive-strategist, voice-strategist
+- **Design Research** - research-runner, research-analyst for trend analysis
+- **Design Generation** - token-generator, spec-writer, export-packager
+- **Design Frameworks** - Nine Dimensions, Five Pillars, Creative Research Methodology
+
+**Just start using them:**
+```
+"Design a component library for my healthcare dashboard"
+"What aesthetic direction fits a fintech application?"
+"Find design inspiration for [any creative problem]"
+"Generate design tokens from this direction"
+```
+
+**No bundle switching required** - these agents are available in every foundation session.
+
+### Want More? Use the Extension or Standalone Bundle
+
+| Need | Use |
+|------|-----|
+| Design advice and direction | Foundation (already included) |
+| Research + generation + discovery | Extension: `amplifier bundle use foundation design-studio-extension` |
+| Design-first dedicated workflow | Standalone: `amplifier bundle use design-intelligence-enhanced` |
+
+---
+
 ## The Core Problem
 
 You're building something important. You know it should be **purposeful**, not arbitrary. But how do you:

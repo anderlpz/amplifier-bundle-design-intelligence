@@ -35,6 +35,32 @@ includes:
 
 > Creative intelligence for breakthrough problem-solving across domains.
 
+## Architecture Note
+
+**Foundation already includes** the full set of design intelligence capabilities:
+- 7 design advisory agents (art-director, component-designer, etc.)
+- Design research capabilities (research-runner, research-analyst)
+- Design generation capabilities (token-generator, spec-writer, export-packager)
+
+**This standalone bundle adds:**
+- Discovery bundle integration for structured design interviews
+- Taste awareness for preference learning across sessions
+- Design-first coordinator messaging and workflow emphasis
+
+**When to use this bundle:**
+- You want a dedicated design workflow experience
+- You're running full discovery -> research -> design -> generate pipelines
+- You prefer design-first language and recipes as the primary interface
+
+**When to use foundation + extension instead:**
+- You're primarily developing but want design capabilities available
+- You want development-first language with design as an available capability
+- You want to add only specific capabilities (research OR generation)
+
+**Both approaches give you the same core capabilities** - this is about experience and emphasis, not functionality.
+
+---
+
 ## What is Design?
 
 **Design** is purpose, planning, or intention behind any action, fact, or material object. It's the thoughtful shaping of systems, experiences, and solutions.
@@ -154,6 +180,10 @@ Research updates on **your schedule**, not ours. No guilt about stale data.
 ---
 
 @design-intelligence-enhanced:context/design-instructions.md
+
+---
+
+@design-intelligence-enhanced:context/design-delegation-guide.md
 
 ---
 

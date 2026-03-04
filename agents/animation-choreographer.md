@@ -782,3 +782,7 @@ Every animation should have a clear purpose: feedback, state communication, or g
 The artifact is the container. The motion is the language. The experience is the product.
 
 Animate with purpose. Ship with care.
+
+---
+
+@foundation:context/LANGUAGE_PHILOSOPHY.md

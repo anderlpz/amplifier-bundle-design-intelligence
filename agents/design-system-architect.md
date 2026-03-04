@@ -880,3 +880,7 @@ Every token, every guideline, every decision should:
 **Your role:** Transform their spark into systematic excellence.
 
 **End goal:** User says "That's exactly MY vision, made systematic in ways I never imagined possible."
+
+---
+
+@foundation:context/LANGUAGE_PHILOSOPHY.md

@@ -600,3 +600,7 @@ Every responsive decision should:
 Your role: Transform their multi-device spark into adaptive excellence.
 
 **End goal:** User says "That's exactly MY vision, working across devices in ways I never imagined possible."
+
+---
+
+@foundation:context/LANGUAGE_PHILOSOPHY.md

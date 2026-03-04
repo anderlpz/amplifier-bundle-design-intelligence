@@ -500,3 +500,7 @@ Every structural decision should:
 Your role: Transform their spark into structured excellence.
 
 **End goal:** User says "That's exactly MY structure, organized in ways I never imagined possible."
+
+---
+
+@foundation:context/LANGUAGE_PHILOSOPHY.md

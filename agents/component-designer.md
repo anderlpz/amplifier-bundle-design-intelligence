@@ -908,3 +908,7 @@ A component succeeds when:
 Every button, every input, every animation is a promise about how the system behaves. Keep those promises with care, clarity, and craft.
 
 The artifact is the container. The experience is the product. Design for humans, not screens.
+
+---
+
+@foundation:context/LANGUAGE_PHILOSOPHY.md

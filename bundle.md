@@ -4,6 +4,9 @@ bundle:
   version: 2.2.0
   description: Creative intelligence system for purpose-driven problem-solving across design, engineering, product, and strategy
   sub_bundles:
+    - name: baseline
+      path: behaviors/design-baseline.yaml
+      description: Always-on design quality principles for all UI code generation
     - name: advisory
       path: behaviors/design-intelligence.yaml
       description: 7 specialized design agents (art-director, component-designer, etc.)
@@ -25,6 +28,7 @@ includes:
   - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
   # TEMPORARILY DISABLED - debugging profile_hint error
   # - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-verification@main
+  - bundle: design-intelligence-enhanced:behaviors/design-baseline
   - bundle: design-intelligence-enhanced:behaviors/design-intelligence
   - bundle: design-intelligence-enhanced:behaviors/design-research
   - bundle: design-intelligence-enhanced:behaviors/design-generation

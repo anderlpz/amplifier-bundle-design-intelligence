@@ -9,6 +9,9 @@ This directory contains metacognitive design intelligence - the understanding of
 ### typography-personalities.md
 Understanding what fonts communicate - the emotional weight, cultural associations, and psychological signals of different typefaces. Helps translate user vision ("premium but warm") into specific typography decisions.
 
+### shape-and-corners.md
+Understanding what corner radii and geometric shapes communicate - the proximity principle (closer to user = rounder), contour bias (sharp corners trigger fear processing), and how radius values signal formality, warmth, and hierarchy. Includes Apple's product geometry analysis and the nesting formula.
+
 ## Philosophy
 
 **Design decisions are communication decisions.**

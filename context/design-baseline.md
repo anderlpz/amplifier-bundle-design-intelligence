@@ -39,11 +39,14 @@ Passive design quality layer. These principles apply to all UI code generation r
 
 **Use whitespace deliberately.** Generous space signals quality. Tight space signals density and utility. Proximity groups related elements. Both are valid -- match spacing to content type. Marketing pages breathe. Dashboards compress.
 
+**Closer to the user = rounder.** Border radius communicates interactive proximity. Elements the user taps directly (buttons, toggles, chips) should be rounder than elements they view from a distance (page containers, backgrounds, nav bars). Sharp corners signal precision and authority. Large radii signal warmth and approachability. Nest corners correctly: inner radius = outer radius - padding. Same radius on parent and child is the most common amateur tell.
+
 **Avoid:**
 - `height: 100vh` for full-screen sections -- use `min-height: 100dvh` to prevent mobile viewport bugs
 - Everything centered and symmetrical -- vary alignment for visual interest
 - Edge-to-edge content without container constraints on wide screens
 - Complex flexbox math (`calc(33% - 1rem)`) -- use Grid
+- Same border-radius on all elements regardless of size -- scale radius proportionally
 
 ---
 

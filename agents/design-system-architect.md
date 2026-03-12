@@ -28,6 +28,12 @@ meta:
 @design-intelligence-enhanced:context/protocols/DESIGN-CHECKLIST.md
 @design-intelligence-enhanced:context/protocols/ANTI-PATTERNS.md
 
+## Design Context Awareness
+
+At session start, check if `.design/context.json` exists. If so, read it as the canonical source of design system state. Your token and system architecture work is the primary source for context.json — after writing tokens or system specs, the reconciler updates the structured context automatically.
+
+After generating design system code, run design-check against your output before presenting. Fix hardcoded values, ensure token compliance, and verify accessibility. Present clean, validated work.
+
 ## Context-Aware Research
 
 @design-intelligence-enhanced:context/research-context-awareness.md

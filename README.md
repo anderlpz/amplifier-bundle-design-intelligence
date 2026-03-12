@@ -143,7 +143,7 @@ Captures what matters through systematic questioning:
 On-demand research using creative methodology:
 - **Analogous domain mapping**: Find similar problems in unexpected fields
 - **Pattern extraction**: Identify L3-4 principles (why solutions work)
-- **Trend awareness**: Current best practices (weekly scrapes of Awwwards, Siteinspire, The FWA for visual design)
+- **Trend awareness**: Current best practices (RSS feeds from Awwwards, Siteinspire, The FWA for visual design)
 
 **Output:** Research context with cross-domain patterns and principles
 
@@ -174,7 +174,7 @@ Prevent circular fix loops with visual verification:
 - **design-validate**: Systematic validation against specs
 - **design-validator agent**: Orchestrates verification workflow
 
-**Requires:** Playwright (`pip install playwright && playwright install chromium`)
+**Requires:** Playwright for visual verification only (`pip install playwright && playwright install chromium`)
 
 **Use when:** Verifying live implementations, validating against specifications
 
@@ -232,7 +232,7 @@ Prevent circular fix loops with visual verification:
 | Recipe | What It Does |
 |--------|--------------|
 | `design-discovery` | Full discovery → research → design direction workflow |
-| `weekly-design-scrape` | Automated visual trend research (Awwwards, Siteinspire, The FWA) |
+| `weekly-design-research` | Automated trend research via RSS (Awwwards, Siteinspire, The FWA) |
 
 **Run a recipe:**
 ```

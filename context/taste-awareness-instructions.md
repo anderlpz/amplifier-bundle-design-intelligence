@@ -15,6 +15,18 @@ This document teaches you how to use both: loading profiles, weaving taste into 
 
 ---
 
+## Privacy & Disclosure
+
+**At the start of every design session where taste-awareness is active**, briefly inform the user:
+
+> "I can learn your design preferences over time to personalize suggestions. Preferences are only saved when you explicitly confirm them. You can disable this by setting `taste_tracking: false` in your bundle config."
+
+This disclosure is a **one-time per session** notice — do not repeat it on every interaction. If the user has an existing profile, mention that you've loaded it.
+
+**Opt-out:** If `taste_tracking` is set to `false` in the bundle config, do NOT observe patterns, propose profile updates, or read/write preference files. Proceed with standard design reasoning only.
+
+---
+
 ## Loading Taste Profiles
 
 Two profile files may exist:
@@ -23,10 +35,11 @@ Two profile files may exist:
 - **Per-project:** `.design/preferences.md` — Project-specific overrides
 
 **At session start:**
-1. Check if either file exists using `read_file`
-2. If both exist, merge them: per-project wins on conflicts, user-global fills gaps
-3. If neither exists, proceed normally — no profiles means no taste-informed reasoning, and that's fine
-4. Never create profile files preemptively — they're created only when the user confirms a first preference
+1. Check if `taste_tracking` is disabled in config — if so, skip all taste-related behavior
+2. Check if either file exists using `read_file`
+3. If both exist, merge them: per-project wins on conflicts, user-global fills gaps
+4. If neither exists, proceed normally — no profiles means no taste-informed reasoning, and that's fine
+5. Never create profile files preemptively — they're created only when the user confirms a first preference
 
 **Merge rules:**
 - Per-project entries always override user-global entries for the same dimension
@@ -75,7 +88,7 @@ When current design trends from the archive are relevant to a user's existing pr
 
 ### When No Profile Exists
 
-If no preference files exist, reason normally without taste references. Don't mention the absence of profiles — just do good design work. As you observe choices the user makes, you may start proposing initial profile entries (see Profile Updates below).
+If no preference files exist, reason normally without taste references. As you observe choices the user makes, you may start proposing initial profile entries (see Profile Updates below) — but only after the session-start disclosure has been given.
 
 ---
 
@@ -139,30 +152,36 @@ When the user confirms, write the update to the appropriate file:
 
 ## Knowledge Base Enrichment
 
-When you encounter design patterns from archive data that aren't captured in the knowledge base (`context/observed-expression/`), propose additions.
+When you encounter design patterns from archive data that aren't captured in the knowledge base, propose additions. Enrichment writes go to a **local overlay directory**, not the shared bundle files.
 
 ### Flow
 
-1. **Notice the gap** — You draw on a pattern from archive-index or a monthly summary that isn't in the observed-expression files
+1. **Notice the gap** — You draw on a pattern from archive-index or a monthly summary that isn't in the existing knowledge base
 2. **Propose inline** — As part of your normal design reasoning, mention it:
-   > "I'm drawing on a current trend here — condensed bold sans-serifs for data density. This isn't in typography-personalities.md yet. Want me to add it?"
-3. **User confirms or dismisses** — If confirmed, write the addition following the established format in the target file
+   > "I'm drawing on a current trend here — condensed bold sans-serifs for data density. This isn't in the knowledge base yet. Want me to save this observation locally?"
+3. **User confirms or dismisses** — If confirmed, write the addition to the **local overlay**
 
-### What Gets Enriched
+### Where Enrichment Writes Go
 
-- `context/observed-expression/typography-personalities.md` — New font personality observations
-- `context/observed-expression/` — New files when a category doesn't exist yet (e.g., `color-psychology.md`, `layout-narratives.md`, `motion-emotion.md`)
-- `context/research-methodology/cognitive-task-catalog.md` — New cognitive task entries when you encounter tasks not in the catalog
+All enrichment writes go to the **user's local project directory**, never to the shared bundle:
 
-### What Stays Static
+- `.design/observed-expression/typography-personalities.md` — New font personality observations
+- `.design/observed-expression/` — New files when a category doesn't exist yet (e.g., `color-psychology.md`, `layout-narratives.md`, `motion-emotion.md`)
+- `.design/cognitive-tasks.md` — New cognitive task entries when you encounter tasks not in the catalog
 
-Core methodology files define *how to think*, not *what we've observed* — they don't get enriched:
-- `creative-research-methodology.md`
-- `pattern-abstraction-guide.md`
+**Why local, not shared:** The bundle's `context/observed-expression/` files are part of a shared, version-controlled repository. Writing user-specific observations there would mix individual session data with community knowledge. Local overlay keeps personal observations separate.
+
+When proposing enrichment, **explicitly tell the user** that the observation will be saved to their project's `.design/` directory.
+
+### What Stays Read-Only (in the bundle)
+
+All files in `context/observed-expression/` and `context/research-methodology/` are **read-only reference material**. Agents read them but never write to them:
+- `context/observed-expression/*.md` — Shared design knowledge (read-only)
+- `context/research-methodology/*.md` — Core methodology (read-only)
 
 ### Format for New Entries
 
-Follow the established format in the target file. For `typography-personalities.md`, each entry uses:
+Follow the established format from the bundle's reference files. For typography personalities, each entry uses:
 - **Examples:** Specific typefaces
 - **What they communicate:** Bullet list
 - **Emotional associations:** Bullet list

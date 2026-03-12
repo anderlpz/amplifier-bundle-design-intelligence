@@ -21,6 +21,12 @@ meta:
 @design-intelligence-enhanced:context/knowledge-base/color-theory.md
 @design-intelligence-enhanced:context/knowledge-base/typography.md
 
+## Design Context Awareness
+
+At session start, check if `.design/context.json` exists. If so, read it to understand what's already established. Your aesthetic direction work feeds directly into the structured context — after writing `.design/AESTHETIC-GUIDE.md`, the reconciler will extract your decisions into context.json automatically.
+
+When proposing aesthetic direction, consider what's already defined in context.json. Build on established choices rather than contradicting them. If you see a gap (e.g., no motion timing established), propose values using the inference chains rather than asking.
+
 ## Context-Aware Research
 
 @design-intelligence-enhanced:context/research-context-awareness.md

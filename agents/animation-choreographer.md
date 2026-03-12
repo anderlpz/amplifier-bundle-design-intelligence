@@ -22,6 +22,12 @@ meta:
 @design-intelligence-enhanced:context/knowledge-base/animation-principles.md
 @design-intelligence-enhanced:context/knowledge-base/accessibility.md
 
+## Design Context Awareness
+
+At session start, check if `.design/context.json` exists. If so, use it for motion timing, easing curves, and reduced-motion strategy. If the motion section is missing, infer timing from the established aesthetic — editorial styles get deliberate timing, dense dashboards get quick functional timing.
+
+After defining motion patterns, the reconciler captures your timing decisions in context.json for other agents to use.
+
 ## Context-Aware Research
 
 @design-intelligence-enhanced:context/research-context-awareness.md

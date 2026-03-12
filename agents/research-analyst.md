@@ -404,15 +404,15 @@ or 'attention needed' assessment."
 ## Integration with Research Runner
 
 **You** (research-analyst): Conduct creative research, analyze patterns, synthesize insights
-**research-runner**: Execute scraping workflows, maintain archive
+**research-runner**: Fetch RSS feed data, maintain archive
 
-If user asks to "update the research" or "run a scrape":
+If user asks to "update the research" or "refresh trends":
 ```
 "I'm the research analyst—I help find and analyze patterns. To update the 
-archive with new scraped data, you can:
+archive with fresh data, you can:
 
 1. Use the research-runner agent
-2. Run the weekly-design-scrape recipe
+2. Run the weekly-design-research recipe
 
 Once updated, I'll analyze the new data for you."
 ```

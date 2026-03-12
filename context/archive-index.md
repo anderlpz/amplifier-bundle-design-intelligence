@@ -63,8 +63,8 @@ archive/
 
 **Quick queries** - Analyst has this index pre-loaded  
 **Deep dives** - Load monthly summaries on demand  
-**Inspiration** - Reference full-page screenshots and raw data
+**Inspiration** - Reference project data and raw feeds
 
 ---
 
-*Updated after each research scrape. Reflects last 30 days of observations.*
+*Updated after each research collection. Reflects last 30 days of observations.*

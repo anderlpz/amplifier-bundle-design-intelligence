@@ -1,20 +1,16 @@
-# Weekly Design Scrape Recipe - WITH THE FWA INTEGRATION
-# Automated design research workflow that scrapes Awwwards, Siteinspire, and The FWA,
-# visits each featured site to capture full-page screenshots, analyzes them
-# with vision AI, generates summaries, and updates the research archive index.
+# Weekly Design Research Recipe v2 — RSS-based workflow
 #
-# IMPORTANT: This recipe requires the design-intelligence bundle to be loaded.
+# This recipe collects design trend data from public RSS feeds provided by
+# Awwwards, Siteinspire, and The FWA. No automated scraping or headless
+# browser (Playwright, Puppeteer, etc.) is required — RSS feeds are the
+# publicly intended syndication format for these sources.
+#
+# For visual analysis of specific sites discovered through this workflow,
+# use the research-analyst agent interactively and provide screenshots
+# for deeper investigation.
 #
 # Usage:
-#   # Option 1: Start a session with the bundle, then run the recipe
-#   cd /path/to/design-intelligence
-#   amplifier --bundle ./bundle.md
-#   # Then in the session:
 #   execute recipes/weekly-design-scrape.yaml with year=2026 month=01 month_name=january date=2026-01-13
-#
-#   # Option 2: One-liner with bundle flag
-#   amplifier --bundle /path/to/design-intelligence/bundle.md \
-#     run "execute recipes/weekly-design-scrape.yaml with year=2026 month=01 month_name=january date=2026-01-13"
 #
 # Archive structure:
 #   archive/
@@ -24,28 +20,20 @@
 #   │       │   ├── awwwards-YYYY-MM-DD.json
 #   │       │   ├── siteinspire-YYYY-MM-DD.json
 #   │       │   └── thefwa-YYYY-MM-DD.json
-#   │       ├── images/
-#   │       │   └── *.png (full-page screenshots of actual sites)
-#   │       ├── visual-analysis.json
 #   │       └── summary.md
-#   └── archive-index.md
-#
-# Notes:
-#   - Run weekly to maintain current trend data
-#   - Review generated summaries for quality
-#   - Check visual-analysis.json for failed image analyses
-#   - Monitor archive size (consider archiving old months)
-#   - Full-page screenshots may take 2-3 minutes per site
+#   └── context/
+#       └── archive-index.md
 
-name: "weekly-design-scrape"
+name: "weekly-design-research"
 description: >
-  Automated design research workflow that scrapes Awwwards, Siteinspire, and The FWA,
-  visits each featured site for full-page screenshots, analyzes them with 
-  vision AI, generates summaries, and updates the research archive index.
-version: "1.2.0"
-tags: ["design", "research", "scraping", "automation"]
+  Automated design research workflow that fetches featured projects from
+  Awwwards, Siteinspire, and The FWA RSS feeds, generates trend summaries,
+  and updates the research archive index. For visual analysis, users can
+  provide screenshots of specific sites for deeper investigation.
+version: "2.0.0"
+tags: ["design", "research", "trends", "automation"]
 
-# Context variables - provide these at runtime
+# Context variables — provide these at runtime
 context:
   year: ""         # e.g., "2026"
   month: ""        # e.g., "01"
@@ -53,205 +41,130 @@ context:
   date: ""         # e.g., "2026-01-13"
 
 steps:
-  # Step 1: Scrape Awwwards
-  - id: "scrape-awwwards"
+  # Step 1: Fetch and parse RSS feeds from all three sources
+  - id: "fetch-feeds"
     agent: "design-intelligence-enhanced:research-runner"
     prompt: |
-      Execute the Awwwards scraping workflow for today's date.
-      
+      Fetch RSS feeds from Awwwards, Siteinspire, and The FWA, then parse
+      and archive the structured data.
+
       Tasks:
-      1. Create archive directory structure: archive/{{year}}/{{month}}-{{month_name}}/
-      2. Navigate to https://www.awwwards.com/websites/ using Playwright
-      3. Extract data for the top 10 featured projects INCLUDING their actual site URLs
-      4. For EACH project:
-         a. Extract the project's actual website URL (not the Awwwards page)
-         b. Navigate to the actual website
-         c. Wait for the page to fully load (networkidle)
-         d. Capture a FULL-PAGE screenshot (fullPage: true) at 1920x1080
-         e. Save screenshot as: awwwards-{sanitized-title}-fullpage.png
-      5. Save project data to archive/{{year}}/{{month}}-{{month_name}}/raw/awwwards-{{date}}.json
-      6. Save screenshots to archive/{{year}}/{{month}}-{{month_name}}/images/
-      
-      CRITICAL: We need FULL-PAGE screenshots of the ACTUAL WEBSITES, not thumbnails
-      from the Awwwards gallery. The goal is to analyze real design implementations.
-      
-      Handle failures gracefully - if a site is slow or blocks access, log the error
-      and continue with the next site.
-      
+      1. Create the archive directory structure:
+         archive/{{year}}/{{month}}-{{month_name}}/raw/
+
+      2. Use `web_fetch` to retrieve each RSS feed:
+         - https://www.awwwards.com/websites/rss/
+         - https://www.siteinspire.com/websites.rss
+         - https://thefwa.com/rss/awards
+
+      3. Parse the XML from each feed. For every <item> (or <entry>), extract:
+         - title        (project / site name)
+         - link / url   (URL of the featured project)
+         - description  (summary text, strip HTML tags)
+         - pubDate      (publication / award date)
+         - category     (categories or tags, if present)
+
+      4. Save each source to its own JSON file in the raw/ directory:
+         - archive/{{year}}/{{month}}-{{month_name}}/raw/awwwards-{{date}}.json
+         - archive/{{year}}/{{month}}-{{month_name}}/raw/siteinspire-{{date}}.json
+         - archive/{{year}}/{{month}}-{{month_name}}/raw/thefwa-{{date}}.json
+
+         Each JSON file should follow this structure:
+         {
+           "source": "<source name>",
+           "feed_url": "<rss url>",
+           "fetched_at": "<ISO 8601 timestamp>",
+           "projects": [
+             {
+               "title": "...",
+               "url": "...",
+               "description": "...",
+               "date": "...",
+               "categories": ["..."]
+             }
+           ]
+         }
+
       Validation:
-      - JSON file must exist and be valid
-      - At least 8 full-page screenshots captured
-      - Screenshots should be >100KB (indicates real full-page capture)
-      
-      Report: Number of projects scraped, sites visited, screenshots captured, any failures.
-    output: "awwwards_result"
-    timeout: 900
+      - Each JSON file must exist and be valid JSON
+      - Each file should contain at least 1 project (feeds may vary in size)
+      - Log any feed that fails to fetch or parse, but continue with the others
+
+      Report: Number of projects extracted per source, any feeds that failed.
+    output: "feeds_result"
+    timeout: 300
     on_error: "continue"
 
-  # Step 2: Scrape Siteinspire
-  - id: "scrape-siteinspire"
-    agent: "design-intelligence-enhanced:research-runner"
-    prompt: |
-      Execute the Siteinspire scraping workflow for today's date.
-      
-      Tasks:
-      1. Navigate to https://www.siteinspire.com/ using Playwright
-      2. Extract data for the top 10 showcased websites INCLUDING their actual site URLs
-      3. For EACH website:
-         a. Extract the website's actual URL (not the Siteinspire page)
-         b. Navigate to the actual website
-         c. Wait for the page to fully load (networkidle)
-         d. Capture a FULL-PAGE screenshot (fullPage: true) at 1920x1080
-         e. Save screenshot as: siteinspire-{sanitized-title}-fullpage.png
-      4. Save data to archive/{{year}}/{{month}}-{{month_name}}/raw/siteinspire-{{date}}.json
-      5. Save screenshots to archive/{{year}}/{{month}}-{{month_name}}/images/
-      
-      CRITICAL: We need FULL-PAGE screenshots of the ACTUAL WEBSITES, not thumbnails
-      from the Siteinspire gallery. The goal is to analyze real design implementations.
-      
-      Handle failures gracefully - if a site is slow or blocks access, log the error
-      and continue with the next site.
-      
-      Validation:
-      - JSON file must exist and be valid
-      - At least 8 full-page screenshots captured
-      - Screenshots should be >100KB (indicates real full-page capture)
-      
-      Report: Number of sites scraped, sites visited, screenshots captured, any failures.
-    output: "siteinspire_result"
-    timeout: 900
-    on_error: "continue"
-
-  # Step 3: Scrape The FWA
-  - id: "scrape-thefwa"
-    agent: "design-intelligence-enhanced:research-runner"
-    prompt: |
-      Execute The FWA scraping workflow for today's date.
-      
-      Tasks:
-      1. Navigate to https://thefwa.com/awards using Playwright
-      2. Extract data for the last 10 award winners (Site of the Day, Mobile of the Day)
-      3. For EACH awarded site:
-         a. Extract the site's actual website URL (not The FWA page)
-         b. Navigate to the actual website
-         c. Wait for the page to fully load (networkidle)
-         d. Capture a FULL-PAGE screenshot (fullPage: true) at 1920x1080
-         e. Save screenshot as: thefwa-{sanitized-title}-fullpage.png
-      4. Save data to archive/{{year}}/{{month}}-{{month_name}}/raw/thefwa-{{date}}.json
-      5. Save screenshots to archive/{{year}}/{{month}}-{{month_name}}/images/
-      
-      CRITICAL: We need FULL-PAGE screenshots of the ACTUAL WEBSITES, not thumbnails
-      from The FWA gallery. The goal is to analyze real design implementations.
-      
-      The FWA features both web and mobile award winners. Try to capture a mix of both
-      if available. Note the award type (Site of the Day vs Mobile of the Day) in the JSON.
-      
-      Handle failures gracefully - if a site is slow or blocks access, log the error
-      and continue with the next site.
-      
-      Validation:
-      - JSON file must exist and be valid
-      - At least 8 full-page screenshots captured
-      - Screenshots should be >100KB (indicates real full-page capture)
-      
-      Report: Number of sites scraped, award types captured, screenshots taken, any failures.
-    output: "thefwa_result"
-    timeout: 900
-    on_error: "continue"
-
-  # Step 4: Analyze images with vision AI
-  - id: "analyze-images"
-    agent: "design-intelligence-enhanced:research-runner"
-    prompt: |
-      Analyze all FULL-PAGE screenshots captured in today's scrape using image-vision.
-      
-      Tasks:
-      1. Find all *-fullpage.png files in archive/{{year}}/{{month}}-{{month_name}}/images/
-      2. For each full-page screenshot, use vision-analyze-robust.sh with this prompt:
-         "Analyze this website's full-page design in detail. Identify:
-          1) Color palette - primary colors, accent colors, background colors
-          2) Layout structure - header, hero section, content sections, footer
-          3) Typography - heading styles, body text, font pairings
-          4) Visual hierarchy - how the eye flows through the page
-          5) Key design elements - imagery, illustrations, icons, whitespace
-          6) Interactive elements - buttons, CTAs, navigation patterns
-          7) Overall aesthetic - modern/minimal/bold/elegant/playful/etc
-          8) Notable techniques - animations, parallax, 3D, gradients, etc"
-      3. Save results to archive/{{year}}/{{month}}-{{month_name}}/visual-analysis.json
-      
-      CRITICAL:
-      - ALWAYS check exit codes after each vision analysis
-      - If vision fails, record the error in JSON (do NOT fabricate observations)
-      - Continue with remaining images even if some fail
-      - Report success/failure count at the end
-      
-      Report: Images analyzed successfully, images failed, key patterns observed.
-    output: "vision_result"
-    timeout: 1800
-    on_error: "continue"
-
-  # Step 5: Generate monthly summary
+  # Step 2: Synthesize trends and generate the summary
   - id: "generate-summary"
     agent: "design-intelligence-enhanced:research-runner"
     prompt: |
-      Generate the monthly summary.md file from all scraped data.
-      
+      Read the raw feed data and generate a design-trend summary.
+
       Tasks:
-      1. Read all JSON files from archive/{{year}}/{{month}}-{{month_name}}/raw/
-      2. Read visual-analysis.json
-      3. Synthesize trends from the FULL-PAGE analyses:
-         - Animation & Motion patterns
-         - Color palette trends
-         - Layout patterns (hero sections, grids, asymmetric)
-         - Typography trends
-         - Navigation patterns
-         - Notable design techniques
-      4. Create summary.md following the template in your instructions
-      5. Include links to notable projects from all three sources
-      6. Reference full-page screenshots where relevant
-      
-      Structure:
-      - Overview section (project counts by source, date range)
-      - Trend Highlights (organized by category)
-      - Visual Analysis insights (from full-page analysis)
-      - Notable Projects list with detailed breakdowns
-      - Raw data references (all three sources)
-      
-      Keep summary focused on actionable design insights from real site analysis.
-      Include observations from all sources: Awwwards, Siteinspire, and The FWA.
-      
-      Report: Summary file path, key trends identified, total project count across sources.
+      1. Read all JSON files from:
+         archive/{{year}}/{{month}}-{{month_name}}/raw/
+
+      2. Analyze the collected projects across all three sources and identify
+         emerging trends in the following categories:
+         - Animation & Motion — scroll effects, transitions, micro-interactions
+         - Color — dominant palettes, gradients, dark/light mode prevalence
+         - Layout — grid systems, hero patterns, asymmetric layouts, whitespace
+         - Typography — font pairings, variable fonts, large type, kinetic type
+         - Navigation — menu patterns, scroll-driven navigation, mobile-first
+
+      3. Create the summary file:
+         archive/{{year}}/{{month}}-{{month_name}}/summary.md
+
+         Structure:
+         ## Design Trends — {{month_name}} {{year}}
+         **Date:** {{date}}
+         **Sources:** Awwwards, Siteinspire, The FWA
+         **Total projects reviewed:** <count>
+
+         ### Trend Highlights
+         (One subsection per category above, with specific examples)
+
+         ### Notable Projects
+         (Top 5-8 standout projects with title, URL, source, and why notable)
+
+         ### Data Sources
+         (Links to the raw JSON files for reference)
+
+      Keep the summary focused on actionable design insights. Reference
+      specific projects as evidence for each trend you identify.
+
+      Report: Summary file path, number of trends identified, total project count.
     output: "summary_result"
     timeout: 600
     on_error: "continue"
 
-  # Step 6: Update archive index
+  # Step 3: Update the rolling archive index
   - id: "update-archive-index"
     agent: "design-intelligence-enhanced:research-runner"
     prompt: |
-      Update the context/archive-index.md with latest findings.
-      
+      Regenerate the archive index from recent summaries.
+
       Tasks:
-      1. Read all summary.md files from the last 30 days
-      2. Extract top trends from each summary
+      1. Scan for all summary.md files from the last 30 days under archive/
+      2. Extract the top trends from each summary
       3. Consolidate into unified trend categories:
          - Animation & Interaction
          - Color & Visual Style
          - Layout & Typography
          - Notable Techniques
-      4. Regenerate context/archive-index.md
-      5. Include links to recent monthly summaries
-      6. Keep total length under 500 tokens for LLM efficiency
-      
-      The archive index should provide:
-      - Quick overview of last 30 days
-      - Top 3-5 trends per category
-      - Links to detailed monthly summaries
-      - Brief explanation of archive structure
-      - Note that data now includes Awwwards, Siteinspire, and The FWA
-      
-      Goal: Make this the "quick start" reference for the research-analyst agent.
-      
-      Report: Archive index updated, date range covered, trends highlighted.
+      4. Regenerate context/archive-index.md with:
+         - A brief overview of the date range covered
+         - Top 3–5 trends per category
+         - Links to the detailed monthly summaries
+         - A short note on archive structure
+      5. Keep the total length under 500 tokens so it can be loaded
+         efficiently as LLM context by the research-analyst agent
+
+      The archive index is the "quick-start" reference — it should give any
+      agent or user an immediate sense of what is trending in web design
+      right now, with pointers to dig deeper.
+
+      Report: Archive index path, date range covered, number of summaries incorporated.
     output: "archive_result"
     timeout: 600

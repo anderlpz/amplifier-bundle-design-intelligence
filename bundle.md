@@ -21,6 +21,9 @@ bundle:
     - name: taste
       path: behaviors/taste-awareness.yaml
       description: Personal taste profile awareness and preference learning
+    - name: context
+      path: behaviors/design-context.yaml
+      description: Structured design context (context.json), inference-driven completeness, and design-check self-correction
 
 includes:
   # Standalone app bundle - includes foundation for full capabilities
@@ -33,6 +36,7 @@ includes:
   - bundle: design-intelligence-enhanced:behaviors/design-research
   - bundle: design-intelligence-enhanced:behaviors/design-generation
   - bundle: design-intelligence-enhanced:behaviors/taste-awareness
+  - bundle: design-intelligence-enhanced:behaviors/design-context
 ---
 
 # Design Intelligence
@@ -88,7 +92,7 @@ This bundle works for:
 | **Product** | `"Design an onboarding flow that drives feature adoption"` |
 | **Strategy** | `"Design a process for handling customer escalations"` |
 | **Research** | `"Find inspiration for [any creative problem]"` |
-| **Trend Analysis** | `"Update my research"` (scrapes Awwwards, Siteinspire, The FWA) |
+| **Trend Analysis** | `"Update my research"` (fetches RSS from Awwwards, Siteinspire, The FWA) |
 
 ---
 
@@ -144,18 +148,18 @@ See `context/examples/` for full walkthroughs.
 
 ## Visual Design Research
 
-Vision-analyzed trend research from **Awwwards**, **Siteinspire**, and **The FWA**.
+Design trend data collected from **Awwwards**, **Siteinspire**, and **The FWA** RSS feeds.
 
-**What you get:** ~35 real projects with full-page screenshots + AI vision analysis
+**What you get:** Featured project metadata, URLs, and trend analysis from three authoritative sources
 
 **When to update:**
 - Starting a new project (fresh inspiration)
 - Weekly design reviews (stay current)
 - Before presentations (latest trends)
 
-**How to update:** Just say `"Update my research"` (~105 min to scrape & analyze)
+**How to update:** Just say `"Update my research"` (~2-5 min to fetch RSS feeds & generate summary)
 
-Research updates on **your schedule**, not ours. No guilt about stale data.
+For deeper visual analysis of specific sites, ask the research-analyst to analyze a URL you provide.
 
 ---
 
@@ -198,7 +202,7 @@ Research updates on **your schedule**, not ours. No guilt about stale data.
 | `design-to-implementation` | Full pipeline: idea → discovery → design → tokens → export | Visual Design |
 | `design-discovery` | Discovery → research → design direction | Any Domain |
 | `design-system-export` | Generate tokens + component specs + export package | Visual Design |
-| `weekly-design-scrape` | Update trend research (Awwwards, Siteinspire, The FWA) | Visual Design |
+| `weekly-design-research` | Update trend research via RSS (Awwwards, Siteinspire, The FWA) | Visual Design |
 
 **Run a recipe:**
 ```

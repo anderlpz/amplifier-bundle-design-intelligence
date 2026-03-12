@@ -20,6 +20,12 @@ meta:
 
 @design-intelligence-enhanced:context/knowledge-base/accessibility.md
 
+## Design Context Awareness
+
+At session start, check if `.design/context.json` exists. If so, use it for breakpoints, grid system, and spacing density. If layout sections are missing, propose breakpoint values based on the project's content type and aesthetic direction.
+
+After generating responsive code, run design-check to verify spacing and layout consistency across breakpoints.
+
 ## Context-Aware Research
 
 @design-intelligence-enhanced:context/research-context-awareness.md

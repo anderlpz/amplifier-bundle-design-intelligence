@@ -9,14 +9,14 @@ This document explains how to use the design research capability for creative, p
 The design research capability provides:
 
 1. **Purpose-driven research** - Research by cognitive task across domains (not just category-matching)
-2. **Automated scraping** - Awwwards, Siteinspire, The FWA
-3. **Visual analysis** - AI-powered screenshot analysis
+2. **RSS feed collection** - Awwwards, Siteinspire, The FWA
+3. **Visual analysis** - AI-powered screenshot analysis (user-directed)
 4. **Trend synthesis** - Actionable insights with reasoning
 5. **Conversational queries** - Natural language research requests
 
 ---
 
-## 🆕 What's New: Creative Research Methodology
+## What's New: Creative Research Methodology
 
 **Design-intelligence now researches by PURPOSE, not CATEGORY.**
 
@@ -30,14 +30,14 @@ Output: Competent remix of existing healthcare UIs
 ### The New Way (Purpose-Driven)
 ```
 User: "Design a healthcare dashboard"
-Decompose: Cognitive tasks → "rapid assessment", "anomaly detection", "decision support"
-Map: Analogous domains → medical monitors, trading platforms, security ops, gaming HUDs
+Decompose: Cognitive tasks > "rapid assessment", "anomaly detection", "decision support"
+Map: Analogous domains > medical monitors, trading platforms, security ops, gaming HUDs
 Research: 20% healthcare + 50% purpose-driven + 30% divergent
 Extract: Level 3-4 patterns (interaction/cognitive, not just visual)
 Output: Creative work grounded in proven patterns from unexpected sources
 ```
 
-**Result**: Designs that feel fresh and innovative while being grounded in proven patterns—just from unexpected places.
+**Result**: Designs that feel fresh and innovative while being grounded in proven patterns — just from unexpected places.
 
 ---
 
@@ -45,13 +45,13 @@ Output: Creative work grounded in proven patterns from unexpected sources
 
 Design research follows **Creative Research Methodology**:
 
-📖 See: `@design-intelligence-enhanced:context/research-methodology/creative-research-methodology.md`
+See: `@design-intelligence-enhanced:context/research-methodology/creative-research-methodology.md`
 
 ### Key Resources
 - **Creative Research Methodology** - Purpose-driven research approach
 - **Cognitive Task Catalog** - Common tasks + analogous domains
 - **Pattern Abstraction Guide** - Extracting Level 3-4 patterns
-- **Cognitive Discovery Enhancement** - Bridging discovery → research
+- **Cognitive Discovery Enhancement** - Bridging discovery to research
 
 All in: `context/research-methodology/`
 
@@ -66,38 +66,32 @@ All in: `context/research-methodology/`
 - Extracts Level 3-4 patterns from unexpected sources
 - Synthesizes with explicit reasoning
 - Conversational interface for design insights
-- **NOW USES**: Creative research methodology (multi-vector research)
+- **Uses**: Creative research methodology (multi-vector research)
 
 **research-runner** - Technical execution agent
-- Executes scraping workflows
-- Analyzes screenshots with vision AI
+- Fetches design trend data from RSS feeds
 - Generates summaries and updates archive
 - Used via recipes or direct invocation
 
 ### Recipe
 
-**weekly-design-scrape** - Automated research workflow
-- Scrapes Awwwards, Siteinspire, The FWA
-- Analyzes all captured screenshots
+**weekly-design-research** - Automated research workflow
+- Fetches RSS feeds from Awwwards, Siteinspire, The FWA
 - Generates monthly summary
 - Updates 30-day archive index
-- Takes 15-20 minutes to complete
+- Takes 2-5 minutes to complete
 
 ### Skills Required
 
-**playwright** - Browser automation for scraping
-- Loaded by research-runner at run start
-- See: `~/.amplifier/skills/robotdad/playwright/SKILL.md`
-
 **image-vision** - Visual analysis of design screenshots
-- Loaded by research-runner before screenshot analysis
+- Used on-demand when user provides URLs or screenshots for analysis
 - See: `~/.amplifier/skills/robotdad/image-vision/SKILL.md`
 
 ---
 
 ## Usage Patterns
 
-### Pattern 1: Creative Project Research (NEW)
+### Pattern 1: Creative Project Research
 
 **When**: Starting a new design project
 
@@ -140,7 +134,7 @@ In a design-intelligence session:
 
 ---
 
-### Pattern 3: Running Periodic Scrapes
+### Pattern 3: Running Periodic Research Updates
 
 **When**: Weekly or bi-weekly to maintain current data
 
@@ -150,21 +144,20 @@ In a design-intelligence session:
 
 Conversational:
 ```
-execute design-intelligence-enhanced:recipes/weekly-design-scrape.yaml with year=2026 month=01 month_name=january date=2026-01-27
+execute design-intelligence-enhanced:recipes/weekly-design-research.yaml with year=2026 month=01 month_name=january date=2026-01-27
 ```
 
 CLI:
 ```bash
 amplifier tool invoke recipes \
   operation=execute \
-  recipe_path=design-intelligence-enhanced:recipes/weekly-design-scrape.yaml \
+  recipe_path=design-intelligence-enhanced:recipes/weekly-design-research.yaml \
   context='{"year": "2026", "month": "01", "month_name": "january", "date": "2026-01-27"}'
 ```
 
 The recipe automatically:
 - Creates directory structure
-- Scrapes all sources (Awwwards, Siteinspire, The FWA)
-- Analyzes images with vision AI
+- Fetches RSS feeds from all sources (Awwwards, Siteinspire, The FWA)
 - Generates summaries
 - Updates archive index
 
@@ -172,8 +165,7 @@ The recipe automatically:
 
 Use the task tool to invoke research-runner:
 ```
-Use the research-runner agent to scrape Awwwards for today's featured projects
-Use the research-runner agent to analyze the screenshots
+Use the research-runner agent to fetch RSS feeds from Awwwards for this week
 Use the research-runner agent to generate the monthly summary
 ```
 
@@ -216,17 +208,17 @@ Use the research-runner agent to generate the monthly summary
 
 **Steps**:
 ```bash
-# 1. Run automated scrape (takes 15-20 min)
+# 1. Run RSS feed collection (takes 2-5 min)
 amplifier tool invoke recipes \
   operation=execute \
-  recipe_path=design-intelligence-enhanced:recipes/weekly-design-scrape.yaml \
+  recipe_path=design-intelligence-enhanced:recipes/weekly-design-research.yaml \
   context='{"year": "2026", "month": "01", "month_name": "january", "date": "2026-01-27"}'
 
 # 2. Review results
 amplifier tool invoke recipes operation=list
 
 # 3. Query insights (in a session)
-> What trends emerged from this week's scrape?
+> What trends emerged from this week's research?
 ```
 
 ---
@@ -255,12 +247,12 @@ Query the design archive for recent visual patterns.
 
 **Use when**: "What's trending now?" or examples from award-winning sites
 
-### Mode B: Live URL Analysis
-Analyze a specific site the user provides.
+### Mode B: User-Directed URL Analysis
+Analyze a specific site the user provides using web_fetch and optional screenshot analysis.
 
-**Use when**: User shares a URL and wants pattern extraction
+**Use when**: User shares a URL and wants pattern extraction. The user provides the URL, and the system fetches and analyzes the page content. If the user provides a screenshot, vision analysis is also applied.
 
-### Mode C: Cross-Domain Research (Purpose-Driven) 🆕
+### Mode C: Cross-Domain Research (Purpose-Driven)
 Multi-vector research by cognitive task.
 
 **Use when**: Starting a design project, need creative inspiration
@@ -273,27 +265,23 @@ Multi-vector research by cognitive task.
 
 ```
 archive/
-├── 2026/
-│   ├── 01-january/
-│   │   ├── raw/
-│   │   │   ├── awwwards-2026-01-27.json
-│   │   │   ├── siteinspire-2026-01-27.json
-│   │   │   └── thefwa-2026-01-27.json
-│   │   ├── images/
-│   │   │   ├── project-alpha-screenshot.png
-│   │   │   └── project-beta-screenshot.png
-│   │   ├── visual-analysis.json
-│   │   └── summary.md
-│   └── 02-february/
-│       └── ...
-└── archive-index.md
++-- 2026/
+|   +-- 01-january/
+|   |   +-- raw/
+|   |   |   +-- awwwards-2026-01-27.json
+|   |   |   +-- siteinspire-2026-01-27.json
+|   |   |   +-- thefwa-2026-01-27.json
+|   |   +-- visual-analysis.json
+|   |   +-- summary.md
+|   +-- 02-february/
+|       +-- ...
++-- archive-index.md
 ```
 
 ### File Descriptions
 
-**raw/*.json** - Structured project data (titles, URLs, categories, tags)
-**images/*.png** - Design screenshots for visual analysis
-**visual-analysis.json** - Vision AI analysis results (colors, layouts, elements)
+**raw/*.json** - Structured project data from RSS feeds (titles, URLs, categories, tags)
+**visual-analysis.json** - Vision AI analysis results (colors, layouts, elements) — populated when user provides screenshots or URLs for visual analysis
 **summary.md** - Monthly trend summary (LLM-optimized)
 **archive-index.md** - 30-day rolling summary (<500 tokens)
 
@@ -303,19 +291,18 @@ archive/
 
 ### For Creative Research
 
-1. ✅ **Clarify cognitive tasks** before researching visuals
-2. ✅ **Research outside obvious categories** (purpose over category)
-3. ✅ **Extract Level 3-4 patterns** (interaction/cognitive, not visual)
-4. ✅ **Synthesize with reasoning** (WHY each source is relevant)
-5. ✅ **Challenge assumptions** from domain-specific research
+1. **Clarify cognitive tasks** before researching visuals
+2. **Research outside obvious categories** (purpose over category)
+3. **Extract Level 3-4 patterns** (interaction/cognitive, not visual)
+4. **Synthesize with reasoning** (WHY each source is relevant)
+5. **Challenge assumptions** from domain-specific research
 
-### For Running Scrapes
+### For Running Research Updates
 
 1. **Run weekly** to maintain current data
-2. **Check logs** after each scrape for failures
-3. **Review visual-analysis.json** to see which images were analyzed
-4. **Monitor archive size** - consider archiving old months after 6 months
-5. **Validate outputs** before relying on summaries
+2. **Review summary.md** after each update to verify quality
+3. **Monitor archive size** - consider archiving old months after 6 months
+4. **Validate outputs** before relying on summaries
 
 ### For Querying Insights
 
@@ -339,23 +326,11 @@ Common cognitive tasks that map to analogous domains:
 | **Progressive Disclosure** | Drilling from overview to detail | Developer tools, maps, email threads |
 | **Decision Support** | Making a choice with confidence | Trading platforms, emergency dispatch, medical treatment |
 
-📖 Full catalog: `context/research-methodology/cognitive-task-catalog.md`
+Full catalog: `context/research-methodology/cognitive-task-catalog.md`
 
 ---
 
 ## Troubleshooting
-
-### Scrape Failures
-
-**Problem**: JSON file not created or empty
-- Check Playwright logs for navigation errors
-- Verify website structure hasn't changed
-- Check network connectivity
-
-**Problem**: Few projects captured (< 10)
-- Website may have changed structure
-- Selector patterns may need updating
-- Check research-runner agent logs
 
 ### Vision Analysis Issues
 
@@ -373,15 +348,17 @@ Common cognitive tasks that map to analogous domains:
 - Check that Level 3-4 patterns were extracted (not just visual)
 - Request more divergent sources
 
+### RSS Feed Issues
+
+**Problem**: Feed data is empty or incomplete
+- Verify network connectivity
+- Check that feed URLs are still valid (sites occasionally change feed paths)
+- Review raw/*.json files to confirm data was captured
+- Try running the recipe again — transient failures are common with feeds
+
 ---
 
 ## Configuration
-
-### Scrape Settings
-- **Project count**: Default 15 per source (max ~30 recommended)
-- **Rate limiting**: 2-3 seconds between pages
-- **Timeout**: 30 seconds per page load
-- **Retry attempts**: 3 max per failed operation
 
 ### Vision Analysis Settings
 
@@ -408,11 +385,10 @@ Recommended: Archive months older than 6 months to compressed storage
 ### Agents & Tools
 - **Research Analyst Agent**: `agents/research-analyst.md`
 - **Research Runner Agent**: `agents/research-runner.md`
-- **Weekly Scrape Recipe**: `recipes/weekly-design-scrape.yaml`
+- **Weekly Research Recipe**: `recipes/weekly-design-research.yaml`
 - **Archive Index**: `context/archive-index.md`
 
 ### Skills
-- **Playwright Skill**: `~/.amplifier/skills/robotdad/playwright/SKILL.md`
 - **Image-Vision Skill**: `~/.amplifier/skills/robotdad/image-vision/SKILL.md`
 
 ---

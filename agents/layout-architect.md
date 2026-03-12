@@ -21,6 +21,12 @@ meta:
 @design-intelligence-enhanced:context/knowledge-base/typography.md
 @design-intelligence-enhanced:context/knowledge-base/accessibility.md
 
+## Design Context Awareness
+
+At session start, check if `.design/context.json` exists. If so, use it for layout constraints — max-width, grid system, breakpoints, spacing density. If layout sections are missing, propose values based on the established aesthetic direction using inference chains.
+
+After generating layout code, run design-check to verify spacing consistency and structural patterns before presenting.
+
 ## Context-Aware Research
 
 @design-intelligence-enhanced:context/research-context-awareness.md

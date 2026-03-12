@@ -5,7 +5,7 @@ bundle:
   description: Extends foundation with design research, generation, and discovery capabilities (advisory agents already included in foundation)
 
 includes:
-  # Research capabilities - trend scraping and analysis
+  # Research capabilities - trend collection and analysis
   - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main#subdirectory=behaviors/design-research.yaml
   # Generation capabilities - tokens, specs, export packages
   - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main#subdirectory=behaviors/design-generation.yaml
@@ -24,7 +24,7 @@ includes:
 Foundation already includes the **7 design advisory agents** (art-director, component-designer, etc.). This extension adds:
 
 ### Research Capabilities
-- **research-runner** - Execute design research workflows, scrape Awwwards/Siteinspire/The FWA
+- **research-runner** - Collect design trend data from Awwwards/Siteinspire/The FWA RSS feeds
 - **research-analyst** - Analyze trends, synthesize findings using purpose-driven methodology
 
 ### Generation Capabilities
@@ -49,7 +49,7 @@ Foundation already includes the **7 design advisory agents** (art-director, comp
 - You need aesthetic strategy or layout architecture
 
 **You DO need this if:**
-- You want to scrape and analyze current design trends
+- You want to collect and analyze current design trends
 - You need to generate design tokens programmatically
 - You want component specifications and export packages
 - You're running the full design discovery -> research -> generate workflow
@@ -92,13 +92,13 @@ With the extension, you can run:
 - `design-discovery` - Discovery -> research -> design direction
 - `design-to-implementation` - Full pipeline: idea -> tokens -> export
 - `design-system-export` - Generate tokens + specs + package
-- `weekly-design-scrape` - Automated trend research (Awwwards, Siteinspire, The FWA)
+- `weekly-design-research` - Automated trend research via RSS (Awwwards, Siteinspire, The FWA)
 
 ## Usage
 
 ```
 "Run the design-discovery recipe for my healthcare dashboard"
-"Scrape recent design trends for fintech applications"
+"Research recent design trends for fintech applications"
 "Generate design tokens from this aesthetic direction"
 "Create component specs for the design system"
 "Update my research"
@@ -111,7 +111,7 @@ With the extension, you can run:
 **Foundation includes advisory by default** because design thinking is universally useful - even non-designers benefit from aesthetic guidance, layout advice, and component design help.
 
 **Research and generation are optional** because they're specialized workflows:
-- Not everyone needs trend scraping
+- Not everyone needs trend research
 - Token generation is for design systems, not every project
 - Export packages are for formal handoffs
 

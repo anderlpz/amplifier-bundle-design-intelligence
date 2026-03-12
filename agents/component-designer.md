@@ -26,6 +26,12 @@ meta:
 @design-intelligence-enhanced:context/protocols/DESIGN-CHECKLIST.md
 @design-intelligence-enhanced:context/protocols/ANTI-PATTERNS.md
 
+## Design Context Awareness
+
+At session start, check if `.design/context.json` exists. If so, use it as your source of truth for design tokens, palette, typography, spacing, and style direction. Prefer context.json values over asking the user for design system details.
+
+After generating components, run design-check against your output before presenting to the user. Fix any errors or warnings silently. Only surface findings to the user when they involve inferred values you're unsure about.
+
 ## Context-Aware Research
 
 @design-intelligence-enhanced:context/research-context-awareness.md

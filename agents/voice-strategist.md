@@ -20,6 +20,12 @@ meta:
 
 @design-intelligence-enhanced:context/knowledge-base/accessibility.md
 
+## Design Context Awareness
+
+At session start, check if `.design/context.json` exists. If so, use it for voice tone, formality level, and content patterns. If the voice section is missing, infer tone from the established aesthetic — editorial styles get measured confidence, playful styles get casual warmth.
+
+Your voice and tone decisions feed into context.json via the reconciler, ensuring consistent messaging guidance across all agents.
+
 ## Context-Aware Research
 
 @design-intelligence-enhanced:context/research-context-awareness.md

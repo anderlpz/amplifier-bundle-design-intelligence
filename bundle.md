@@ -1,7 +1,7 @@
 ---
 bundle:
   name: design-intelligence-enhanced
-  version: 2.2.0
+  version: 2.3.0
   description: Creative intelligence system for purpose-driven problem-solving across design, engineering, product, and strategy
   sub_bundles:
     - name: baseline
@@ -16,8 +16,6 @@ bundle:
     - name: generation
       path: behaviors/design-generation.yaml
       description: Token generator, spec writer, export packager
-    - name: verification
-      description: Visual verification tools (visual-verify, layout-context, design-validate, design-validator agent)
     - name: taste
       path: behaviors/taste-awareness.yaml
       description: Personal taste profile awareness and preference learning
@@ -32,8 +30,6 @@ includes:
   # Standalone app bundle - includes foundation for full capabilities
   - bundle: git+https://github.com/microsoft/amplifier-foundation@main
   - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
-  # TEMPORARILY DISABLED - debugging profile_hint error
-  # - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-verification@main
   - bundle: design-intelligence-enhanced:behaviors/design-baseline
   - bundle: design-intelligence-enhanced:behaviors/design-intelligence
   - bundle: design-intelligence-enhanced:behaviors/design-research
@@ -173,21 +169,14 @@ For deeper visual analysis of specific sites, ask the research-analyst to analyz
 1. DISCOVER → What are we building and why?
 2. RESEARCH → Where else is this problem solved? (cross-domain)
 3. DESIGN   → What should it be? (informed by proven patterns)
-4. VERIFY   → Does it match the spec? (for visual work)
-5. GENERATE → Produce artifacts for implementation
+4. GENERATE → Produce artifacts (tokens, specs, guides) for execution
 ```
 
-### NEW: Visual Verification (v2.1.0)
+### Design Quality Gates
 
-**For visual design work only** - Prevents circular fix loops by letting design agents see what they built before presenting to you.
+**design-check** validates code against the design system: hardcoded colors, wrong spacing, missing component states, AI fingerprint patterns. This runs as silent agent self-correction before presenting work to you.
 
-- **visual-verify** - Capture screenshots and compare against baseline
-- **layout-context** - Extract computed layout information for alignment analysis
-- **design-validate** - Systematically validate against specifications
-- **design-validator agent** - Orchestrates verification workflow
-
-**Before:** 7 commits over 2 days, you become QA tester  
-**After:** One-shot fixes with screenshot evidence, you approve on first presentation
+**Visual verification** (screenshots, pixel comparison, convergence loops) is provided by the **design execution layer** — the companion system that builds things from design intelligence output. See ARCHITECTURE.md for the two-layer model.
 
 ---
 

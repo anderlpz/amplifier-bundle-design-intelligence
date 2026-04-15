@@ -1,6 +1,6 @@
 ---
 bundle:
-  name: design-intelligence-enhanced
+  name: design-intelligence
   version: 2.3.0
   description: Creative intelligence system for purpose-driven problem-solving across design, engineering, product, and strategy
   sub_bundles:
@@ -29,14 +29,13 @@ bundle:
 includes:
   # Standalone app bundle - includes foundation for full capabilities
   - bundle: git+https://github.com/microsoft/amplifier-foundation@main
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
-  - bundle: design-intelligence-enhanced:behaviors/design-baseline
-  - bundle: design-intelligence-enhanced:behaviors/design-intelligence
-  - bundle: design-intelligence-enhanced:behaviors/design-research
-  - bundle: design-intelligence-enhanced:behaviors/design-generation
-  - bundle: design-intelligence-enhanced:behaviors/taste-awareness
-  - bundle: design-intelligence-enhanced:behaviors/design-context
-  - bundle: design-intelligence-enhanced:behaviors/design-skills
+  - bundle: design-intelligence:behaviors/design-baseline
+  - bundle: design-intelligence:behaviors/design-intelligence
+  - bundle: design-intelligence:behaviors/design-research
+  - bundle: design-intelligence:behaviors/design-generation
+  - bundle: design-intelligence:behaviors/taste-awareness
+  - bundle: design-intelligence:behaviors/design-context
+  - bundle: design-intelligence:behaviors/design-skills
 ---
 
 # Design Intelligence
@@ -51,7 +50,7 @@ includes:
 - Design generation capabilities (token-generator, spec-writer, export-packager)
 
 **This standalone bundle adds:**
-- Discovery bundle integration for structured design interviews
+- Compatible with the Discovery bundle for structured design interviews (optional)
 - Taste awareness for preference learning across sessions
 - Design-first coordinator messaging and workflow emphasis
 
@@ -65,7 +64,20 @@ includes:
 - You want development-first language with design as an available capability
 - You want to add only specific capabilities (research OR generation)
 
-**Both approaches give you the same core capabilities** - this is about experience and emphasis, not functionality.
+> **Note:** The standalone bundle and the extension bundle do NOT provide identical capabilities. The extension includes research, generation, taste awareness, discovery, and design-context — but omits the design-baseline philosophy context, the design-skills module, and the root context files. See the comparison below.
+
+| Capability | Standalone | Extension |
+|------------|:----------:|:---------:|
+| 7 advisory agents (art-director, etc.) | via bundle | via foundation |
+| Research (research-runner, research-analyst) | yes | yes |
+| Generation (token-generator, spec-writer, export-packager) | yes | yes |
+| Taste awareness (preference learning) | yes | yes |
+| Discovery (structured interviews) | yes | yes |
+| Design-context (reconciler, context.json, inference chains) | yes | yes |
+| Design-check (self-correction validation) | yes | yes |
+| Design-baseline (philosophy context) | yes | **no** |
+| Design-skills (tool-skills module) | yes | **no** |
+| 11 root @-mention context files | yes | **no** |
 
 ---
 
@@ -180,11 +192,11 @@ For deeper visual analysis of specific sites, ask the research-analyst to analyz
 
 ---
 
-@design-intelligence-enhanced:context/design-instructions.md
+@design-intelligence:context/design-instructions.md
 
 ---
 
-@design-intelligence-enhanced:context/design-delegation-guide.md
+@design-intelligence:context/design-delegation-guide.md
 
 ---
 
@@ -232,10 +244,10 @@ This isn't just a tool that gives you answers—it teaches you a **meta-cognitiv
 
 ## Design Philosophy
 
-@design-intelligence-enhanced:context/philosophy/DESIGN-PHILOSOPHY.md
-@design-intelligence-enhanced:context/philosophy/DESIGN-PRINCIPLES.md
-@design-intelligence-enhanced:context/philosophy/DESIGN-FRAMEWORK.md
-@design-intelligence-enhanced:context/philosophy/WRITING-PRINCIPLES.md
+@design-intelligence:context/philosophy/DESIGN-PHILOSOPHY.md
+@design-intelligence:context/philosophy/DESIGN-PRINCIPLES.md
+@design-intelligence:context/philosophy/DESIGN-FRAMEWORK.md
+@design-intelligence:context/philosophy/WRITING-PRINCIPLES.md
 
 ---
 
@@ -243,10 +255,10 @@ This isn't just a tool that gives you answers—it teaches you a **meta-cognitiv
 
 **NEW in v2.2.0**: Complete purpose-driven research methodology
 
-@design-intelligence-enhanced:context/research-methodology/creative-research-methodology.md
-@design-intelligence-enhanced:context/research-methodology/cognitive-task-catalog.md
-@design-intelligence-enhanced:context/research-methodology/pattern-abstraction-guide.md
-@design-intelligence-enhanced:context/research-methodology/cognitive-discovery-enhancement.md
+@design-intelligence:context/research-methodology/creative-research-methodology.md
+@design-intelligence:context/research-methodology/cognitive-task-catalog.md
+@design-intelligence:context/research-methodology/pattern-abstraction-guide.md
+@design-intelligence:context/research-methodology/cognitive-discovery-enhancement.md
 
 ---
 

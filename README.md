@@ -1,4 +1,4 @@
-# Design Intelligence Enhanced
+# Design Intelligence
 
 > **Creative intelligence for purposeful problem-solving across design, engineering, product, and strategy.**
 
@@ -31,7 +31,7 @@ When you need to make intentional decisions about how things should work—wheth
 |------|-----|
 | Design advice and direction | Foundation (already included) |
 | Research + generation + discovery | Extension: `amplifier bundle use foundation design-studio-extension` |
-| Design-first dedicated workflow | Standalone: `amplifier bundle use design-intelligence-enhanced` |
+| Design-first dedicated workflow | Standalone: `amplifier bundle use design-intelligence` |
 
 ---
 
@@ -89,10 +89,10 @@ This bundle embodies a universal methodology for purposeful problem-solving:
 
 ```bash
 # Add to Amplifier (works with any bundle)
-amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main --app
+amplifier bundle add git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main --app
 
 # Set as active bundle (optional)
-amplifier bundle use design-intelligence-enhanced
+amplifier bundle use design-intelligence
 
 # Start session
 amplifier
@@ -129,14 +129,16 @@ The agents will:
 
 ## What's Included
 
-### Discovery (Structured Interviewing)
+### Discovery (Structured Interviewing — Optional)
 
-Captures what matters through systematic questioning:
+Compatible with the [Discovery bundle](https://github.com/microsoft/amplifier-bundle-discovery) for structured design interviews. When both bundles are loaded, structured interviewing captures what matters through systematic questioning:
 - **Visual/Product**: Cognitive tasks, decision points, emotional context
 - **Engineering**: System guarantees, failure modes, trade-offs
 - **Strategy**: Coordination needs, resource constraints, optimization targets
 
 **Output:** Problem decomposition with clear understanding of what you're solving
+
+> The Discovery bundle is optional — the research-analyst can handle initial problem decomposition without it.
 
 ### Research (Cross-Domain Intelligence)
 
@@ -246,7 +248,7 @@ Prevent circular fix loops with visual verification:
 
 ## Superpowers Integration
 
-Design-intelligence-enhanced works seamlessly with the superpowers bundle. When both are loaded, design thinking becomes a natural part of the engineering workflow:
+Design-intelligence works seamlessly with the superpowers bundle. When both are loaded, design thinking becomes a natural part of the engineering workflow:
 
 - **Brainstorming**: The `design-brainstorming` skill is auto-discovered when superpowers enters `/brainstorm` mode. It adds design dimensions (aesthetic direction, UX patterns, cross-domain research) alongside engineering architecture.
 - **Planning**: The `design-planning` skill enriches `/write-plan` mode with design tasks — design-check validation steps, context.json updates, and accessibility verification.
@@ -302,7 +304,7 @@ This bundle follows Amplifier's principles and adds creative research methodolog
 - **[Cognitive Task Catalog](context/research-methodology/cognitive-task-catalog.md)** — Library of decomposed problems
 - **[Engineering Examples](context/examples/engineering-examples.md)** — Complete engineering walkthroughs
 - **[Design Context System](docs/specs/2026-03-12-design-context-system.md)** — Structured context, inference chains, design-check
-- **[Verification Guide](VERIFICATION_GUIDE.md)** — Visual verification setup and usage
+- **[Verification Guide](docs/archive/VERIFICATION_GUIDE.md)** — Visual verification setup and usage
 - **[Privacy & Data Handling](PRIVACY.md)** — What data is collected, stored, and how to opt out
 
 ---
@@ -319,26 +321,6 @@ This bundle follows Amplifier's principles and adds creative research methodolog
 
 ---
 
-## Naming Note
-
-This bundle is named **design-intelligence-enhanced** to distinguish it from Microsoft's official `design-intelligence` bundle.
-
-**Why "enhanced"?**
-- Includes all design-intelligence capabilities
-- Adds visual verification tools (v2.1.0)
-- Expands to universal applicability (v2.2.0)
-- Structured design context with auto-completeness (v2.3.0)
-- Privacy controls, compliance-ready (RSS feeds, no scraping)
-- Community-maintained enhancements
-
-**Installation uses the enhanced name:**
-```bash
-amplifier bundle add git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main --app
-amplifier bundle use design-intelligence-enhanced
-```
-
----
-
 ## Acknowledgments
 
 The design baseline and research methodology incorporate insights from external projects:
@@ -349,14 +331,14 @@ The design baseline and research methodology incorporate insights from external 
 
 ## Contributing
 
-This project is an enhanced fork maintained independently. For the official Microsoft design-intelligence bundle, see [microsoft/amplifier-bundle-design-intelligence](https://github.com/microsoft/amplifier-bundle-design-intelligence).
+This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit [https://cla.opensource.microsoft.com](https://cla.opensource.microsoft.com).
 
-**Philosophy contributions welcome:** If you discover new cross-domain patterns, L3-4 principles, or cognitive task decompositions, we'd love to learn from your research.
+When you submit a pull request, a CLA bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repos using our CLA.
+
+**Philosophy contributions especially welcome:** If you discover new cross-domain patterns, L3-4 principles, or cognitive task decompositions that extend the creative research methodology, please open an issue or PR — we'd love to learn from your research.
 
 ---
 
 ## License
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general).
-
-**Note:** This is an enhanced community fork. See LICENSE for details.
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general). Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship. See LICENSE for details.

@@ -14,8 +14,8 @@ tools:
 
 ## Reference Knowledge
 
-@design-intelligence-enhanced:context/design-check-instructions.md
-@design-intelligence-enhanced:context/design-baseline.md
+@design-intelligence:context/design-check-instructions.md
+@design-intelligence:context/design-baseline.md
 
 ---
 
@@ -207,3 +207,25 @@ Return a complete report:
 ```
 
 When invoked by another agent in a self-correction loop, return only the JSON. When invoked directly by a user for an audit, add a conversational summary after the JSON explaining the most important findings and recommended priorities.
+
+---
+
+## Write-Back to Design Context
+
+After completing a check cycle, if any findings resulted in **confirmed values** — for example, a hardcoded color was validated as correct against the palette, or a token value was verified as intentional — delegate to `design-intelligence:design-context` to record those findings.
+
+**When to write back:**
+
+- A hardcoded value was checked and confirmed correct (e.g., `#C4A265` matches `--color-primary`): promote the implementation confirmation as evidence that the value is intentional.
+- An `inferred` value in context.json was exercised and the implementation matches: communicate to design-context that this value should be promoted from `inferred` → `defined`, since the implementation confirms it.
+- A previously `missing` section now has evidence from the code under review: report the discovered values to design-context so they can be recorded as `inferred`.
+
+**How to write back:** Delegate to `design-intelligence:design-context` with a structured summary of confirmed values and recommended status promotions. Include the source location (file, line) and the finding that confirmed the value.
+
+**Why this matters:** This closes the feedback loop. Without write-back, design-check consumes context but never improves it. With write-back, each check cycle makes `context.json` more complete and more accurate:
+
+```
+design-check → design-context → context.json updated → next check more reliable
+```
+
+Do not write back findings that are still uncertain. Only write back values you have positively confirmed through static analysis or visual validation.

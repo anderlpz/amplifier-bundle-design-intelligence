@@ -1,6 +1,6 @@
 # Design Context System
 
-> Spec for the design-intelligence-enhanced Amplifier bundle.
+> Spec for the design-intelligence Amplifier bundle.
 > Three capabilities forming one cohesive system: structured design context,
 > active completeness with opinionated gap-filling, and agent self-correction
 > through design check.

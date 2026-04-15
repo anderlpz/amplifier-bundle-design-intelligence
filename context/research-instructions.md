@@ -45,7 +45,7 @@ Output: Creative work grounded in proven patterns from unexpected sources
 
 Design research follows **Creative Research Methodology**:
 
-See: `@design-intelligence-enhanced:context/research-methodology/creative-research-methodology.md`
+See: `@design-intelligence:context/research-methodology/creative-research-methodology.md`
 
 ### Key Resources
 - **Creative Research Methodology** - Purpose-driven research approach
@@ -144,14 +144,14 @@ In a design-intelligence session:
 
 Conversational:
 ```
-execute design-intelligence-enhanced:recipes/weekly-design-research.yaml with year=2026 month=01 month_name=january date=2026-01-27
+execute design-intelligence:recipes/weekly-design-research.yaml with year=2026 month=01 month_name=january date=2026-01-27
 ```
 
 CLI:
 ```bash
 amplifier tool invoke recipes \
   operation=execute \
-  recipe_path=design-intelligence-enhanced:recipes/weekly-design-research.yaml \
+  recipe_path=design-intelligence:recipes/weekly-design-research.yaml \
   context='{"year": "2026", "month": "01", "month_name": "january", "date": "2026-01-27"}'
 ```
 
@@ -211,7 +211,7 @@ Use the research-runner agent to generate the monthly summary
 # 1. Run RSS feed collection (takes 2-5 min)
 amplifier tool invoke recipes \
   operation=execute \
-  recipe_path=design-intelligence-enhanced:recipes/weekly-design-research.yaml \
+  recipe_path=design-intelligence:recipes/weekly-design-research.yaml \
   context='{"year": "2026", "month": "01", "month_name": "january", "date": "2026-01-27"}'
 
 # 2. Review results

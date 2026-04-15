@@ -5,4 +5,4 @@ bundle:
 
 context:
   include:
-    - design-intelligence-enhanced:context/design-baseline.md
+    - design-intelligence:context/design-baseline.md

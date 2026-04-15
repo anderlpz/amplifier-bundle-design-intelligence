@@ -5,10 +5,10 @@ bundle:
 
 agents:
   include:
-    - design-intelligence-enhanced:token-generator
-    - design-intelligence-enhanced:spec-writer
-    - design-intelligence-enhanced:export-packager
+    - design-intelligence:token-generator
+    - design-intelligence:spec-writer
+    - design-intelligence:export-packager
 
 context:
   include:
-    - design-intelligence-enhanced:context/generation-instructions.md
+    - design-intelligence:context/generation-instructions.md

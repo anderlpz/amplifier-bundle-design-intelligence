@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **design-intelligence-enhanced** bundle processes design-related data to support creative workflows, trend awareness, and aesthetic reasoning. All user data and collected information is stored locally on the user's machine. No data is transmitted to the bundle maintainers.
+The **design-intelligence** bundle processes design-related data to support creative workflows, trend awareness, and aesthetic reasoning. All user data and collected information is stored locally on the user's machine. No data is transmitted to the bundle maintainers.
 
 ## What Data Is Collected
 

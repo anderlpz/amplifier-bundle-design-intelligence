@@ -52,7 +52,7 @@ When a user explicitly confirms an inferred value — they say "yes", "that work
 **Every time** you create or modify a file in `.design/`, delegate to the reconciler:
 
 ```
-Delegate to design-intelligence-enhanced:design-context:
+Delegate to design-intelligence:design-context:
 "Reconcile .design/context.json from current artifacts."
 ```
 
@@ -85,4 +85,4 @@ If a conflict isn't relevant to your current task, leave it alone. Don't enumera
 | `AESTHETIC-GUIDE.md` | Medium | Design direction, mood, principles |
 | `preferences.md` | Broad | Taste constraints, likes/dislikes |
 
-Context schema: `@design-intelligence-enhanced:specs/schemas/context.schema.json`
+Context schema: `@design-intelligence:specs/schemas/context.schema.json`

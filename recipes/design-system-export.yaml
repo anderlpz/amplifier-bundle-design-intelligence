@@ -14,6 +14,10 @@ description: |
 
 steps:
   # Phase 1: Discovery
+  # NOTE: This step delegates to discovery:discovery-interviewer, which requires
+  # the Discovery bundle to be loaded (amplifier-bundle-discovery). If the
+  # Discovery bundle is not available, skip this step and supply a discovery
+  # brief manually as input to Phase 2 (direction).
   - id: discover
     agent: discovery:discovery-interviewer
     prompt: |
@@ -31,7 +35,7 @@ steps:
 
   # Phase 2: Design Direction
   - id: direction
-    agent: design-intelligence-enhanced:art-director
+    agent: design-intelligence:art-director
     prompt: |
       Based on this discovery brief, establish a design direction:
       
@@ -48,7 +52,7 @@ steps:
 
   # Phase 3: Generate Tokens
   - id: tokens
-    agent: design-intelligence-enhanced:token-generator
+    agent: design-intelligence:token-generator
     prompt: |
       Generate Design Protocol tokens based on:
       
@@ -68,9 +72,34 @@ steps:
       - tokens.css (CSS custom properties)
       - tailwind.config.js (Tailwind configuration)
 
+  # Phase 3.5: Sync tokens to .design/ for context reconciliation
+  #
+  # ⚠️  PIPELINE NOTE: The token-generator above writes tokens to
+  # `design-system-export/tokens/tokens.json` (inside the export package).
+  # That path is NOT watched by the design-context reconciler. To keep
+  # .design/context.json current, this step extracts the token content and
+  # writes it to `.design/tokens.json` — the path the reconciler reads.
+  #
+  # If you skip or remove this step, context.json will NOT reflect these
+  # tokens and downstream agents (art-director, spec-writer, etc.) will
+  # see stale or missing token data when they read context.json.
+  - id: sync-context
+    agent: design-intelligence:design-context
+    prompt: |
+      The token-generator has produced a new token set. Before running your
+      normal reconciliation, extract the tokens.json content from the output
+      below and write it to `.design/tokens.json`.
+
+      Then proceed with your full reconciliation process: read all `.design/`
+      artifacts, extract structured data, merge into `.design/context.json`,
+      and report any conflicts.
+
+      Token generator output:
+      {{steps.tokens.result}}
+
   # Phase 4: Component Specs (if components requested)
   - id: components
-    agent: design-intelligence-enhanced:spec-writer
+    agent: design-intelligence:spec-writer
     prompt: |
       Write component specifications for: {{components | default: "Button, Input, Card, Alert"}}
       
@@ -87,7 +116,7 @@ steps:
 
   # Phase 5: Export Package
   - id: export
-    agent: design-intelligence-enhanced:export-packager
+    agent: design-intelligence:export-packager
     prompt: |
       Create a complete export package for coding agents.
       

@@ -388,7 +388,7 @@ amplifier-bundle-design-intelligence-enhanced/
 
 ## References
 
-- [Discovery Bundle](https://github.com/anderlpz/amplifier-bundle-discovery) - Structured interviewing
+- Discovery bundle - Structured interviewing (optional companion)
 - [A2UI Protocol](https://a2ui.org) - Inspiration for protocol design
 - [Creative Research Methodology](../context/research-methodology/creative-research-methodology.md) - Our methodology
 - [Cognitive Task Catalog](../context/research-methodology/cognitive-task-catalog.md) - Problem library

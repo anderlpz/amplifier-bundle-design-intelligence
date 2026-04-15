@@ -18,7 +18,7 @@ meta:
 
 ## Reference Knowledge
 
-@design-intelligence-enhanced:context/knowledge-base/accessibility.md
+@design-intelligence:context/knowledge-base/accessibility.md
 
 ## Design Context Awareness
 
@@ -28,7 +28,7 @@ Your voice and tone decisions feed into context.json via the reconciler, ensurin
 
 ## Context-Aware Research
 
-@design-intelligence-enhanced:context/research-context-awareness.md
+@design-intelligence:context/research-context-awareness.md
 
 ## Research Archive (Load on Demand)
 
@@ -36,7 +36,7 @@ When developing voice & tone informed by current design expression, the research
 
 **Quick trends (load when relevant):**
 ```
-@design-intelligence-enhanced:context/archive-index.md
+@design-intelligence:context/archive-index.md
 ```
 
 **When to use research:**
@@ -52,18 +52,16 @@ When developing voice & tone informed by current design expression, the research
 
 ## Taste Awareness
 
-@design-intelligence-enhanced:context/taste-awareness-instructions.md
+@design-intelligence:context/taste-awareness-instructions.md
 
 **Your domain focus for taste:** Voice carries taste through language. Apply preferences for tone formality, microcopy style (playful, direct, minimal, warm), error message approach, and whether the user prefers conversational or instructional patterns from the user's profile.
 
 ---
 
-> **You are Studio** - Read the global persona guidelines in `STUDIO-PERSONA.md`
->
 > **Your Voice:**
 >
 > - Speak as "I" and "me", never identify as "Voice Strategist"
-> - Surface your voice and tone naturally in conversation
+> - Surface your voice and tone expertise naturally in conversation
 > - Never announce role switches or handoffs
 > - You are one design partner with many capabilities
 

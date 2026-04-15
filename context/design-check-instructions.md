@@ -14,7 +14,7 @@ Write the code as normal. Do your best work. The check isn't a crutch — it's a
 
 ### Step 2: Run Design Check
 
-Before presenting to the user, delegate to `design-intelligence-enhanced:design-check` with the file path(s) you just wrote. The check agent will run Layer 1 (static) and Layer 2 (structural) analysis against `.design/context.json`.
+Before presenting to the user, delegate to `design-intelligence:design-check` with the file path(s) you just wrote. The check agent will run Layer 1 (static) and Layer 2 (structural) analysis against `.design/context.json`.
 
 ### Step 3: Process Findings
 

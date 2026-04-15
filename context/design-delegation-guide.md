@@ -26,16 +26,16 @@ This guidance helps the coordinator recognize design work and delegate appropria
 
 | User Intent | Delegate To | Why |
 |-------------|-------------|-----|
-| "What aesthetic direction fits?" | `design-intelligence-enhanced:art-director` | Visual strategy and brand personality |
-| "Design a component library" | `design-intelligence-enhanced:design-system-architect` | System-wide patterns and token architecture |
-| "Build this button component" | `design-intelligence-enhanced:component-designer` | Individual component design and variants |
-| "Layout this landing page" | `design-intelligence-enhanced:layout-architect` | Page structure and information architecture |
-| "How should this animate?" | `design-intelligence-enhanced:animation-choreographer` | Motion design and transitions |
-| "Make this responsive" | `design-intelligence-enhanced:responsive-strategist` | Breakpoint strategy and device adaptation |
-| "Write the microcopy" | `design-intelligence-enhanced:voice-strategist` | Tone, messaging, and content personality |
-| "Find design inspiration" | `design-intelligence-enhanced:research-runner` | Trend research and site analysis |
-| "Generate design tokens" | `design-intelligence-enhanced:token-generator` | Token creation (colors, typography, spacing) |
-| "Create component specs" | `design-intelligence-enhanced:spec-writer` | Component specifications for implementation |
+| "What aesthetic direction fits?" | `design-intelligence:art-director` | Visual strategy and brand personality |
+| "Design a component library" | `design-intelligence:design-system-architect` | System-wide patterns and token architecture |
+| "Build this button component" | `design-intelligence:component-designer` | Individual component design and variants |
+| "Layout this landing page" | `design-intelligence:layout-architect` | Page structure and information architecture |
+| "How should this animate?" | `design-intelligence:animation-choreographer` | Motion design and transitions |
+| "Make this responsive" | `design-intelligence:responsive-strategist` | Breakpoint strategy and device adaptation |
+| "Write the microcopy" | `design-intelligence:voice-strategist` | Tone, messaging, and content personality |
+| "Find design inspiration" | `design-intelligence:research-runner` | Trend research and site analysis |
+| "Generate design tokens" | `design-intelligence:token-generator` | Token creation (colors, typography, spacing) |
+| "Create component specs" | `design-intelligence:spec-writer` | Component specifications for implementation |
 
 ## Multi-Agent Patterns
 
@@ -43,16 +43,16 @@ This guidance helps the coordinator recognize design work and delegate appropria
 ```
 User: "Build a design system for my healthcare app"
 
-1. design-intelligence-enhanced:art-director
+1. design-intelligence:art-director
    -> Aesthetic direction, brand personality
 
-2. design-intelligence-enhanced:design-system-architect
+2. design-intelligence:design-system-architect
    -> Token architecture, system patterns
 
-3. design-intelligence-enhanced:component-designer
+3. design-intelligence:component-designer
    -> Individual component designs
 
-4. design-intelligence-enhanced:token-generator
+4. design-intelligence:token-generator
    -> Generate actual tokens
 
 5. foundation:modular-builder
@@ -63,16 +63,16 @@ User: "Build a design system for my healthcare app"
 ```
 User: "Design a modern landing page"
 
-1. design-intelligence-enhanced:research-runner
+1. design-intelligence:research-runner
    -> Current trends in landing page design
 
-2. design-intelligence-enhanced:layout-architect
+2. design-intelligence:layout-architect
    -> Page structure and information architecture
 
-3. design-intelligence-enhanced:component-designer
+3. design-intelligence:component-designer
    -> Hero, CTA, feature cards design
 
-4. design-intelligence-enhanced:spec-writer
+4. design-intelligence:spec-writer
    -> Component specifications
 
 5. foundation:modular-builder
@@ -84,9 +84,9 @@ User: "Design a modern landing page"
 User: "I need design direction for my fintech app"
 
 Parallel delegation:
-- design-intelligence-enhanced:art-director (aesthetic strategy)
-- design-intelligence-enhanced:voice-strategist (tone and messaging)
-- design-intelligence-enhanced:responsive-strategist (device strategy)
+- design-intelligence:art-director (aesthetic strategy)
+- design-intelligence:voice-strategist (tone and messaging)
+- design-intelligence:responsive-strategist (device strategy)
 
 Then synthesize their perspectives into cohesive direction.
 ```

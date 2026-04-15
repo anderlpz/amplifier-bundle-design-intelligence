@@ -12,6 +12,18 @@ Understanding what fonts communicate - the emotional weight, cultural associatio
 ### shape-and-corners.md
 Understanding what corner radii and geometric shapes communicate - the proximity principle (closer to user = rounder), contour bias (sharp corners trigger fear processing), and how radius values signal formality, warmth, and hierarchy. Includes Apple's product geometry analysis and the nesting formula.
 
+### color-psychology.md
+What colors communicate beyond hue and saturation: temperature and emotional register, saturation as energy signal, industry conventions and when to break them, palette gestalt, and the 60-30-10 proportion rule. Bridges color theory to brand positioning decisions.
+
+### spacing-rhythm.md
+How spatial relationships express hierarchy, relationship, and brand positioning. Covers the density spectrum (utility-dense to luxury-airy), proximity as grouping signal, whitespace as a confidence and invitation signal, and why spacing violations are perceived as "something feels off" even when users can't articulate why.
+
+### motion-emotion.md
+What animation styles communicate emotionally and as brand signals. Covers duration as weight signal, easing curves as personality (spring = alive, linear = mechanical, ease-out = confident), motion quantity as brand positioning, and the physicality signal that separates "alive" interfaces from "digital artifacts."
+
+### layout-narratives.md
+How structure tells stories: reading path patterns (F-pattern, Z-pattern, Gutenberg), visual weight and hierarchy, grid confidence signals, density as brand positioning, composition patterns as narrative (hero+content, split-screen, card grid), and negative space as a hospitality and confidence tool.
+
 ## Philosophy
 
 **Design decisions are communication decisions.**
@@ -25,15 +37,6 @@ When a user says "I want it to feel premium," they're not asking for specific pi
 3. **Research observations** (archive/) - What's working now, what's emerging
 
 This directory is layer 2 - the metacognitive understanding that transforms technical capability into meaningful expression.
-
-## Future Additions
-
-Planned topics (to be developed as the bundle evolves):
-
-- **color-psychology.md** - What colors communicate beyond theory
-- **spacing-rhythm.md** - How spatial relationships express hierarchy and flow
-- **motion-emotion.md** - What animation styles communicate
-- **layout-narratives.md** - How structure tells stories
 
 ## Relationship to Research
 

@@ -13,6 +13,10 @@ description: |
 
 steps:
   # Step 1: Discovery Interview
+  # NOTE: This step delegates to discovery:discovery-interviewer, which requires
+  # the Discovery bundle to be loaded (amplifier-bundle-discovery). If the
+  # Discovery bundle is not available, skip this step and provide a discovery
+  # brief manually as input to subsequent steps.
   - id: discover
     agent: discovery:discovery-interviewer
     prompt: |
@@ -31,7 +35,7 @@ steps:
 
   # Step 2: Research Context (if archive available)
   - id: research
-    agent: design-intelligence-enhanced:art-director
+    agent: design-intelligence:art-director
     prompt: |
       Review this discovery brief and establish design direction:
       
@@ -60,7 +64,7 @@ steps:
 
   # Step 3: Generate Tokens
   - id: tokens
-    agent: design-intelligence-enhanced:token-generator
+    agent: design-intelligence:token-generator
     prompt: |
       Generate a complete Design Protocol token file.
       
@@ -86,7 +90,7 @@ steps:
 
   # Step 4: Component Specifications
   - id: components
-    agent: design-intelligence-enhanced:spec-writer
+    agent: design-intelligence:spec-writer
     prompt: |
       Write Design Protocol component specifications.
       
@@ -109,7 +113,7 @@ steps:
 
   # Step 5: Export Package
   - id: export
-    agent: design-intelligence-enhanced:export-packager
+    agent: design-intelligence:export-packager
     prompt: |
       Create the final export package for coding agents.
       

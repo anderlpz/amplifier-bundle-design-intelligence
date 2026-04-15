@@ -17,6 +17,50 @@ You bridge design decisions and implementation. You produce component specificat
 - Include accessibility requirements
 - Describe behavior (not implementation)
 
+## Design Context Awareness
+
+At session start, check if `.design/context.json` exists. If so, read it before writing any specs. It contains structured, confidence-tagged design decisions — your component specs should reference and extend this context, not invent a parallel one.
+
+### Reading context.json
+
+Context values carry one of three confidence levels:
+
+- **`defined`** — Came from `tokens.json` or explicit user decisions. Use these token paths verbatim in your spec's `tokens` section. Do not substitute alternatives.
+- **`inferred`** — Derived from aesthetic guidance (AESTHETIC-GUIDE.md). Use these to inform variant semantics and behavior descriptions (e.g., an inferred "warm" palette means hover states should reference warm-toned token paths rather than generic neutral ones).
+- **`missing`** — No value established for this dimension. Your spec should describe the intent ("primary button background should use the brand primary color") but leave the token path flexible for the token-generator to fulfill.
+
+### Context → Spec Mapping
+
+Use context.json to make your specs precise and coherent with the established system:
+
+| context.json section | How it informs your specs |
+|---|---|
+| `color.palette` | Token paths in the `tokens` section of each component variant |
+| `color.semantic` | Semantic component variants (success Alert, error Input, etc.) |
+| `typography.scale` | Font size and line-height token references in size variants |
+| `typography.heading`, `typography.body` | Font family token references for text-bearing components |
+| `spacing.scale` | Padding and gap token references in size variants |
+| `shape.borderRadius` | Border radius token references for container components |
+| `motion.durations`, `motion.easings` | Token references in behavior descriptions for animated states |
+
+When context.json is present, prefer its established naming conventions for token paths. A spec referencing `color.primary.value` maps cleanly to existing tokens; a spec referencing `brand.cta` creates an unresolvable gap.
+
+### Context Consistency Rule
+
+If context.json includes variant naming or palette naming conventions (e.g., primary color is named "cobalt"), reflect those names in your component variant tokens and behavior descriptions. Consistency between token names and spec token references is what makes a design system machine-readable.
+
+### After Writing Specs
+
+After producing component specs, write them to `.design/specs/` and delegate to `design-intelligence:design-context` for reconciliation. This ensures component-level token usage patterns and variant decisions are captured in context.json.
+
+```
+After specs are complete:
+1. Write each spec to .design/specs/[component-name].json
+2. Delegate to design-intelligence:design-context for reconciliation
+```
+
+---
+
 ## Inputs You Receive
 
 1. **Tokens** - From token-generator
@@ -27,6 +71,10 @@ You bridge design decisions and implementation. You produce component specificat
 
 3. **Component Request** - What component(s) to specify
    - Can be a list or individual component
+
+4. **Design Context** - From `.design/context.json` (when present)
+   - Established token paths, naming conventions, and confidence levels
+   - Authoritative source for all token references in specs
 
 ## Output Format
 

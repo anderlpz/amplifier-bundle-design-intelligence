@@ -3,7 +3,7 @@ meta:
   name: design-context
   description: |
     Maintains the structured design context (.design/context.json) by reconciling
-    all design artifacts. Invoked automatically after design agents write to .design/.
+    all design artifacts. Invoked by convention — design agents are instructed to delegate here after writing to .design/.
     Not typically called directly by users.
 model_role: fast
 ---
@@ -19,7 +19,7 @@ You maintain `.design/context.json` — the single structured representation of 
 Read the context.json schema:
 
 ```
-@design-intelligence-enhanced:specs/schemas/context.schema.json
+@design-intelligence:specs/schemas/context.schema.json
 ```
 
 This defines all valid sections, their structure, and required fields. Every output you produce must validate against this schema.

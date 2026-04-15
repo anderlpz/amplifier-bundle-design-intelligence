@@ -5,11 +5,11 @@ bundle:
 
 agents:
   include:
-    - design-intelligence-enhanced:design-context
-    - design-intelligence-enhanced:design-check
+    - design-intelligence:design-context
+    - design-intelligence:design-check
 
 context:
   include:
-    - design-intelligence-enhanced:context/design-context-instructions.md
-    - design-intelligence-enhanced:context/inference-chains.md
-    - design-intelligence-enhanced:context/design-check-instructions.md
+    - design-intelligence:context/design-context-instructions.md
+    - design-intelligence:context/inference-chains.md
+    - design-intelligence:context/design-check-instructions.md

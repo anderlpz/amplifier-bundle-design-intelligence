@@ -8,4 +8,4 @@ tools:
     source: git+https://github.com/microsoft/amplifier-module-tool-skills@main
     config:
       skills:
-        - "@design-intelligence-enhanced:skills"
+        - "@design-intelligence:skills"

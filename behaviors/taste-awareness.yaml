@@ -5,4 +5,4 @@ bundle:
 
 context:
   include:
-    - design-intelligence-enhanced:context/taste-awareness-instructions.md
+    - design-intelligence:context/taste-awareness-instructions.md

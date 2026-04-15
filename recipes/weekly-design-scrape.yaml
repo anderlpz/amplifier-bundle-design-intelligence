@@ -43,7 +43,7 @@ context:
 steps:
   # Step 1: Fetch and parse RSS feeds from all three sources
   - id: "fetch-feeds"
-    agent: "design-intelligence-enhanced:research-runner"
+    agent: "design-intelligence:research-runner"
     prompt: |
       Fetch RSS feeds from Awwwards, Siteinspire, and The FWA, then parse
       and archive the structured data.
@@ -97,7 +97,7 @@ steps:
 
   # Step 2: Synthesize trends and generate the summary
   - id: "generate-summary"
-    agent: "design-intelligence-enhanced:research-runner"
+    agent: "design-intelligence:research-runner"
     prompt: |
       Read the raw feed data and generate a design-trend summary.
 
@@ -141,7 +141,7 @@ steps:
 
   # Step 3: Update the rolling archive index
   - id: "update-archive-index"
-    agent: "design-intelligence-enhanced:research-runner"
+    agent: "design-intelligence:research-runner"
     prompt: |
       Regenerate the archive index from recent summaries.
 

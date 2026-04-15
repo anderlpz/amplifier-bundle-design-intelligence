@@ -5,14 +5,17 @@ bundle:
   description: Extends foundation with design research, generation, and discovery capabilities (advisory agents already included in foundation)
 
 includes:
+  # Design context - required by advisory agents for design-check validation
+  - bundle: git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main#subdirectory=behaviors/design-context.yaml
   # Research capabilities - trend collection and analysis
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main#subdirectory=behaviors/design-research.yaml
+  - bundle: git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main#subdirectory=behaviors/design-research.yaml
   # Generation capabilities - tokens, specs, export packages
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main#subdirectory=behaviors/design-generation.yaml
+  - bundle: git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main#subdirectory=behaviors/design-generation.yaml
   # Taste awareness - personal preference learning
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main#subdirectory=behaviors/taste-awareness.yaml
-  # Discovery integration for structured design interviews
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-discovery@main
+  - bundle: git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main#subdirectory=behaviors/taste-awareness.yaml
+  # Discovery integration for structured design interviews (optional)
+  # Uncomment to enable: requires the discovery bundle to be loaded separately
+  # - bundle: git+https://github.com/microsoft/amplifier-bundle-discovery@main
 ---
 
 # Design Studio Extension
@@ -22,6 +25,11 @@ includes:
 ## What This Adds
 
 Foundation already includes the **7 design advisory agents** (art-director, component-designer, etc.). This extension adds:
+
+### Design Context
+- **design-context reconciler** - Maintains `.design/context.json` as structured source of truth for all design decisions
+- **design-check validator** - Three-layer validation (static, structural, visual) used by advisory agents for self-correction
+- Required by advisory agents for design-check validation and write-back to context.json
 
 ### Research Capabilities
 - **research-runner** - Collect design trend data from Awwwards/Siteinspire/The FWA RSS feeds
@@ -36,9 +44,9 @@ Foundation already includes the **7 design advisory agents** (art-director, comp
 - Personal taste profile learning and preference tracking
 - Confidence-calibrated design decisions based on demonstrated preferences
 
-### Discovery Integration
-- Structured design interviews to capture intent
-- Progressive 4-layer methodology for requirements gathering
+### Discovery Integration (Optional)
+- Compatible with the Discovery bundle for structured design interviews
+- When loaded alongside the Discovery bundle: progressive 4-layer methodology for requirements gathering
 - Discovery brief generation
 
 ## When to Use This Extension
@@ -69,7 +77,7 @@ amplifier bundle use foundation design-studio-extension
 ```yaml
 includes:
   - bundle: git+https://github.com/microsoft/amplifier-foundation@main
-  - bundle: git+https://github.com/anderlpz/amplifier-bundle-design-intelligence-enhanced@main#subdirectory=extension-bundle.yaml
+  - bundle: git+https://github.com/microsoft/amplifier-bundle-design-intelligence@main#subdirectory=extension-bundle.yaml
 ```
 
 ## What You Get
@@ -77,7 +85,7 @@ includes:
 With foundation + this extension, you have the complete design pipeline:
 
 ```
-1. DISCOVER (discovery bundle)
+1. DISCOVER (Discovery bundle — optional companion)
    |
 2. DESIGN (7 advisory agents from foundation)
    |
